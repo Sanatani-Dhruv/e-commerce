@@ -1,0 +1,105 @@
+.admin-fieldset {
+	margin: 10px;
+	padding: 40px;
+	border-radius: 15px;
+	font-family: "Poppins", sans-serif;
+}
+
+.admin-legend {
+	padding: 0 5px;
+	font-family: "Poppins", sans-serif;
+}
+
+.admin-form {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.input-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 500px;
+	margin-bottom: 15px;
+}
+
+.input-container:has(.admin-btn) {
+	flex-direction: row;
+}
+
+.product-insert-input {
+	font-family: "Poppins", sans-serif;
+	padding: 1px 10px;
+	font-size: 16px;
+	color: black;
+}
+
+.admin-btn {
+	color: white;
+	width: max-content;
+	border-radius: 15px;
+	padding: 8px 25px;
+	border: none;
+	border: 1px solid crimson;
+	background-color: transparent;
+	transition: all 0.15s;
+	font-family: "Poppins", sans-serif;
+	font-size: 12px;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.admin-btn-green {
+	border: 1px solid rgb(65,235,196);
+}
+
+.admin-btn-green:hover {
+	background-color: rgb(65,235,196) !important;
+}
+
+.product-insert {
+	color: black;
+	padding: 0 5px;
+	font-family: "Poppins", sans-serif;
+}
+
+.admin-btn:hover {
+	background-color: crimson;
+	color: rgb(25,25,25);
+}
+
+.body:not(.dark) {
+	.admin-btn {
+		color: black;
+		border-width: 2px;
+	}
+
+	.admin-btn:hover {
+		color: white;
+	}
+}
+
+@media (max-width: 900px) {
+	.admin-fieldset {
+		padding: 3%;
+		border-radius: 5px;
+	}
+
+	.product-insert-input {
+		font-size: 12px;
+	}
+
+	.input-container {
+		width: 100%;
+	}
+
+	.admin-btn-container {
+		flex-direction: column !important;
+		gap: 10px;
+	}
+
+	.product-insert-input {
+		padding: 1px 3px;
+	}
+}

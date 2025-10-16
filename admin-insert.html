@@ -1,0 +1,55 @@
+<?php
+	include_once('php/config.php');
+?>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta name="viewport" charset="UTF-8" content="width=device-width, initial-scale=1.0"/>
+		<title>Admin Panel - IT Sales and Services Website</title>
+		<link rel="icon" href="images/logo-monodark.png">
+		<link rel="stylesheet" href="styles/header.css" media="all">
+		<link rel="stylesheet" href="styles/general.css" media="all">
+		<link rel="stylesheet" href="styles/footer-part.css" media="all">
+		<link rel="stylesheet" href="styles/admin-panel.css" media="all">
+	</head>
+	<body class="body <?= htmlspecialchars($_SESSION['colorscheme']) ?>">
+<?php
+	include_once("php/header.php");
+?>
+		<main class="main">
+			<fieldset class="admin-fieldset">
+				<legend class="admin-legend">
+					<h3 class="admin-legend-head">
+						Add New Product
+					</h3>			
+				</legend>
+				<form action="" class="product-form admin-form" method="POST">
+					<div class="input-container">
+						<div class="admin-label">Products name: </div>
+						<input id="product-name" class="product-insert-input" placeholder="Enter Name" type="text" name="product-name">
+					</div>
+					<div class="input-container">
+						<div class="admin-label">Product Short Description: </div>
+						<textarea id="product-sdesc" rows="3" class="product-insert-input admin-textarea" name="product-sdesc" placeholder="Enter Short Description about Product"></textarea>
+					</div>
+					<div class="input-container">
+						<div class="admin-label">Product Long Description: </div>
+						<textarea id="product-ldesc" rows="6" class="product-insert-input admin-textarea" name="product-ldesc" placeholder="Enter Long Description about Product"></textarea>
+					</div>
+					<div class="input-container">
+						<div class="admin-label">Product Stock: </div>
+						<input id="product-stock" placeholder="Enter Available Stock" class="product-insert-input" type="number" name="product-stock">
+					</div>
+					<div class="input-container admin-btn-container">
+						<input type="submit" class="admin-btn admin-btn-green" value="Add New Product To Database">
+						<input type="reset" class="admin-btn admin-btn-red" value="Reset Fields">
+					</div>
+				</form>
+			</fieldset>
+		</main>
+<?php
+	include_once("php/footer.php");
+?>
+		<script src="scripts/base.js"></script>
+	</body>
+</html>

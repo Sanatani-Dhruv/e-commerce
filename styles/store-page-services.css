@@ -1,0 +1,134 @@
+.services-container {
+	margin: 20px 0px 60px;
+}
+
+.services-category-title {
+	font-size: 30px;
+	padding: 5px 0 10px;
+}
+
+.service-listing {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 25px;
+}
+
+.service-element-container {
+	width: 280px;
+	height: 100%;
+	padding: 10px 5px;
+	max-width: 100%;
+	background-color: #D5CEA3;
+	backdrop-filter: blur(20px);
+	border-radius: 12px;
+	box-sizing: border-box;
+	box-shadow: 0 0 20px rgba(0,0,0,0.2);
+	line-height: 1.2;
+	/* flex-grow: 1; */
+}
+
+body:not(.dark) .service-element-container {
+	/* background-color: rgb(44,49,90); */
+}
+
+.service-element-1 {
+	color: black !important;
+	line-height: 1.2;
+}
+
+body:not(.dark) .service-element-1 {
+	/* color: white !important; */
+	color: rgb(30,30,30) !important;
+}
+
+.service-element-title {
+	font-weight: 600;
+}
+
+.service-element-price {
+	color: rgb(90,90,90) !important;
+}
+
+.service-element-addtocart-link {
+	user-select: none;
+}
+
+.service-element-addtocart-btn {
+	font-family:  'Poppins', sans-serif;
+	background-color: rgb(255, 216, 20);
+	color: black;
+	border: none;
+	border-radius: 18px;
+	font-weight: 700;
+	padding: 5px 20px 5px 20px;
+	transition: all 0.15s, opacity 0s;
+	margin-top: 12px;
+	cursor: pointer;
+	z-index: 9;
+}
+
+.service-element-addtocart-btn:hover {
+	transform: translateX(18px);
+	transition: all 0.15s, opacity 0s;
+	position: relative;
+}
+
+.service-element-addtocart-btn-container::before {
+	content: ">";
+	position: absolute;
+	color: black;
+	bottom: 10px;
+	left: 7px;
+	z-index: -1;
+	transition: all 0.15s, opacity 0s;
+	font-size: 23px;
+	vertical-align: middle;
+	font-weight: 900;
+	pointer-events: none;
+	user-select: none;
+}
+
+.service-img-container {      
+	width: 100%;
+	height: 80%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 7px;
+}
+
+.service-img {
+	height: 95%;
+	width: 95%;
+	object-fit: cover;
+	border-radius: 5px;
+	user-select: none;
+}
+
+@media (max-width: 710px) {
+	.service-element-container {
+		width: 100%;
+		height: 20rem;
+		margin-bottom: 20px;
+	}
+
+	.service-element-2-container {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.service-element-addtocart-btn {
+		transform: unset;
+	}
+
+	.service-element-addtocart-btn:hover {
+		transform: translateX(-12px);
+	}
+
+	.service-element-addtocart-btn-container::before {
+		content: unset;
+	}
+}
