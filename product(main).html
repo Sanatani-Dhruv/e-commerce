@@ -1,6 +1,6 @@
 <?php
-	include_once('php/config.php');
-	include_once('php/general-session-variable.php');
+include_once('php/config.php');
+include_once('php/general-session-variable.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,9 +16,9 @@
 		<link rel="stylesheet" href="styles/store-page-items.css" media="all">
 	</head>
 	<body class="body <?= htmlspecialchars($_SESSION['colorscheme']) ?>">
-<?php
-	include_once("php/header.php");
-?>
+		<?php
+		  include_once("php/header.php");
+		?>
 		  <div class="pathline-container">
 			  <div class="pathline">
 				  <a class="home-link" href="index.html">
@@ -164,17 +164,17 @@
 					  </div>
 				  </div>
 			  </div>
-<?php
-	try {
-		// Try Executing Commands
-	} catch (Exception $err) {
-		// If Any Exception Comes up, do This
-	}
-?>
-		</main>
-<?php
-	include_once("php/footer.php");
-?>
-		<script src="scripts/base.js"></script>
+			  <?php
+											  try {
+											  // Try Executing Commands
+											  } catch (Exception $err) {
+											  // If Any Exception Comes up, do This
+											  }
+											  ?>
+		  </main>
+		  <?php
+											  include_once("php/footer.php");
+											  ?>
+											  <script src="scripts/base.js"></script>
 	</body>
 </html>

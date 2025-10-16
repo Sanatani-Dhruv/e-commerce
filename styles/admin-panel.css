@@ -20,7 +20,7 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	width: 500px;
+	width: 700px;
 	margin-bottom: 15px;
 }
 
@@ -37,7 +37,7 @@
 
 .admin-btn {
 	color: white;
-	width: max-content;
+	/* width: max-content; */
 	border-radius: 15px;
 	padding: 8px 25px;
 	border: none;

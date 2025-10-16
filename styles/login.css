@@ -139,6 +139,9 @@
 	color: crimson !important;
 	font-weight: bold;
 	white-space: pre-wrap;
+	h1,h2,h3,h4,h5,h6 {
+		color: crimson !important;
+	}
 }
 
 .php-no-detail-found::before {

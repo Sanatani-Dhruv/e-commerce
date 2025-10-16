@@ -1,5 +1,8 @@
 <?php
 	include_once('php/config.php');
+	include_once("php/validate.php");
+	include_once("php/general-session-variable.php");
+	include_once("php/general-functions.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,10 +14,16 @@
 		<link rel="stylesheet" href="styles/general.css" media="all">
 		<link rel="stylesheet" href="styles/footer-part.css" media="all">
 		<link rel="stylesheet" href="styles/admin-panel.css" media="all">
+		<link rel="stylesheet" href="styles/login.css" media="all">
 	</head>
 	<body class="body <?= htmlspecialchars($_SESSION['colorscheme']) ?>">
 <?php
-	include_once("php/header.php");
+	if (isset($_SESSION["current_user"]) && $_SESSION["current_user"] === "admin") {
+		echo "<h2 class='admin-welcome'>Ram Ram Admin!</h2>";
+		include_once("php/header.php");
+?>
+<?php
+	// }
 ?>
 		<main class="main">
 			<fieldset class="admin-fieldset">
@@ -26,29 +35,105 @@
 				<form action="" class="product-form admin-form" method="POST">
 					<div class="input-container">
 						<div class="admin-label">Products name: </div>
-						<input id="product-name" class="product-insert-input" placeholder="Enter Name" type="text" name="product-name">
+						<input id="product-name" min="5" pattern="[a-z0-9\-_ ]*" class="product-insert-input" placeholder="Enter Name" type="text" name="product-name" required>
 					</div>
 					<div class="input-container">
 						<div class="admin-label">Product Short Description: </div>
-						<textarea id="product-sdesc" rows="3" class="product-insert-input admin-textarea" name="product-sdesc" placeholder="Enter Short Description about Product"></textarea>
+						<textarea id="product-sdesc" min="5" rows="3" class="product-insert-input admin-textarea" name="product-sdesc" placeholder="Enter Short Description about Product" required></textarea>
 					</div>
 					<div class="input-container">
 						<div class="admin-label">Product Long Description: </div>
-						<textarea id="product-ldesc" rows="6" class="product-insert-input admin-textarea" name="product-ldesc" placeholder="Enter Long Description about Product"></textarea>
+						<textarea id="product-ldesc" min="5" rows="6" class="product-insert-input admin-textarea" name="product-ldesc" placeholder="Enter Long Description about Product" required></textarea>
 					</div>
 					<div class="input-container">
 						<div class="admin-label">Product Stock: </div>
-						<input id="product-stock" placeholder="Enter Available Stock" class="product-insert-input" type="number" name="product-stock">
+						<input id="product-stock" min="1" placeholder="Enter Available Stock" class="product-insert-input" type="number" name="product-stock" required>
 					</div>
+<?php 
+	if (isset($_POST["submit"]) && $_POST["product-name"] != $_SESSION['sproduct_name']) {
+		if($_SERVER["REQUEST_METHOD"] === "POST") {
+			try {
+				$check_product_exist_sql = "select product_name from products where product_name = \"".$_POST["product-name"]."\";";
+				if ($check_product_exist = $conn->query($check_product_exist_sql)) {
+					echo "<i>query true</i>";
+					echo "<br>";
+				} else {
+					echo "<i>query false</i>";
+					echo "<br>";
+				}
+
+				$product_exist_status = "false";
+				if ($check_product_exist->num_rows > 0) {
+					while ($row = $check_product_exist->fetch_assoc()) {
+						// echo "while loop running....";
+						if ($row["product_name"] == clean_input($_POST['product-name'])) {
+							global $product_exist_status;
+							$product_exist_status = "true";
+							// echo "After Check: $product_exist_status";
+							break;
+						}
+					}
+				}
+
+			} catch (Exception $err) {
+				echo "<b><div class='php-status-error-message'>Server Side Error: Error in processing query</div><br></b>";
+				// echo "<br>Error: <pre class='php-status-error-message'>$err</pre>";
+			}
+
+			if ($product_exist_status === "false") {
+				$_SESSION['sproduct_name'] = clean_input($_POST["product-name"]);
+				$_SESSION['sproduct_sdesc'] = clean_input($_POST["product-sdesc"]);
+				$_SESSION['sproduct_ldesc'] = clean_input($_POST["product-ldesc"]);
+				$_SESSION['sproduct_stock'] = clean_input($_POST["product-stock"]);
+
+				try {
+					$stmt = $conn->prepare("INSERT INTO products (product_name, product_shortdesc, product_longdesc, product_stock) VALUES (?, ?, ?, ?)");
+					$stmt->bind_param("ssss", $_SESSION['sproduct_name'], $_SESSION['sproduct_sdesc'], $_SESSION['sproduct_ldesc'], $_SESSION['sproduct_stock']);
+					$stmt->execute();
+					$sql_id_get = "select max(product_id) from products;";
+					$result = $conn->query($sql_id_get);
+
+					if ($result->num_rows > 0) {
+						// output data of each row
+						while($row = $result->fetch_assoc()) {
+							$_SESSION["lastinsert_id"] = $row["max(product_id)"];
+						}
+					} else {
+						echo "0 results";
+					}
+					unset ($_POST["product-name"]);
+					echo "<div class='php-status-message'>";
+					echo "New Product added successfully with product id ". $_SESSION["lastinsert_id"];
+					echo "</div>";
+				} catch (Exception $err) {
+					echo "Error: " . $sql . "<br>" . $conn->error;
+				}
+			} else {
+				echo "<div class='php-status-error-message'>";
+				echo "Product With Same Name Already Exists";
+				echo "</div>";
+			}
+		}
+	}
+?>
 					<div class="input-container admin-btn-container">
-						<input type="submit" class="admin-btn admin-btn-green" value="Add New Product To Database">
-						<input type="reset" class="admin-btn admin-btn-red" value="Reset Fields">
+						<input type="submit" class="login-btn admin-btn submit admin-btn-green" value="Add New Product To Database">
+						<input type="reset" class="login-btn admin-btn reset admin-btn-red" value="Reset Fields">
 					</div>
 				</form>
 			</fieldset>
 		</main>
 <?php
 	include_once("php/footer.php");
+?>
+<?php
+} else {
+	header("Location: login.html");
+	exit();
+?>
+		<meta http-equiv="refresh" content="0; url=noscript.html" />
+<?php
+}
 ?>
 		<script src="scripts/base.js"></script>
 	</body>
