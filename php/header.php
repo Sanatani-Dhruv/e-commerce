@@ -31,13 +31,13 @@
 					<a class="navbar-link" href="#About_Us">About Us</a>
 				</li>
 <?php 
-	$current_filename =(string) $_SERVER['PHP_SELF'];
+	$current_filename = $_SERVER['PHP_SELF'];
 	if (isset($_SESSION["current_user"])) {
 		$current_user = strtoupper($_SESSION["current_user"]);
 ?>
 				<li class="navbar-li">
 					<a class="navbar-link logout" href="signup.html">
-						<?=htmlspecialchars($current_user);?> 
+						<?=htmlspecialchars($current_user);?>
 					</a>
 <?php 
 		if ($current_filename != "/logout.html") {

@@ -35,49 +35,18 @@
 	color: black;
 }
 
-.admin-btn {
+#product-image {
 	color: white;
-	/* width: max-content; */
-	border-radius: 15px;
-	padding: 8px 25px;
-	border: none;
-	border: 1px solid crimson;
-	background-color: transparent;
-	transition: all 0.15s;
-	font-family: "Poppins", sans-serif;
-	font-size: 12px;
-	font-weight: 600;
-	cursor: pointer;
 }
 
-.admin-btn-green {
-	border: 1px solid rgb(65,235,196);
-}
-
-.admin-btn-green:hover {
-	background-color: rgb(65,235,196) !important;
+#product-image {
+	width: fit-content;
 }
 
 .product-insert {
 	color: black;
 	padding: 0 5px;
 	font-family: "Poppins", sans-serif;
-}
-
-.admin-btn:hover {
-	background-color: crimson;
-	color: rgb(25,25,25);
-}
-
-.body:not(.dark) {
-	.admin-btn {
-		color: black;
-		border-width: 2px;
-	}
-
-	.admin-btn:hover {
-		color: white;
-	}
 }
 
 @media (max-width: 900px) {
@@ -101,5 +70,11 @@
 
 	.product-insert-input {
 		padding: 1px 3px;
+	}
+}
+
+@media (max-width: 400px) {
+	.login-btn {
+		white-space: pre-wrap;
 	}
 }
