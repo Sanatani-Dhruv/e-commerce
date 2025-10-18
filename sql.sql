@@ -7,7 +7,7 @@ create table products (
 	product_shortdesc varchar(100) not null,
 	product_longdesc varchar(500) not null,
 	product_stock varchar(11) not null,
-	product_imagepath varchar(100) not null
+	product_imagepath varchar(100) 
 );
 desc products;
 
