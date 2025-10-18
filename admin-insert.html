@@ -145,6 +145,7 @@
 
 						if ($image_got) {
 							if (move_uploaded_file($_FILES['product-image']['tmp_name'], $image_name)) {
+								chmod($image_name, 0755);
 								echo "<div>Pictures uploaded</div>";
 							}
 						}
