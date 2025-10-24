@@ -1,3 +1,30 @@
+.admin-welcome {
+	width: fit-content;
+	margin: auto;
+	text-align: center;
+	font-size: 36px;
+}
+
+.item-list-table {
+	border: 1px solid ;
+	padding: 10px 20px;
+	overflow:scroll;
+	/* overflow: auto; */
+}
+
+tbody,thead {
+	width:fit-content;
+	overflow:scroll;
+}
+
+.item-list-table td,
+.item-list-table th,
+.item-list-tr {
+	border: 1px solid ;
+	padding: 10px 20px;
+	max-width: 400px;
+}
+
 .admin-fieldset {
 	margin: 10px;
 	padding: 40px;

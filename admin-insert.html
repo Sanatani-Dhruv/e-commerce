@@ -16,21 +16,74 @@
 		<link rel="stylesheet" href="styles/footer-part.css" media="all">
 		<link rel="stylesheet" href="styles/admin-panel.css" media="all">
 		<link rel="stylesheet" href="styles/login.css" media="all">
+		<style>
+table {
+ border-collapse: collapse;
+}
+		</style>
 	</head>
 	<body class="body <?= htmlspecialchars($_SESSION['colorscheme']) ?>">
 <?php
 	if (isset($_SESSION["current_user"]) && $_SESSION["current_user"] === "admin") {
 		include_once("php/header.php");
-		echo "<h2 class='admin-welcome'>Ram Ram Admin!</h2>";
+		echo "<h1 class='admin-welcome'>Ram Ram Admin!</h1>";
 ?>
 		<main class="main">
+			<fieldset class="admin-fieldset admin-list-product">
+				<legend class="admin-legend">
+					<h3 class="admin-legend-head">
+						Product List
+					</h3>			
+				</legend>
+
+<?php 
+		$sql = "select * from products;";
+		$result = mysqli_query($conn, $sql);
+
+		if (mysqli_num_rows($result) > 0) {
+			echo "<table class='item-list-table'"; 
+			?>
+			<thead>
+			<tr class="product-list-tr">
+				<th class="product-list-item">Product ID</th>
+				<th class="product-list-item">Product Name</th>
+				<th class="product-list-item">Product Short Desc</th>
+				<th class="product-list-item">Product Long Desc</th>
+				<th class="product-list-item">Product Stock</th>
+				<th class="product-list-item">Product Image Path</th>
+			</tr>
+			</thead>
+<?php
+			echo "<tbody>";
+			// output data of each row
+			while($row = mysqli_fetch_assoc($result)) {
+				// echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+?>
+			<tr class="product-list-tr">
+				<td class="product-list-item"><?=htmlspecialchars($row["product_id"])?></td>
+				<td class="product-list-item"><?=htmlspecialchars($row["product_name"])?></td>
+				<td class="product-list-item"><?=htmlspecialchars($row["product_shortdesc"])?></td>
+				<td class="product-list-item"><?=htmlspecialchars($row["product_longdesc"])?></td>
+				<td class="product-list-item"><?=htmlspecialchars($row["product_stock"])?></td>
+				<td class="product-list-item"><?=htmlspecialchars($row["product_imagepath"])?></td>
+			</tr>
+<?php
+			}
+			echo "</tbody>";
+			echo "</table>";
+		} else {
+			echo "<strong>Empty set</strong>";
+		}
+?>
+
+			</fieldset>
 			<fieldset class="admin-fieldset">
 				<legend class="admin-legend">
 					<h3 class="admin-legend-head">
 						Add New Product
 					</h3>			
 				</legend>
-				<form action="/admin-insert.html" class="product-form admin-form" method="POST" enctype="multipart/form-data">
+				<form action="<?=htmlspecialchars($_SERVER['PHP_SELF']);?>" class="product-form admin-form" method="POST" enctype="multipart/form-data">
 					<div class="input-container">
 						<div class="admin-label">Products name: </div>
 						<input id="product-name" min="5" pattern="[A-Za-z0-9\-_ ]*" class="product-insert-input" placeholder="Enter Name" type="text" name="product-name" required>
