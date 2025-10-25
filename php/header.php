@@ -36,7 +36,7 @@
 		$current_user = strtoupper($_SESSION["current_user"]);
 ?>
 				<li class="navbar-li">
-					<a class="navbar-link logout" href="signup.html">
+				<a class="navbar-link logout" href="<?php if($current_user == "ADMIN") { echo 'admin-insert.html'; } else { echo 'signup.html'; } ?>">
 						<?=htmlspecialchars($current_user);?>
 					</a>
 <?php 
@@ -54,6 +54,9 @@
 		}
 ?>
 <?php
+		// if ($current_user == "ADMIN") {
+		// 	echo "<div class='admin-panel-btn'>Admin-Panel</div>";
+		// }
 	} else {
 			if ($current_filename == "/logout.html") {
 				header("Location: login.html");
