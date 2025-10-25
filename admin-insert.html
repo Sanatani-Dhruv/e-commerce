@@ -1,8 +1,8 @@
 <?php
-include_once('php/config.php');
-include_once("php/validate.php");
-include_once("php/general-session-variable.php");
-include_once("php/general-functions.php");
+	include_once('php/config.php');
+	include_once("php/validate.php");
+	include_once("php/general-session-variable.php");
+	include_once("php/general-functions.php");
 ?>
 
 <!DOCTYPE html>
@@ -47,6 +47,10 @@ if (isset($_SESSION["current_user"]) && $_SESSION["current_user"] === "admin") {
 					<div class="input-container">
 						<div class="admin-label">Product Stock: </div>
 						<input id="product-stock" min="1" max="10000" placeholder="Enter Available Stock" class="product-insert-input" type="number" name="product-stock" required>
+					</div>
+					<div class="input-container">
+						<div class="admin-label">Product Price: </div>
+						<input id="product-price" min="1" max="100000" placeholder="Enter Price for product" class="product-insert-input" type="number" name="product-price" required>
 					</div>
 					<div class="input-container">
 						<div class="admin-label">Product Image: </div>
@@ -95,6 +99,7 @@ if (isset($_SESSION["current_user"]) && $_SESSION["current_user"] === "admin") {
 			$_SESSION['sproduct_sdesc'] = clean_input($_POST["product-sdesc"]);
 			$_SESSION['sproduct_ldesc'] = clean_input($_POST["product-ldesc"]);
 			$_SESSION['sproduct_stock'] = clean_input($_POST["product-stock"]);
+			$_SESSION['sproduct_price'] = clean_input($_POST["product-price"]);
 
 			echo "<div>Got POST Values in SESSION</div>";
 			// Handling Product image upload from POST
@@ -137,17 +142,20 @@ if (isset($_SESSION["current_user"]) && $_SESSION["current_user"] === "admin") {
 
 			try {
 				echo "<div>Try Started for DB QUERY</div>";
-				$stmt = $conn->prepare("INSERT INTO products (product_name, product_shortdesc, product_longdesc, product_stock, product_imagepath) VALUES (?, ?, ?, ?, ?)");
+				$stmt = $conn->prepare("INSERT INTO products (product_name, product_shortdesc, product_longdesc, product_stock, product_price,product_imagepath) VALUES (?, ?, ?, ?, ?, ?)");
 
-				$stmt->bind_param("sssss", $_SESSION['sproduct_name'], $_SESSION['sproduct_sdesc'], $_SESSION['sproduct_ldesc'], $_SESSION['sproduct_stock'], $_SESSION['sproduct_imagepath']);
+				$stmt->bind_param("ssssss", $_SESSION['sproduct_name'], $_SESSION['sproduct_sdesc'], $_SESSION['sproduct_ldesc'], $_SESSION['sproduct_stock'], $_SESSION['sproduct_price'],$_SESSION['sproduct_imagepath']);
 				$stmt->execute(); // Uploaded Data
 
 				echo "<div>Parameters executed</div>";
 
 				if ($image_got) {
+					echo "<div>Image Got!</div>";
 					if (move_uploaded_file($_FILES['product-image']['tmp_name'], $image_name)) {
 						chmod($image_name, 0755);
 						echo "<div>Pictures uploaded</div>";
+					} else {
+						echo "<div>Pictures <b>not</b> uploaded</div>";
 					}
 				}
 
@@ -189,7 +197,7 @@ if (isset($_SESSION["current_user"]) && $_SESSION["current_user"] === "admin") {
 				</h3>			
 
 <?php 
-	$sql = "select * from products;";
+	$sql = "select * from products";
 	$result = mysqli_query($conn, $sql);
 
 	if (mysqli_num_rows($result) > 0) {
@@ -203,6 +211,7 @@ if (isset($_SESSION["current_user"]) && $_SESSION["current_user"] === "admin") {
 							<th class="product-list-item">Product Short Desc</th>
 							<th class="product-list-item">Product Long Desc</th>
 							<th class="product-list-item">Product Stock</th>
+							<th class="product-list-item">Product Price</th>
 							<th class="product-list-item">Product Image Path</th>
 						</tr>
 					</thead>
@@ -218,7 +227,12 @@ if (isset($_SESSION["current_user"]) && $_SESSION["current_user"] === "admin") {
 								<td class="product-list-item"><?=htmlspecialchars($row["product_shortdesc"])?></td>
 								<td class="product-list-item"><?=htmlspecialchars($row["product_longdesc"])?></td>
 								<td class="product-list-item"><?=htmlspecialchars($row["product_stock"])?></td>
-								<td class="product-list-item"><?=htmlspecialchars($row["product_imagepath"])?></td>
+								<td class="product-list-item">$<?=htmlspecialchars($row["product_price"])?></td>
+								<td class="product-list-item">
+									<a class="product-list-item-imagelink" target="_blank" title="View Image" href="<?=htmlspecialchars($row['product_imagepath'])?>">
+										<?=htmlspecialchars($row["product_imagepath"])?>
+									</a>
+								</td>
 							</tr>
 <?php
 		}

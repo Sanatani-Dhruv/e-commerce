@@ -4,9 +4,10 @@ use ProjectDB;
 create table products (
 	product_id int primary key auto_increment,
 	product_name varchar(50) unique not null,
-	product_shortdesc varchar(100) not null,
-	product_longdesc varchar(500) not null,
+	product_shortdesc varchar(300) not null,
+	product_longdesc varchar(800) not null,
 	product_stock varchar(11) not null,
+	product_price varchar(11) not null,
 	product_imagepath varchar(100) 
 );
 desc products;
@@ -16,6 +17,7 @@ create table services (
 	service_name varchar(50) unique not null,
 	service_shortdesc varchar(100) not null,
 	service_longdesc varchar(500) not null,
+	service_price varchar(11) not null,
 	service_status enum('available', 'not_available')
 );
 desc services;

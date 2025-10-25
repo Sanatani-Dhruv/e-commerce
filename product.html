@@ -34,134 +34,34 @@
 					  Hardware
 				  </h2>
 				  <div class="product-listing">
-					  <div class='hardware-element-container hardware-element-'>
-						  <div class='hardware-element-1 hardware-img-container'>
-							  <img class="hardware-img" src="images/hardware-1.jpeg" alt="Hardware-image">
-						  </div>
-						  <div class="hardware-element-2-container">
-							  <div class="hardware-element-2 hardware-text-container">
-								  <div class='hardware-element-title hardware-element-1'>DDR4 Intel Ram 7th Gen</div>
-								  <div class='hardware-element-1 hardware-element-price'>$1299</div>
+<?php 
+	$sql = "select * from products";
+	$result = mysqli_query($conn, $sql);
+
+	if (mysqli_num_rows($result) > 0) {
+					  while ($row = mysqli_fetch_assoc($result)) {
+?>
+						  <div class='hardware-element-container hardware-element-'>
+							  <div class='hardware-element-1 hardware-img-container'>
+								  <img class="hardware-img" src="<?=htmlspecialchars($row["product_imagepath"])?>" alt="Hardware-image">
 							  </div>
-							  <div class="hardware-element-2 hardware-element-addtocart-btn-container">
-								  <a class="hardware-element-addtocart-link" href="#cart">
-									  <button class="hardware-element-addtocart-btn">Add to Cart</button>
-								  </a>
-							  </div>
-						  </div>
-					  </div>
-					  <div class='hardware-element-container hardware-element-'>
-						  <div class='hardware-element-1 hardware-img-container'>
-							  <img class="hardware-img" src="images/hardware-1.jpeg" alt="Hardware-image">
-						  </div>
-						  <div class="hardware-element-2-container">
-							  <div class="hardware-element-2 hardware-text-container">
-								  <div class='hardware-element-title hardware-element-1'>DDR4 Intel Ram 7th Gen</div>
-								  <div class='hardware-element-1 hardware-element-price'>$1299</div>
-							  </div>
-							  <div class="hardware-element-2 hardware-element-addtocart-btn-container">
-								  <a class="hardware-element-addtocart-link" href="#cart">
-									  <button class="hardware-element-addtocart-btn">Add to Cart</button>
-								  </a>
+							  <div class="hardware-element-2-container">
+								  <div class="hardware-element-2 hardware-text-container">
+									  <div class='hardware-element-title hardware-element-1'><?=htmlspecialchars($row["product_name"])?></div>
+									  <div class='hardware-element-1 hardware-element-price'>$<?=htmlspecialchars($row["product_price"])?></div>
+								  </div>
+								  <div class="hardware-element-2 hardware-element-addtocart-btn-container">
+									  <a class="hardware-element-addtocart-link" href="#cart">
+										  <button class="hardware-element-addtocart-btn">Add to Cart</button>
+									  </a>
+								  </div>
 							  </div>
 						  </div>
-					  </div>
-					  <div class='hardware-element-container hardware-element-'>
-						  <div class='hardware-element-1 hardware-img-container'>
-							  <img class="hardware-img" src="images/hardware-1.jpeg" alt="Hardware-image">
-						  </div>
-						  <div class="hardware-element-2-container">
-							  <div class="hardware-element-2 hardware-text-container">
-								  <div class='hardware-element-title hardware-element-1'>DDR4 Intel Ram 7th Gen</div>
-								  <div class='hardware-element-1 hardware-element-price'>$1299</div>
-							  </div>
-							  <div class="hardware-element-2 hardware-element-addtocart-btn-container">
-								  <a class="hardware-element-addtocart-link" href="#cart">
-									  <button class="hardware-element-addtocart-btn">Add to Cart</button>
-								  </a>
-							  </div>
-						  </div>
-					  </div>
-					  <div class='hardware-element-container hardware-element-'>
-						  <div class='hardware-element-1 hardware-img-container'>
-							  <img class="hardware-img" src="images/hardware-1.jpeg" alt="Hardware-image">
-						  </div>
-						  <div class="hardware-element-2-container">
-							  <div class="hardware-element-2 hardware-text-container">
-								  <div class='hardware-element-title hardware-element-1'>DDR4 Intel Ram 7th Gen</div>
-								  <div class='hardware-element-1 hardware-element-price'>$1299</div>
-							  </div>
-							  <div class="hardware-element-2 hardware-element-addtocart-btn-container">
-								  <a class="hardware-element-addtocart-link" href="#cart">
-									  <button class="hardware-element-addtocart-btn">Add to Cart</button>
-								  </a>
-							  </div>
-						  </div>
-					  </div>
-					  <div class='hardware-element-container hardware-element-'>
-						  <div class='hardware-element-1 hardware-img-container'>
-							  <img class="hardware-img" src="images/hardware-1.jpeg" alt="Hardware-image">
-						  </div>
-						  <div class="hardware-element-2-container">
-							  <div class="hardware-element-2 hardware-text-container">
-								  <div class='hardware-element-title hardware-element-1'>DDR4 Intel Ram 7th Gen</div>
-								  <div class='hardware-element-1 hardware-element-price'>$1299</div>
-							  </div>
-							  <div class="hardware-element-2 hardware-element-addtocart-btn-container">
-								  <a class="hardware-element-addtocart-link" href="#cart">
-									  <button class="hardware-element-addtocart-btn">Add to Cart</button>
-								  </a>
-							  </div>
-						  </div>
-					  </div>
-					  <div class='hardware-element-container hardware-element-'>
-						  <div class='hardware-element-1 hardware-img-container'>
-							  <img class="hardware-img" src="images/hardware-1.jpeg" alt="Hardware-image">
-						  </div>
-						  <div class="hardware-element-2-container">
-							  <div class="hardware-element-2 hardware-text-container">
-								  <div class='hardware-element-title hardware-element-1'>DDR4 Intel Ram 7th Gen</div>
-								  <div class='hardware-element-1 hardware-element-price'>$1299</div>
-							  </div>
-							  <div class="hardware-element-2 hardware-element-addtocart-btn-container">
-								  <a class="hardware-element-addtocart-link" href="#cart">
-									  <button class="hardware-element-addtocart-btn">Add to Cart</button>
-								  </a>
-							  </div>
-						  </div>
-					  </div>
-					  <div class='hardware-element-container hardware-element-'>
-						  <div class='hardware-element-1 hardware-img-container'>
-							  <img class="hardware-img" src="images/hardware-1.jpeg" alt="Hardware-image">
-						  </div>
-						  <div class="hardware-element-2-container">
-							  <div class="hardware-element-2 hardware-text-container">
-								  <div class='hardware-element-title hardware-element-1'>DDR4 Intel Ram 7th Gen</div>
-								  <div class='hardware-element-1 hardware-element-price'>$1299</div>
-							  </div>
-							  <div class="hardware-element-2 hardware-element-addtocart-btn-container">
-								  <a class="hardware-element-addtocart-link" href="#cart">
-									  <button class="hardware-element-addtocart-btn">Add to Cart</button>
-								  </a>
-							  </div>
-						  </div>
-					  </div>
-					  <div class='hardware-element-container hardware-element-'>
-						  <div class='hardware-element-1 hardware-img-container'>
-							  <img class="hardware-img" src="images/hardware-1.jpeg" alt="Hardware-image">
-						  </div>
-						  <div class="hardware-element-2-container">
-							  <div class="hardware-element-2 hardware-text-container">
-								  <div class='hardware-element-title hardware-element-1'>DDR4 Intel Ram 7th Gen</div>
-								  <div class='hardware-element-1 hardware-element-price'>$1299</div>
-							  </div>
-							  <div class="hardware-element-2 hardware-element-addtocart-btn-container">
-								  <a class="hardware-element-addtocart-link" href="#cart">
-									  <button class="hardware-element-addtocart-btn">Add to Cart</button>
-								  </a>
-							  </div>
-						  </div>
-					  </div>
+
+<?php
+					  }
+	}
+?>
 				  </div>
 			  </div>
 <?php
