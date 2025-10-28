@@ -72,7 +72,7 @@
 					  <span class="home">Products</span>
 				  </a>
 				  <span class="path-arrow">&#x3E;</span>
-				  <span class="current-location"><?=htmlspecialchars($product_name)?></span>
+				  <span class="current-location"><?=($product_name)?></span>
 			  </div>
 		  </div>
 		  <main class="main-container">
@@ -86,49 +86,41 @@
 					<div class="product-right-part">
 						<div class="product-showcase-title">
 							<h2>
-								<?=htmlspecialchars($product_name)?>
+								<?=($product_name)?>
 							</h2>
 						</div>
 						<div class="product-showcase-sdesc">
 							<h4>
-								<?=htmlspecialchars($product_sdesc)?>
+								<?=($product_sdesc)?>
 							</h4>
 						</div>
 						<hr class="product-page-hr">
-						<div class="product-showcase-price"><sup>₹</sup> <?=htmlspecialchars($product_price)?></div>
+						<div class="product-showcase-price"><sup>₹</sup> <?=($product_price)?></div>
 						<div class="product-showcase-stock">
-							<strong>Stock:</strong> <?=htmlspecialchars($product_stock)?>
+							<strong>Stock:</strong> <?=($product_stock)?>
 							<div class="product-showcase-post-stock-message <?=htmlspecialchars($stock_available)?>"><?=htmlspecialchars($post_stock_text)?></div>
 						</div>
 <?php 
 					if ($stock_available == "true") {
 ?>
+					<div class="product-showcase-btns-container">
 						<div class="product-showcase-how-much-addcart">
-						Quantity: <input name="no_of_items" class="product-showcase-how-much-addcart-input" value="1" min="1" max="<?=htmlspecialchars($product_stock)?>" type="number">
+							Quantity: <input name="no_of_items" class="product-showcase-how-much-addcart-input" value="1" min="1" max="<?=htmlspecialchars($product_stock)?>" type="number">
 						</div>
+						<div class="product-showcase-addcart-btn-container">
+							<button name="hardware-<?=htmlspecialchars($product_id)?>" class="product-showcase-addcart-btn login-btn submit <?=htmlspecialchars($stock_available)?>">Add To Cart</button>
+						</div>
+					</div>
 <?php
 					}
 ?>
-					<div class="product-showcase-addcart-btn-container">
-<?php 
-					if ($stock_available == "true") {
-?>
-						<button class="product-showcase-addcart-btn login-btn submit <?=htmlspecialchars($stock_available)?>">Add To Cart</button>
-<?php
-					} else {
-?>
-						<button class="product-showcase-addcart-btn login-btn submit <?=htmlspecialchars($stock_available)?>" title="Out Of Stock" disabled>Add To Cart</button>
-<?php
-					}
-?>
-						</div>
 					</div>
 				</div>
 			  </div>
 			  <div class="product-container-2">
 				  <div class="product-ldesc-container">
 					  <h3 class="ldesc-title">Product Description</h3>
-				      <?=htmlspecialchars($product_ldesc)?>
+				      <?=($product_ldesc)?>
 				  </div>
 			  </div>
 		  </main>

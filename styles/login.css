@@ -153,6 +153,15 @@
 		padding: 0 2%;
 	}
 
+	.login-container-box {
+		margin: 10px;
+	}
+
+	.login-container {
+		padding: 50px 20px 40px;
+		/* width: 100%; */
+	}
+
 	.login-input-container {
 		text-align: start;
 		flex-direction: column;

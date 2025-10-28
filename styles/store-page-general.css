@@ -39,3 +39,9 @@ body.dark .pathline span {
 .dark .pathline .home:hover {
 	color: grey !important;
 }
+
+@media (max-width: 400px) {
+	.pathline {
+		font-size: 12px;
+	}
+}
