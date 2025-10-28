@@ -1,6 +1,6 @@
 <?php
-	include_once('php/config.php');
 	include_once('php/general-session-variable.php');
+	include_once('php/config.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,11 +48,12 @@
 							  <div class="hardware-element-2-container">
 								  <div class="hardware-element-2 hardware-text-container">
 									  <div class='hardware-element-title hardware-element-1'><?=htmlspecialchars($row["product_name"])?></div>
-									  <div class='hardware-element-1 hardware-element-price'>$<?=htmlspecialchars($row["product_price"])?></div>
+									  <div class='hardware-element-1 hardware-element-price'>₹<?=htmlspecialchars($row["product_price"])?></div>
+									  <div class='hardware-element-1 hardware-element-price'>Stock: <?=htmlspecialchars($row["product_stock"])?></div>
 								  </div>
 								  <div class="hardware-element-2 hardware-element-addtocart-btn-container">
 								  <a class="hardware-element-addtocart-link" href="product-page.html?product_id=<?=htmlspecialchars($row['product_id'])?>">
-										  <button class="hardware-element-addtocart-btn">Add to Cart</button>
+										  <button class="hardware-element-addtocart-btn">View Product</button>
 									  </a>
 								  </div>
 							  </div>

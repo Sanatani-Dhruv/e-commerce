@@ -1,6 +1,48 @@
 <?php
-	include_once('php/config.php');
 	include_once("php/general-session-variable.php");
+	include_once('php/general-functions.php');
+	include_once('php/config.php');
+?>
+<?php 
+	$getmaxid_sql = "select max(product_id) as total_products from products";
+	$getmaxid_result = mysqli_query($conn, $getmaxid_sql);
+
+	if (isset($_GET["product_id"])) {
+		if (mysqli_num_rows($getmaxid_result) == 1) {
+			while ($getmaxid_row = mysqli_fetch_assoc($getmaxid_result)) {
+				$total_product = $getmaxid_row["total_products"];
+				$current_product_id = (int) (clean_input($_GET["product_id"]));
+				if ($current_product_id > 0 && $current_product_id <= $total_product) {
+					echo "<!-- Valid Product -->";
+
+					$getdetail_sql = "select * from products where product_id = $current_product_id";
+					$getdetail_result = mysqli_query($conn, $getdetail_sql);
+
+					if(mysqli_num_rows($getdetail_result) == 1) {
+						while ($getdetail_row = mysqli_fetch_assoc($getdetail_result)) {
+							$product_id = $getdetail_row["product_id"];
+							$product_name = $getdetail_row["product_name"];
+							$product_sdesc = $getdetail_row["product_shortdesc"];
+							$product_ldesc = $getdetail_row["product_longdesc"];
+							$product_stock = $getdetail_row["product_stock"];
+							$product_price = $getdetail_row["product_price"];
+							$product_imagepath = $getdetail_row["product_imagepath"];
+							$post_stock_text;
+							if ($product_stock > 0) {
+								$stock_available = "true";
+								if ($product_stock <=50) {
+									$post_stock_text = "Running Out Of Stock!";
+								} elseif ($product_stock <=100) {
+									$post_stock_text = "Limited Quantity!";
+								} elseif ($product_stock > 100) {
+									$post_stock_text = "In Stock!";
+								}
+							} else {
+								$post_stock_text = "Out Of Stock!";
+								$stock_available = "false";
+							}
+						}
+					}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,11 +53,10 @@
 		<link rel="icon" href="images/logo-monodark.png">
 		<link rel="stylesheet" href="styles/header.css" media="all">
 		<link rel="stylesheet" href="styles/general.css" media="all">
-		<link rel="stylesheet" href="styles/view-page.css" media="all">
-		<link rel="stylesheet" href="styles/info-page.css" media="all">
+		<link rel="stylesheet" href="styles/login.css" media="all">
 		<link rel="stylesheet" href="styles/footer-part.css" media="all">
 		<link rel="stylesheet" href="styles/store-page-general.css" media="all">
-		<link rel="stylesheet" href="styles/store-page-items.css" media="all">
+		<link rel="stylesheet" href="styles/store-page-single.css" media="all">
 	</head>
 	<body class="body <?= htmlspecialchars($_SESSION['colorscheme']) ?>">
 <?php 
@@ -31,16 +72,75 @@
 					  <span class="home">Products</span>
 				  </a>
 				  <span class="path-arrow">&#x3E;</span>
-				  <span class="current-location">product-page</span>
+				  <span class="current-location"><?=htmlspecialchars($product_name)?></span>
 			  </div>
 		  </div>
 		  <main class="main-container">
-			
-		  </main>
+			  <div class="product-container-1">
+			  	<div class="product-left-part-container">
+					<div class="product-image-container">
+						<img class="product-image" src="<?=htmlspecialchars($product_imagepath)?>" alt="<?=htmlspecialchars($product_name)?>">
+					</div>
+				</div>
+			  	<div class="product-right-part-container">
+					<div class="product-right-part">
+						<div class="product-showcase-title">
+							<h2>
+								<?=htmlspecialchars($product_name)?>
+							</h2>
+						</div>
+						<div class="product-showcase-sdesc">
+							<h4>
+								<?=htmlspecialchars($product_sdesc)?>
+							</h4>
+						</div>
+						<hr class="product-page-hr">
+						<div class="product-showcase-price"><sup>₹</sup> <?=htmlspecialchars($product_price)?></div>
+						<div class="product-showcase-stock">
+							<strong>Stock:</strong> <?=htmlspecialchars($product_stock)?>
+							<div class="product-showcase-post-stock-message <?=htmlspecialchars($stock_available)?>"><?=htmlspecialchars($post_stock_text)?></div>
+						</div>
+<?php 
+					if ($stock_available == "true") {
+?>
+						<div class="product-showcase-how-much-addcart">
+						Quantity: <input name="no_of_items" class="product-showcase-how-much-addcart-input" value="1" min="1" max="<?=htmlspecialchars($product_stock)?>" type="number">
+						</div>
 <?php
-	echo "Product ID: " . $_GET['product_id'];
+					}
+?>
+					<div class="product-showcase-addcart-btn-container">
+<?php 
+					if ($stock_available == "true") {
+?>
+						<button class="product-showcase-addcart-btn login-btn submit <?=htmlspecialchars($stock_available)?>">Add To Cart</button>
+<?php
+					} else {
+?>
+						<button class="product-showcase-addcart-btn login-btn submit <?=htmlspecialchars($stock_available)?>" title="Out Of Stock" disabled>Add To Cart</button>
+<?php
+					}
+?>
+						</div>
+					</div>
+				</div>
+			  </div>
+			  <div class="product-container-2">
+				  <div class="product-ldesc-container">
+					  <h3 class="ldesc-title">Product Description</h3>
+				      <?=htmlspecialchars($product_ldesc)?>
+				  </div>
+			  </div>
+		  </main>
+<?php 
 	include_once("php/footer.php");
 ?>
 				<script src="scripts/base.js"></script>
+<?php 
+				}
+			}
+		}
+	}
+?>
 	</body>
 </html>

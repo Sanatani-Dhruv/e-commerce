@@ -1,0 +1,129 @@
+.product-container-1 {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	gap: 60px;
+	padding: 40px 0 0 0;
+	max-width: 1400px;
+	margin: auto;
+}
+
+.product-left-part-container {
+	width: 35%;
+	/* height: 550px; */
+	min-height: 300px;
+}
+
+.product-image-container {
+	width: 100%;
+
+	.product-image {
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.product-right-part-container {
+	width: 65%;
+}
+
+.product-showcase-title {
+	padding: 0.5rem 0;
+	text-align: start;
+	h2 {
+		font-size: 1.65rem;
+		font-weight: 600;
+	}
+}
+
+.product-page-hr {
+	border: none;
+	color: transparent;
+	background-color: transparent;
+	border-top: 1px solid darkgrey;
+}
+
+.product-showcase-sdesc {
+	padding: 0.3rem 0;
+	h4 {
+		font-size: 1.10rem;
+		font-weight: 500 !important;
+	}
+}
+
+.product-showcase-price {
+	font-size: 1.35rem;
+	font-weight: 600;
+	padding: 0.3rem 0 0;
+	sup {
+		font-weight: 400;
+	}
+}
+
+.product-showcase-stock {
+	padding: 0.2rem 0;
+	font-size: 1.15rem;
+
+	.false {
+		color: crimson;
+		font-weight: 800;
+	}
+
+	.true {
+		color: rgb(05,235,126);
+		font-weight: 800;
+	}
+}
+
+.product-showcase-how-much-addcart {
+	padding: 1px 5px;
+	border-radius: 5px;
+	background-color: darkgrey;
+	color: white;
+	font-weight: 500;
+	display: inline-block;
+	font-size: 1rem;
+}
+
+.product-showcase-how-much-addcart-input {
+	/* background-color: rgba(255,255,255,0.49); */
+	background-color: transparent;
+	color: black;
+	color: white;
+	font-family: 'Source Sans 3', sans-serif;
+	font-size: 1rem;
+	font-weight: 500;
+	border: none;
+	width: 70px;
+	height: auto;
+	padding: 2px 1px;
+}
+
+.product-showcase-how-much-addcart-input:focus-visible {
+	outline: none;
+}
+
+.product-showcase-addcart-btn-container {
+	padding: 30px 0;
+	width: max-content;
+	margin: auto;
+}
+
+.product-ldesc-container {
+	line-height: 1.75;
+	font-size: 0.8rem;
+}
+
+/* .product-showcase-addcart-btn { */
+/* 	color: white !important; */
+/* 	border-color: yellow !important; */
+/* } */
+/*  */
+/* .light .product-showcase-addcart-btn { */
+/* 	color: black !important; */
+/* } */
+/*  */
+/* .product-showcase-addcart-btn:hover { */
+/* 	background-color: yellow !important; */
+/* 	color: black !important; */
+/* } */

@@ -3,12 +3,12 @@ use ProjectDB;
 
 create table products (
 	product_id int primary key auto_increment,
-	product_name varchar(50) unique not null,
-	product_shortdesc varchar(300) not null,
-	product_longdesc varchar(800) not null,
+	product_name varchar(150) unique not null,
+	product_shortdesc varchar(400) not null,
+	product_longdesc varchar(2000) not null,
 	product_stock varchar(11) not null,
 	product_price varchar(11) not null,
-	product_imagepath varchar(100) 
+	product_imagepath varchar(200) not null
 );
 desc products;
 

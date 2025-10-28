@@ -25,6 +25,7 @@
 	box-sizing: border-box;
 	box-shadow: 0 0 20px rgba(0,0,0,0.2);
 	line-height: 1.2;
+	z-index: 10;
 	/* flex-grow: 1; */
 }
 
@@ -44,6 +45,7 @@ body:not(.dark) .hardware-element-1 {
 
 .hardware-element-title {
 	font-weight: 600;
+	min-height: 2.75rem;
 }
 
 .hardware-element-price {
@@ -65,7 +67,7 @@ body:not(.dark) .hardware-element-1 {
 	transition: all 0.15s, opacity 0s;
 	margin-top: 12px;
 	cursor: pointer;
-	z-index: 9;
+	z-index: 1;
 }
 
 .hardware-element-addtocart-btn:hover {
@@ -91,7 +93,7 @@ body:not(.dark) .hardware-element-1 {
 
 .hardware-img-container {      
 	width: 100%;
-	height: 80%;
+	height: 10rem;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -109,7 +111,7 @@ body:not(.dark) .hardware-element-1 {
 @media (max-width: 710px) {
 	.hardware-element-container {
 		width: 100%;
-		height: 20rem;
+		height: 17.75rem;
 		margin-bottom: 20px;
 	}
 
@@ -122,6 +124,8 @@ body:not(.dark) .hardware-element-1 {
 
 	.hardware-element-addtocart-btn {
 		transform: unset;
+		margin-top: 30px;
+		white-space: nowrap;
 	}
 
 	.hardware-element-addtocart-btn:hover {
