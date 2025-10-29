@@ -48,7 +48,7 @@
 		// echo " --Cleaned Input--";
 
 		try {
-			$sql_get_username = "select user_pass as user_pass from users where user_name = \"$login_name\";";
+			$sql_get_username = "select user_pass, user_id from users where user_name = \"$login_name\";";
 			$dehashing_query = $conn->query($sql_get_username);
 			// echo "<br>--Query Run--<br>";
 
@@ -59,6 +59,7 @@
 				// echo "<br><i><b>Matching Username Found</b></i>";
 				// output data of each row
 				while($row = $dehashing_query->fetch_assoc()) {
+					$user_id = $row["user_id"];
 					$db_login_passwd_hash = $row["user_pass"];
 					// echo "<br>--Pass from DB: $db_login_passwd_hash--<br>";
 					// echo $db_login_passwd_hash;
@@ -73,6 +74,7 @@
 				if ($passwd_hash_match == "true"){
 					detailfound();
 					$_SESSION["current_user"] = $login_name;
+					$_SESSION["current_user_id"] = $user_id;
 					header("Location: index.html");
 					exit();
 					// echo $_SESSION['current_user'];

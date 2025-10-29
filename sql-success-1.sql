@@ -25,14 +25,14 @@ DROP TABLE IF EXISTS `cart_items`;
 /*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cart_items` (
   `cart_items_id` int(11) NOT NULL,
-  `cart_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `product_id` int(11) NOT NULL,
   `item_quantity` int(11) NOT NULL,
   `service_id` int(11) NOT NULL,
-  KEY `cart_id` (`cart_id`),
+  KEY `user_id` (`user_id`),
   KEY `product_id` (`product_id`),
   KEY `service_id` (`service_id`),
-  CONSTRAINT `cart_items_ibfk_1` FOREIGN KEY (`cart_id`) REFERENCES `carts` (`cart_id`),
+  CONSTRAINT `cart_items_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
   CONSTRAINT `cart_items_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`),
   CONSTRAINT `cart_items_ibfk_3` FOREIGN KEY (`service_id`) REFERENCES `services` (`service_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -45,29 +45,6 @@ CREATE TABLE `cart_items` (
 LOCK TABLES `cart_items` WRITE;
 /*!40000 ALTER TABLE `cart_items` DISABLE KEYS */;
 /*!40000 ALTER TABLE `cart_items` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `carts`
---
-
-DROP TABLE IF EXISTS `carts`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
-CREATE TABLE `carts` (
-  `cart_id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  PRIMARY KEY (`cart_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `carts`
---
-
-LOCK TABLES `carts` WRITE;
-/*!40000 ALTER TABLE `carts` DISABLE KEYS */;
-/*!40000 ALTER TABLE `carts` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -106,10 +83,10 @@ DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders` (
   `order_id` int(11) NOT NULL AUTO_INCREMENT,
   `order_status` enum('success','fail','online') NOT NULL,
-  `cart_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`order_id`),
-  KEY `cart_id` (`cart_id`),
-  CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`cart_id`) REFERENCES `carts` (`cart_id`)
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -162,7 +139,7 @@ CREATE TABLE `products` (
   `product_longdesc` varchar(2000) NOT NULL,
   `product_stock` varchar(11) NOT NULL,
   `product_price` varchar(11) NOT NULL,
-  `product_imagepath` varchar(200) DEFAULT NULL,
+  `product_imagepath` varchar(200) NOT NULL,
   PRIMARY KEY (`product_id`),
   UNIQUE KEY `product_name` (`product_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -223,10 +200,7 @@ CREATE TABLE `users` (
   `user_email` varchar(250) NOT NULL,
   `user_number` varchar(20) NOT NULL,
   `user_pass` varchar(64) NOT NULL,
-  `cart_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`user_id`,`user_name`),
-  KEY `cart_id` (`cart_id`),
-  CONSTRAINT `users_ibfk_1` FOREIGN KEY (`cart_id`) REFERENCES `carts` (`cart_id`)
+  PRIMARY KEY (`user_id`,`user_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -237,8 +211,8 @@ CREATE TABLE `users` (
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` VALUES
-(1,'admin','dhruvdds125@gmail.com','6352733627','$2y$12$m30vretxmfy50yhUKf7eneutuMoEKbEZdk0qQGAncBK8hfFnXNxmi',NULL),
-(2,'deadster125','dhruvdds125@gmail.com','6352733627','$2y$12$7.pf1miNtT3pZsYG.39bB.uf/6fOMLmNjs.KGL6BoulAVTh61mmiq',NULL);
+(1,'admin','dhruvdds125@gmail.com','6352733627','$2y$12$m30vretxmfy50yhUKf7eneutuMoEKbEZdk0qQGAncBK8hfFnXNxmi'),
+(2,'deadster125','dhruvdds125@gmail.com','6352733627','$2y$12$7.pf1miNtT3pZsYG.39bB.uf/6fOMLmNjs.KGL6BoulAVTh61mmiq');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -251,4 +225,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-10-29 15:52:59
+-- Dump completed on 2025-10-29 16:15:44

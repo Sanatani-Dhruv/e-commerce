@@ -4,6 +4,7 @@
 	include_once('php/config.php');
 ?>
 <?php 
+	$_SESSION["product-page"] = "true";
 	$getmaxid_sql = "select max(product_id) as total_products from products";
 	$getmaxid_result = mysqli_query($conn, $getmaxid_sql);
 
@@ -103,14 +104,17 @@
 <?php 
 					if ($stock_available == "true") {
 ?>
-					<div class="product-showcase-btns-container">
-						<div class="product-showcase-how-much-addcart">
-							Quantity: <input name="no_of_items" class="product-showcase-how-much-addcart-input" value="1" min="1" max="<?=htmlspecialchars($product_stock)?>" type="number">
+					<form action="/cart.html" method="post">
+						<input type="hidden" id="type" name="type" value="hardware">
+						<div class="product-showcase-btns-container">
+							<div class="product-showcase-how-much-addcart">
+								Quantity: <input name="quantity" class="product-showcase-how-much-addcart-input" value="1" min="1" max="<?=htmlspecialchars($product_stock)?>" type="number">
+							</div>
+							<div class="product-showcase-addcart-btn-container">
+								<button name="product-id" value="<?=htmlspecialchars($product_id)?>" class="product-showcase-addcart-btn login-btn submit <?=htmlspecialchars($stock_available)?>">Add To Cart</button>
+							</div>
 						</div>
-						<div class="product-showcase-addcart-btn-container">
-							<button name="hardware-<?=htmlspecialchars($product_id)?>" class="product-showcase-addcart-btn login-btn submit <?=htmlspecialchars($stock_available)?>">Add To Cart</button>
-						</div>
-					</div>
+					</form>
 <?php
 					}
 ?>

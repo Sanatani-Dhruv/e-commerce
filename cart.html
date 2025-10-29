@@ -1,0 +1,119 @@
+<?php
+	include_once("php/general-session-variable.php");
+	include_once('php/general-functions.php');
+	include_once('php/config.php');
+?>
+<?php 
+		echo "<pre>";
+		print_r($_POST);
+		print_r ($_SESSION);
+		echo "</pre><br>";
+		try {
+		} catch (Exception $err) {
+			echo "<h3>DB Error: </h3><pre>" . $err;
+			echo "</pre>";
+		}
+		if (isset($_POST["type"])) {
+			if ($_POST["type"] == "hardware") {
+				echo "<strong>From Product Page</strong>";
+				$user_id = $_SESSION["current_user_id"];
+				$product_id = $_POST["product-id"];
+				$quantity = $_POST["quantity"];
+				unset($_POST);
+
+				try {
+					// $get_item_quantity_sql = "select product_stock from products where product_id = $product_id ";
+					// $get_item_quantity_result = mysqli_query($conn, $get_item_quantity_sql);
+                    //
+					// if (mysqli_num_rows($get_item_quantity_result) == 1) {
+					// 	while ($row = mysqli_fetch_assoc($get_item_quantity_result)) {
+					// 		$prev_stock = $row["product_stock"];
+					// 	}
+					// }
+					$insert_into_cart_sql = "insert into cart_items (user_id, product_id, item_quantity) values ($user_id, $product_id, $quantity)";
+					$insert_into_cart_result = mysqli_query($conn, $insert_into_cart_sql);
+
+					$get_from_cart_sql = "select * from cart_items where user_id = ". $_SESSION["current_user_id"];
+					$get_from_cart_result = mysqli_query($conn, $get_from_cart_sql);
+
+					if (mysqli_num_rows($get_from_cart_result) > 0) {
+						while ($row = mysqli_fetch_assoc($get_from_cart_result)) {
+							echo "<br>";
+							echo "Working Fetch";
+						}
+?> 
+<!-- Meta Tag will come here -->
+<?php
+					}
+
+					echo "<br>";
+				} catch (Exception $err) {
+					echo "<h3>DB Error: </h3><pre>" . $err;
+					echo "</pre>";
+				}
+			} else {
+
+			}
+		}
+?>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Product Page - IT Sales and Services Website</title>
+		<link rel="icon" href="images/logo-monodark.png">
+		<link rel="stylesheet" href="styles/header.css" media="all">
+		<link rel="stylesheet" href="styles/general.css" media="all">
+		<link rel="stylesheet" href="styles/login.css" media="all">
+		<link rel="stylesheet" href="styles/footer-part.css" media="all">
+		<link rel="stylesheet" href="styles/store-page-general.css" media="all">
+		<link rel="stylesheet" href="styles/store-page-single.css" media="all">
+	</head>
+	<body class="body <?= htmlspecialchars($_SESSION['colorscheme']) ?>">
+<?php 
+	include_once("php/header.php");
+?>
+		<main class="main-container">
+			<div class="cart-page-container">
+				<div class="cart-info-container">
+					<div class="cart-container-1">
+						<img class="cart-container-img" src="" alt="Image">
+					</div>
+					<div class="cart-container-2">
+						<div class="cart-product-title"></div>
+						<div class="cart-product-title"></div>
+						<div class="cart-product-title"></div>
+						<div class="cart-product-title"></div>
+						<div class="cart-product-title"></div>
+					</div>
+				</div>
+			</div>
+<?php
+
+					if (mysqli_num_rows($result) > 0) {
+						while ($row = mysqli_fetch_assoc($result)) {
+?>
+				<div class="cart-info-container">
+					<div class="cart-container-1">
+						<img class="cart-container-img" src="" alt="Image">
+					</div>
+					<div class="cart-container-2">
+						<div class="cart-product-title"></div>
+						<div class="cart-product-sdesc"></div>
+						<div class="cart-product-qauntity"></div>
+						<div class="cart-product-title"></div>
+						<div class="cart-product-title"></div>
+					</div>
+				</div>
+<?php
+						}
+					}
+ ?>
+		</main>
+<?php 
+	include_once("php/footer.php");
+?>
+		<script src="scripts/base.js"></script>
+	</body>
+</html>
