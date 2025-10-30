@@ -4,10 +4,11 @@
 	include_once('php/config.php');
 ?>
 <?php 
-		echo "<pre>";
-		print_r($_POST);
-		print_r ($_SESSION);
-		echo "</pre><br>";
+	if (isset($_SESSION["current_user"])) {
+		// echo "<pre>";
+		// print_r($_POST);
+		// print_r ($_SESSION);
+		// echo "</pre><br>";
 		try {
 		} catch (Exception $err) {
 			echo "<h3>DB Error: </h3><pre>" . $err;
@@ -15,35 +16,27 @@
 		}
 		if (isset($_POST["type"])) {
 			if ($_POST["type"] == "hardware") {
-				echo "<strong>From Product Page</strong>";
+				// echo "<strong>From Product Page</strong>";
 				$user_id = $_SESSION["current_user_id"];
 				$product_id = $_POST["product-id"];
 				$quantity = $_POST["quantity"];
 				unset($_POST);
 
 				try {
-					// $get_item_quantity_sql = "select product_stock from products where product_id = $product_id ";
-					// $get_item_quantity_result = mysqli_query($conn, $get_item_quantity_sql);
-                    //
-					// if (mysqli_num_rows($get_item_quantity_result) == 1) {
-					// 	while ($row = mysqli_fetch_assoc($get_item_quantity_result)) {
-					// 		$prev_stock = $row["product_stock"];
-					// 	}
-					// }
-					$insert_into_cart_sql = "insert into cart_items (user_id, product_id, item_quantity) values ($user_id, $product_id, $quantity)";
-					$insert_into_cart_result = mysqli_query($conn, $insert_into_cart_sql);
+					$check_quantity_sql = "SELECT SUM(item_quantity) FROM cart_items WHERE user_id = $user_id AND product_id = $product_id";
+					$check_quantity_result = mysqli_query($conn, $check_quantity_sql);
 
-					$get_from_cart_sql = "select * from cart_items where user_id = ". $_SESSION["current_user_id"];
-					$get_from_cart_result = mysqli_query($conn, $get_from_cart_sql);
-
-					if (mysqli_num_rows($get_from_cart_result) > 0) {
-						while ($row = mysqli_fetch_assoc($get_from_cart_result)) {
-							echo "<br>";
-							echo "Working Fetch";
+					if (mysqli_num_rows($check_quantity_result) == 1) {
+						while ($check_quantity_row = mysqli_fetch_assoc($check_quantity_result)) {
+							$get_sum_from_db = $check_quantity_row["SUM(item_quantity)"];
+							if ($get_sum_from_db == NULL) {
+								$insert_into_db_sql = "INSERT INTO cart_items (user_id, product_id, item_quantity) VALUES ($user_id, $product_id, $quantity)";
+								$insert_into_db_result = mysqli_query($conn, $insert_into_db_sql);
+							} else {
+								$update_quantity_db_sql = "UPDATE cart_items SET item_quantity = $quantity WHERE user_id = $user_id AND product_id = $product_id;";
+								$update_quantity_db_result = mysqli_query($conn, $update_quantity_db_sql);
+							}
 						}
-?> 
-<!-- Meta Tag will come here -->
-<?php
 					}
 
 					echo "<br>";
@@ -55,6 +48,24 @@
 
 			}
 		}
+
+
+		// try {
+		// 	$get_from_cart_sql = "SELECT u.user_id, c.cart_items_id, p.product_id, p.product_name,p.product_imagepath, p.product_shortdesc, p.product_price, p.product_stock, sum(item_quantity) as incart_quantity FROM users AS u INNER JOIN cart_items AS c ON c.user_id = u.user_id INNER JOIN products AS p ON p.product_id = c.product_id where p.product_id = $product_id and u.user_id = $user_id;";
+		// 	$get_from_cart_result = mysqli_query($conn, $get_from_cart_sql);
+        //
+		// 	if (mysqli_num_rows($get_from_cart_result) > 0) {
+		// 		while ($row = mysqli_fetch_assoc($get_from_cart_result)) {
+		// 			echo $row["incart_quantity"];
+		// 		}
+		// 	}
+		// } catch (Exception $err) {
+		// 	echo "DB ERROR: $err";
+		// }
+
+	} else {
+		header("Location: login.html");
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -88,28 +99,29 @@
 						<div class="cart-product-title"></div>
 					</div>
 				</div>
-			</div>
 <?php
+					$get_from_cart_sql = "SELECT u.user_id, c.cart_items_id, p.product_id, p.product_name, p.product_imagepath, p.product_shortdesc, p.product_price, p.product_stock, (item_quantity) as incart_quantity FROM users AS u INNER JOIN cart_items AS c ON c.user_id = u.user_id INNER JOIN products AS p ON p.product_id = c.product_id;";
+					$get_from_cart_result = mysqli_query($conn, $get_from_cart_sql);
 
-					if (mysqli_num_rows($result) > 0) {
-						while ($row = mysqli_fetch_assoc($result)) {
+					if (mysqli_num_rows($get_from_cart_result) > 0) {
+						while ($row = mysqli_fetch_assoc($get_from_cart_result)) {
 ?>
 				<div class="cart-info-container">
 					<div class="cart-container-1">
-						<img class="cart-container-img" src="" alt="Image">
+					<img class="cart-container-img" src="<?=$row["product_imagepath"]?>" alt="<?=$row["product_name"]?>">
 					</div>
 					<div class="cart-container-2">
-						<div class="cart-product-title"></div>
-						<div class="cart-product-sdesc"></div>
-						<div class="cart-product-qauntity"></div>
-						<div class="cart-product-title"></div>
+						<div class="cart-product-title"><?=$row["product_name"]?></div>
+						<div class="cart-product-sdesc"><?=$row["product_shortdesc"]?></div>
+						<div class="cart-product-qauntity"><?=$row["incart_quantity"]?></div>
 						<div class="cart-product-title"></div>
 					</div>
 				</div>
 <?php
 						}
 					}
- ?>
+?>
+			</div>
 		</main>
 <?php 
 	include_once("php/footer.php");

@@ -44,6 +44,32 @@
 							}
 						}
 					}
+
+					try {
+						if (isset($_SESSION["current_user"])) {
+							$current_user_id = $_SESSION["current_user_id"];
+
+							$get_cart_detail_sql = "SELECT sum(item_quantity) from cart_items where product_id = $product_id and user_id = $current_user_id;";
+							$get_cart_detail_result = mysqli_query($conn, $get_cart_detail_sql);
+
+							if (mysqli_num_rows($get_cart_detail_result) === 1) {
+								while ($get_cart_detail_row = mysqli_fetch_assoc($get_cart_detail_result)) {
+									$quantity_from_db = $get_cart_detail_row["sum(item_quantity)"];
+									if ($quantity_from_db == NULL) { $quantity_from_db = 1; }
+								}
+							} else {
+								$quantity_from_db = 1;
+							}
+						} else {
+							$quantity_from_db = 1;
+						}
+					} catch (Exception $err) {
+						echo "DB Error: ";
+						echo "<pre>";
+						echo "$err";
+						echo "</pre>";
+					}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -108,7 +134,7 @@
 						<input type="hidden" id="type" name="type" value="hardware">
 						<div class="product-showcase-btns-container">
 							<div class="product-showcase-how-much-addcart">
-								Quantity: <input name="quantity" class="product-showcase-how-much-addcart-input" value="1" min="1" max="<?=htmlspecialchars($product_stock)?>" type="number">
+								Quantity: <input name="quantity" class="product-showcase-how-much-addcart-input" value="<?=htmlspecialchars($quantity_from_db)?>" min="1" max="<?=htmlspecialchars($product_stock)?>" type="number">
 							</div>
 							<div class="product-showcase-addcart-btn-container">
 								<button name="product-id" value="<?=htmlspecialchars($product_id)?>" class="product-showcase-addcart-btn login-btn submit <?=htmlspecialchars($stock_available)?>">Add To Cart</button>
