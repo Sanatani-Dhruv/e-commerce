@@ -55,7 +55,9 @@
 							if (mysqli_num_rows($get_cart_detail_result) === 1) {
 								while ($get_cart_detail_row = mysqli_fetch_assoc($get_cart_detail_result)) {
 									$quantity_from_db = $get_cart_detail_row["sum(item_quantity)"];
-									if ($quantity_from_db == NULL) { $quantity_from_db = 1; }
+									if ($quantity_from_db == NULL) {
+										$quantity_from_db = 1; 
+									}
 								}
 							} else {
 								$quantity_from_db = 1;

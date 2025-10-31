@@ -3,3 +3,4 @@ PHPMYADMIN/
 *.vim
 images/*/*
 *.swp
+*port*
