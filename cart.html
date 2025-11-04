@@ -89,7 +89,7 @@
 			<h1 class="cart-page-title">Your Cart</h1>
 			<div class="cart-page-container">
 <?php
-					$get_from_cart_sql = "SELECT u.user_id, c.cart_items_id, p.product_id, p.product_name, p.product_imagepath, p.product_shortdesc, p.product_price, p.product_stock, (item_quantity) as incart_quantity FROM users AS u INNER JOIN cart_items AS c ON c.user_id = u.user_id INNER JOIN products AS p ON p.product_id = c.product_id where u.user_id = $user_id;";
+					$get_from_cart_sql = "SELECT u.user_id, c.cart_items_id, p.product_id, p.product_name, p.product_imagepath, p.product_shortdesc, p.product_price, p.product_stock, (item_quantity) as incart_quantity FROM users AS u INNER JOIN cart_items AS c ON c.user_id = u.user_id INNER JOIN products AS p ON p.product_id = c.product_id where u.user_id = $user_id order by cart_items_id desc;";
 					$get_from_cart_result = mysqli_query($conn, $get_from_cart_sql);
 
 					if (mysqli_num_rows($get_from_cart_result) > 0) {
