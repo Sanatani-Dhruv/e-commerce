@@ -2,6 +2,6 @@
 PHPMYADMIN/
 *.vim
 images/*/*
-*.swp
+/*.swp
 *port*
 *.zip
