@@ -75,6 +75,8 @@
 					detailfound();
 					$_SESSION["current_user"] = $login_name;
 					$_SESSION["current_user_id"] = $user_id;
+					$log_current_user_db_sql = "insert into loginfo (user_id) value ($user_id);";
+					$log_current_user_db_result = $conn->query($log_current_user_db_sql);
 					header("Location: index.html");
 					exit();
 					// echo $_SESSION['current_user'];
