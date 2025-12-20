@@ -6,3 +6,4 @@ images/*/*
 *port*
 *.zip
 .env
+/vendor
