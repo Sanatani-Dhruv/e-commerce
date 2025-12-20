@@ -5,3 +5,4 @@ images/*/*
 /*.swp
 *port*
 *.zip
+.env
