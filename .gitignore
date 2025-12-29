@@ -8,3 +8,4 @@ images/*/*
 .env
 /vendor
 *larave*
+*src*
