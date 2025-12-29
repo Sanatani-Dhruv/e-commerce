@@ -93,11 +93,11 @@
 ?>
 		  <div class="pathline-container">
 			  <div class="pathline">
-				  <a class="home-link" href="index.html">
+				  <a class="home-link" href="index.php">
 					  <span class="home">Home</span>
 				  </a>
 				  <span class="path-arrow">&#x3E;</span>
-				  <a class="home-link" href="product.html">
+				  <a class="home-link" href="product.php">
 					  <span class="home">Products</span>
 				  </a>
 				  <span class="path-arrow">&#x3E;</span>
@@ -132,7 +132,7 @@
 <?php 
 					if ($stock_available == "true") {
 ?>
-					<form action="/cart.html" method="post">
+					<form action="/cart.php" method="post">
 						<input type="hidden" id="type" name="type" value="hardware">
 						<div class="product-showcase-btns-container">
 							<div class="product-showcase-how-much-addcart">

@@ -77,7 +77,7 @@
 					$_SESSION["current_user_id"] = $user_id;
 					$log_current_user_db_sql = "insert into loginfo (user_id) value ($user_id);";
 					$log_current_user_db_result = $conn->query($log_current_user_db_sql);
-					header("Location: index.html");
+					header("Location: index.php");
 					exit();
 					// echo $_SESSION['current_user'];
 				}
@@ -92,7 +92,7 @@
 	// }
 ?>
 						<div class="login-input-container">
-							<a class="no-exist-acc-link" href="signup.html">No Account! Sign Up</a>
+							<a class="no-exist-acc-link" href="signup.php">No Account! Sign Up</a>
 						</div>
 					</div>
 				</form>

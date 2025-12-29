@@ -25,7 +25,7 @@
 					<h1 class="view-page-title">
 						Complete IT Support & Managed Services - Convenient and Affordable
 					</h1>
-					<a class="view-page-btn-link" href="product.html">
+					<a class="view-page-btn-link" href="product.php">
 						<button class="view-page-btn">See More</button>
 					</a>
 				</div>

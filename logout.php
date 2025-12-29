@@ -9,10 +9,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		echo $_SESSION["current_user"];
 		unset($_SESSION["current_user"]);
 		echo $_SESSION["current_user"];
-		header("Location: login.html");
+		header("Location: login.php");
 		exit();
 	} else {
-		header("Location: index.html");
+		header("Location: index.php");
 		exit();
 	}
 }

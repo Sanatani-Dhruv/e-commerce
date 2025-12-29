@@ -1,5 +1,5 @@
 <header class="header-container">
-	<a href="index.html" class="home-link">
+	<a href="index.php" class="home-link">
 		<div class="logo-container">
 			<div class="logo-container-box rotate">
 				<img class="logo-main" src="images/logo-color.png" alt="">
@@ -19,10 +19,10 @@
 			</div>
 			<ul class="navbar-ul">
 				<li class="navbar-li">
-					<a class="navbar-link" href="product.html">Our Products</a>
+					<a class="navbar-link" href="product.php">Our Products</a>
 				</li>
 				<li class="navbar-li">
-					<a class="navbar-link" href="services.html">Our Services</a>
+					<a class="navbar-link" href="services.php">Our Services</a>
 				</li>
 				<li class="navbar-li">
 					<a class="navbar-link" href="#Contact_Us">Contact Us</a>
@@ -36,13 +36,13 @@
 		$current_user = strtoupper($_SESSION["current_user"]);
 ?>
 				<li class="navbar-li">
-				<a class="navbar-link logout" href="<?php if($current_user == "ADMIN") { echo 'admin-insert.html'; } else { echo 'cart.html'; } ?>">
+				<a class="navbar-link logout" href="<?php if($current_user == "ADMIN") { echo 'admin-insert.php'; } else { echo 'cart.php'; } ?>">
 						<?=htmlspecialchars($current_user);?>
 					</a>
 <?php 
-		if ($current_filename != "/logout.html") {
+		if ($current_filename != "/logout.php") {
 ?>
-					<a class="navbar-link logout logout-img-container" href="logout.html">
+					<a class="navbar-link logout logout-img-container" href="logout.php">
 						 <img src="images/logout.svg" class="logout-img" alt="Logout">
 					</a>
 				</li>
@@ -58,13 +58,13 @@
 		// 	echo "<div class='admin-panel-btn'>Admin-Panel</div>";
 		// }
 	} else {
-			if ($current_filename == "/logout.html") {
-				header("Location: login.html");
+			if ($current_filename == "/logout.php") {
+				header("Location: login.php");
 				exit();
 			}
 ?>
 	<li class="navbar-li">
-		<a class="navbar-link" href="login.html">Sign In</a>
+		<a class="navbar-link" href="login.php">Sign In</a>
 		</li>
 <?php
 	}

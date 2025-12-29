@@ -251,7 +251,7 @@ if (isset($_SESSION["current_user"]) && $_SESSION["current_user"] === "admin") {
 ?>
 <?php
 } else {
-	header("Location: login.html");
+	header("Location: login.php");
 	exit();
 ?>
 				<meta http-equiv="refresh" content="0; url=noscript.html" /> <!-- Fallback, in whatever case above doesn't work  -->
