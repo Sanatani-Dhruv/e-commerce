@@ -9,3 +9,4 @@ images/*/*
 /vendor
 *larave*
 *src*
+json.json
