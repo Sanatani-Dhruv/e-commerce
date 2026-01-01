@@ -79,6 +79,7 @@
 					$log_current_user_db_result = $conn->query($log_current_user_db_sql);
 					header("Location: index.php");
 					exit();
+					echo '<meta http-equiv="refresh" content="0; url=/index.php">';
 					// echo $_SESSION['current_user'];
 				}
 			} else {
