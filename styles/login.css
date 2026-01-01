@@ -55,6 +55,20 @@
 	transition: all 0.15s;
 }
 
+.show-pass {
+	background-color: transparent;
+	width: max-content;
+	padding: 0px 5px;
+	position: absolute;
+	right: 0;
+	top: 3px;
+	user-select: none;
+}
+
+div:has(.show-pass) {
+	position: relative;
+}
+
 .login-btn.submit {
 	background-color: transparent;
 	border: 3px solid rgb(65,235,196);

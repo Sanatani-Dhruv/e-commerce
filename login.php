@@ -22,24 +22,27 @@
 	include_once("php/header.php");
 ?>
 	<main class="main-container">
-	<div class="login-container-box">
-	<h2 class="login-title">
-	Sign Into your Account
-	</h2>
-	<form method="post" action='<?=htmlspecialchars($_SERVER["PHP_SELF"])?>'>
-	<div class="login-container">
-	<div class="login-input-container">
-	<label class="login-label" for="login-name">User Name: </label>
-	<input class="login-input" pattern="[a-z0-9 ]*" id="login-name" type="text" placeholder="Enter User Name" name="login-name" required>
-	</div>
-	<div class="login-input-container">
-	<label class="login-label" for="login-password">Password: </label>
-	<input class="login-input" id="login-password" pattern="[a-zA-Z0-9 ]*" type="password" placeholder="Enter Your Password" name="login-password" required>
-	</div>
-	<div class="login-input-container">
-	<input class="login-btn submit" name="submit" type="submit" value="Login">
-	<input class="login-btn reset" name="reset" type="reset" value="Reset">
-	</div>
+		<div class="login-container-box">
+			<h2 class="login-title">
+				Sign Into your Account
+			</h2>
+			<form method="post" action='<?=htmlspecialchars($_SERVER["PHP_SELF"])?>'>
+				<div class="login-container">
+					<div class="login-input-container">
+						<label class="login-label" for="login-name">User Name: </label>
+						<input class="login-input" pattern="[a-z0-9 ]*" id="login-name" type="text" placeholder="Enter User Name" name="login-name" required>
+					</div>
+					<div class="login-input-container">
+						<label class="login-label" for="login-password">Password: </label>
+						<input class="login-input" id="login-password" pattern="[a-zA-Z0-9 ]*" type="password" placeholder="Enter Your Password" name="login-password" required>
+<div class="login-btn success show-pass" id="pass_change_btn">
+	<img src="images/passwd-hide.svg" class="passwd-hide-img" id="passwd_hide_img" width="18px" alt="">
+</div>
+					</div>
+					<div class="login-input-container">
+						<input class="login-btn submit" name="submit" type="submit" value="Login">
+						<input class="login-btn reset" name="reset" type="reset" value="Reset">
+					</div>
 	<?php
 	// if (isset($_POST["submit"])) {
 	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
