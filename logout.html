@@ -11,9 +11,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		echo $_SESSION["current_user"];
 		header("Location: login.html");
 		exit();
+		echo '<meta http-equiv="refresh" content="0; url=/login.html">';
 	} else {
 		header("Location: index.html");
 		exit();
+		echo '<meta http-equiv="refresh" content="0; url=/index.html">';
 	}
 }
 ?>

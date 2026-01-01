@@ -61,6 +61,7 @@
 			if ($current_filename == "/logout.html") {
 				header("Location: login.html");
 				exit();
+				echo '<meta http-equiv="refresh" content="0; url=/login.html">';
 			}
 ?>
 	<li class="navbar-li">
