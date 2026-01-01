@@ -26,16 +26,32 @@
 					$check_quantity_sql = "SELECT SUM(item_quantity) FROM cart_items WHERE user_id = $user_id AND product_id = $product_id";
 					$check_quantity_result = mysqli_query($conn, $check_quantity_sql);
 
+					$get_total_stock_sql = "SELECT product_stock FROM products WHERE product_id = $product_id";
+					$get_total_stock_result = mysqli_query($conn, $get_total_stock_sql);
+
+					if (mysqli_num_rows($get_total_stock_result) == 1) {
+						while ($get_total_stock_row = mysqli_fetch_assoc($get_total_stock_result)) {
+							$get_total_stock_result_final = $get_total_stock_row["product_stock"];
+							// echo "Stock Result: $get_total_stock_result_final";
+						}
+					}
+
 					if (mysqli_num_rows($check_quantity_result) == 1) {
-						while ($check_quantity_row = mysqli_fetch_assoc($check_quantity_result)) {
-							$get_sum_from_db = $check_quantity_row["SUM(item_quantity)"];
-							if ($get_sum_from_db == NULL) {
-								$insert_into_db_sql = "INSERT INTO cart_items (user_id, product_id, item_quantity) VALUES ($user_id, $product_id, $quantity)";
-								$insert_into_db_result = mysqli_query($conn, $insert_into_db_sql);
-							} else {
-								$update_quantity_db_sql = "UPDATE cart_items SET item_quantity = $quantity WHERE user_id = $user_id AND product_id = $product_id;";
-								$update_quantity_db_result = mysqli_query($conn, $update_quantity_db_sql);
+						if ($get_total_stock_result_final >= $quantity) {
+							while ($check_quantity_row = mysqli_fetch_assoc($check_quantity_result)) {
+								$get_sum_from_db = $check_quantity_row["SUM(item_quantity)"];
+								if ($get_sum_from_db == NULL) {
+									$insert_into_db_sql = "INSERT INTO cart_items (user_id, product_id, item_quantity) VALUES ($user_id, $product_id, $quantity)";
+									$insert_into_db_result = mysqli_query($conn, $insert_into_db_sql);
+								} else {
+									$update_quantity_db_sql = "UPDATE cart_items SET item_quantity = $quantity WHERE user_id = $user_id AND product_id = $product_id;";
+									$update_quantity_db_result = mysqli_query($conn, $update_quantity_db_sql);
+								}
 							}
+						} else {
+							$error = "Requested quantity cannot be greater than available stock";
+							header("Location: /product-page.php?product_id=$product_id&error=$error#error");
+							echo "<meta http-equiv='refresh' content='0; url=/product-page.php?product_id=$product_id&error=$error#error'";
 						}
 					}
 				} catch (Exception $err) {

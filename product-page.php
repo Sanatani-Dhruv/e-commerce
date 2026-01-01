@@ -144,6 +144,13 @@
 						</div>
 					</form>
 <?php
+						if (isset($_REQUEST['error'])) {
+?>
+	<div class="php-status-error-message" id="error" style="font-size: 1.5rem;"><?=htmlspecialchars($_REQUEST['error'])?></div>
+<?php
+						}
+?>
+<?php
 					}
 ?>
 					</div>
@@ -164,6 +171,9 @@
 				}
 			}
 		}
+	} else {
+		header("Location: product.php");
+		echo '<meta http-equiv="refresh" content="0; url=/product.php">';
 	}
 ?>
 	</body>
