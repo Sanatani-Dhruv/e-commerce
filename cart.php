@@ -49,7 +49,7 @@
 								}
 							}
 						} else {
-							$error = "Requested quantity cannot be greater than available stock";
+							$error = "Requested quantity is greater than available stock";
 							header("Location: /product-page.html?product_id=$product_id&error=$error#error");
 							echo "<meta http-equiv='refresh' content='0; url=/product-page.html?product_id=$product_id&error=$error#error'";
 							header("Location: /product-page.php?product_id=$product_id&error=$error#error");
