@@ -134,6 +134,7 @@
 ?>
 					<form action="/cart.php" method="post">
 						<input type="hidden" id="type" name="type" value="hardware">
+						<input type="hidden" id="redirect_location" name="redirect_location" value="<?=htmlspecialchars($_SERVER["PHP_SELF"])?>">
 						<div class="product-showcase-btns-container">
 							<div class="product-showcase-how-much-addcart">
 								Quantity: <input name="quantity" class="product-showcase-how-much-addcart-input" value="<?=htmlspecialchars($quantity_from_db)?>" min="1" max="<?=htmlspecialchars($product_stock)?>" type="number">
@@ -172,8 +173,6 @@
 			}
 		}
 	} else {
-		header("Location: product.html");
-		echo '<meta http-equiv="refresh" content="0; url=/product.html">';
 		header("Location: product.php");
 		echo '<meta http-equiv="refresh" content="0; url=/product.php">';
 	}

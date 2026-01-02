@@ -80,11 +80,16 @@
 					$_SESSION["current_user_id"] = $user_id;
 					$log_current_user_db_sql = "insert into loginfo (user_id) value ($user_id);";
 					$log_current_user_db_result = $conn->query($log_current_user_db_sql);
-					header("Location: index.php");
-					echo '<meta http-equiv="refresh" content="0; url=/index.php">';
-					exit();
-					echo '<meta http-equiv="refresh" content="0; url=/index.html">';
-					// echo $_SESSION['current_user'];
+					if (isset($_SESSION['redirect_location'])) {
+						header("Location: ". $_SESSION['redirect_location']);
+						echo '<meta http-equiv="refresh" content="0; url=/' . $_SESSION["redirect_location"] . '">';
+						unset($_SESSION['redirect_location']);
+						exit();
+					} else {
+						header("Location: index.php");
+						echo '<meta http-equiv="refresh" content="0; url=/index.php">';
+						exit();
+					}
 				}
 			} else {
 				nodetailfound();

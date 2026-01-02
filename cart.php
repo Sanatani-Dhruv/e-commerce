@@ -80,8 +80,7 @@
 		// }
 
 	} else {
-		header("Location: login.html");
-		echo '<meta http-equiv="refresh" content="0; url=/login.html">';
+		$_SESSION['redirect_location'] = $_POST['redirect_location'];
 		header("Location: login.php");
 		echo '<meta http-equiv="refresh" content="0; url=/login.php">';
 	}
