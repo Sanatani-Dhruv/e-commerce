@@ -35,9 +35,9 @@
 					<div class="login-input-container">
 						<label class="login-label" for="login-password">Password: </label>
 						<input class="login-input" id="login-password" pattern="[a-zA-Z0-9 ]*" type="password" placeholder="Enter Your Password" name="login-password" required>
-<div class="login-btn success show-pass" id="pass_change_btn">
-	<img src="images/passwd-hide.svg" class="passwd-hide-img" id="passwd_hide_img" width="18px" alt="">
-</div>
+					<div class="login-btn success show-pass" id="pass_change_btn">
+						<img src="images/passwd-hide.svg" class="passwd-hide-img" id="passwd_hide_img" width="18px" alt="">
+					</div>
 					</div>
 					<div class="login-input-container">
 						<input class="login-btn submit" name="submit" type="submit" value="Login">
@@ -81,8 +81,8 @@
 					$log_current_user_db_sql = "insert into loginfo (user_id) value ($user_id);";
 					$log_current_user_db_result = $conn->query($log_current_user_db_sql);
 					header("Location: index.php");
-					exit();
 					echo '<meta http-equiv="refresh" content="0; url=/index.php">';
+					exit();
 					// echo $_SESSION['current_user'];
 				}
 			} else {
