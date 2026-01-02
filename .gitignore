@@ -1,7 +1,7 @@
 .not-my-folder/
 PHPMYADMIN/
 *.vim
-images/*/*
+# images/*/*
 /*.swp
 *port*
 *.zip
