@@ -21,7 +21,7 @@
 ?>
 		<div class="pathline-container">
 			<div class="pathline">
-				<a class="home-link" href="index.html">
+				<a class="home-link" href="index.php">
 					<span class="home">Home</span>
 				</a>
 				<span class="path-arrow">&#x3E;</span>

@@ -50,8 +50,13 @@
 							}
 						} else {
 							$error = "Requested quantity cannot be greater than available stock";
+<<<<<<< HEAD:cart.html
 							header("Location: /product-page.html?product_id=$product_id&error=$error#error");
 							echo "<meta http-equiv='refresh' content='0; url=/product-page.html?product_id=$product_id&error=$error#error'";
+=======
+							header("Location: /product-page.php?product_id=$product_id&error=$error#error");
+							echo "<meta http-equiv='refresh' content='0; url=/product-page.php?product_id=$product_id&error=$error#error'";
+>>>>>>> php:cart.php
 						}
 					}
 				} catch (Exception $err) {
@@ -78,8 +83,13 @@
 		// }
 
 	} else {
+<<<<<<< HEAD:cart.html
 		header("Location: login.html");
 		echo '<meta http-equiv="refresh" content="0; url=/login.html">';
+=======
+		header("Location: login.php");
+		echo '<meta http-equiv="refresh" content="0; url=/login.php">';
+>>>>>>> php:cart.php
 	}
 ?>
 <!DOCTYPE html>
@@ -124,7 +134,7 @@
 						<hr class="product-page-hr">
 						<div class="cart-product-price"><sup>₹</sup> <?=$row["product_price"]?></div>
 						<div class="cart-product-qauntity"><strong>Cart Quantity:</strong> <?=$row["incart_quantity"]?></div>
-						<a class="cart-product-btn-link" href="product-page.html?product_id=<?=$row["product_id"]?>">
+						<a class="cart-product-btn-link" href="product-page.php?product_id=<?=$row["product_id"]?>">
 							<button class="cart-product-btn">Update Cart</button>
 						</a>
 					</div>

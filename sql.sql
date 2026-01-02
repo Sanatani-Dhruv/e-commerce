@@ -1,5 +1,6 @@
-create database ProjectDB;
-use ProjectDB;
+-- drop database ProjectDB;
+-- create database ProjectDB;
+-- use ProjectDB;
 
 create table products (
 	product_id int primary key auto_increment,
@@ -84,5 +85,3 @@ INSERT INTO `products` VALUES
 create view user_cart as 
 SELECT u.user_id, c.cart_items_id, p.product_id, p.product_name, p.product_imagepath, p.product_shortdesc, p.product_price, p.product_stock, (item_quantity) as incart_quantity 
 FROM users AS u INNER JOIN cart_items AS c ON c.user_id = u.user_id INNER JOIN products AS p ON p.product_id = c.product_id;
-
-drop database ProjectDB;

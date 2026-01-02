@@ -31,3 +31,23 @@ navbar_links.forEach(
 	})
 );
 
+pass_field = document.querySelector('#login-password');
+pass_change_btn = document.querySelector('#pass_change_btn');
+pass_change_btn.addEventListener('click', () => {
+	if (pass_field.type == 'password') {
+		pass_field.type = 'text';
+		change_img('passwd_hide_img', 'images/passwd-show.svg');
+	} else if (pass_field.type == 'text') {
+		pass_field.type = 'password';
+		change_img('passwd_hide_img', 'images/passwd-hide.svg');
+	}
+});
+
+function change_img(prev_id, next_img_url) {
+	var prev_img_url = document.getElementById(prev_id).src;
+	var prev_img = document.getElementById(prev_id);
+	var img_url = document.getElementById(prev_id).src;
+	if (prev_img_url != next_img_url) {
+		prev_img.src = next_img_url;
+	}
+}
