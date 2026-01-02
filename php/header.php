@@ -5,7 +5,7 @@
 				<img class="logo-main" src="images/logo-color.png" alt="">
 			</div>
 			<div class="logo-txt">
-				Umiya IT Sales and Services
+				IT Sales and Services
 			</div>
 		</div>
 	</a>
@@ -61,11 +61,8 @@
 			if ($current_filename == "/logout.php") {
 				header("Location: login.php");
 				exit();
-<<<<<<< HEAD
 				echo '<meta http-equiv="refresh" content="0; url=/login.html">';
-=======
 				echo '<meta http-equiv="refresh" content="0; url=/login.php">';
->>>>>>> php
 			}
 ?>
 	<li class="navbar-li">

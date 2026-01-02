@@ -50,13 +50,10 @@
 							}
 						} else {
 							$error = "Requested quantity cannot be greater than available stock";
-<<<<<<< HEAD:cart.html
 							header("Location: /product-page.html?product_id=$product_id&error=$error#error");
 							echo "<meta http-equiv='refresh' content='0; url=/product-page.html?product_id=$product_id&error=$error#error'";
-=======
 							header("Location: /product-page.php?product_id=$product_id&error=$error#error");
 							echo "<meta http-equiv='refresh' content='0; url=/product-page.php?product_id=$product_id&error=$error#error'";
->>>>>>> php:cart.php
 						}
 					}
 				} catch (Exception $err) {
@@ -83,13 +80,10 @@
 		// }
 
 	} else {
-<<<<<<< HEAD:cart.html
 		header("Location: login.html");
 		echo '<meta http-equiv="refresh" content="0; url=/login.html">';
-=======
 		header("Location: login.php");
 		echo '<meta http-equiv="refresh" content="0; url=/login.php">';
->>>>>>> php:cart.php
 	}
 ?>
 <!DOCTYPE html>

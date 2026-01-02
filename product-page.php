@@ -172,13 +172,10 @@
 			}
 		}
 	} else {
-<<<<<<< HEAD:product-page.html
 		header("Location: product.html");
 		echo '<meta http-equiv="refresh" content="0; url=/product.html">';
-=======
 		header("Location: product.php");
 		echo '<meta http-equiv="refresh" content="0; url=/product.php">';
->>>>>>> php:product-page.php
 	}
 ?>
 	</body>
