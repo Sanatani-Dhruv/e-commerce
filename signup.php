@@ -51,6 +51,9 @@
 						<div class="login-input-container">
 							<label class="login-label" for="login-password">Password: </label>
 							<input class="login-input" id="login-password" type="password" placeholder="Enter Your Password" name="login-password" required>
+							<div class="login-btn success show-pass" id="pass_change_btn">
+								<img src="images/passwd-hide.svg" class="passwd-hide-img" id="passwd_hide_img" width="18px" alt="">
+							</div>
 						</div>
 <?php 
 // echo ($_SESSION['slogin_name']);

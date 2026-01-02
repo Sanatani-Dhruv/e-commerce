@@ -36,7 +36,7 @@ pass_change_btn = document.querySelector('#pass_change_btn');
 pass_change_btn.addEventListener('click', () => {
 	if (pass_field.type == 'password') {
 		pass_field.type = 'text';
-		change_img('passwd_hide_img', 'images/passwd-hide-white.svg');
+		change_img('passwd_hide_img', 'images/passwd-show.svg');
 	} else if (pass_field.type == 'text') {
 		pass_field.type = 'password';
 		change_img('passwd_hide_img', 'images/passwd-hide.svg');
