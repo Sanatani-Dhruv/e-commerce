@@ -85,6 +85,11 @@
 	opacity: 0.9;
 }
 
+.checkout-btn {
+	background-color: green;
+	color: white;
+}
+
 @media (max-width: 900px) {
 	.cart-info-container {
 		flex-direction: column;

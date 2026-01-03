@@ -84,6 +84,12 @@
 		header("Location: login.php");
 		echo '<meta http-equiv="refresh" content="0; url=/login.php">';
 	}
+
+	if (isset($_REQUEST['product_id']) and isset($_REQUEST['delete']) and $_REQUEST['delete'] == "true") {
+			$delete_cart_item_sql = "DELETE FROM cart_items WHERE `product_id` = " . $_REQUEST['product_id'] . " and `user_id` = $user_id";
+			// echo $delete_cart_item_sql;
+			$delete_cart_item_result = $conn->query($delete_cart_item_sql);
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -130,8 +136,8 @@
 						<a class="cart-product-btn-link" href="product-page.php?product_id=<?=$row["product_id"]?>">
 							<button class="cart-product-btn">Update Cart</button>
 						</a>
-						<a class="cart-product-btn-link" href="product-page.php?product_id=<?=$row["product_id"]?>">
-							<button class="cart-product-btn danger-btn">Update Cart</button>
+						<a class="cart-product-btn-link" href="<?=$_SERVER['PHP_SELF'] . "?product_id=". $row['product_id'] ."&delete=true"?>">
+							<button class="cart-product-btn danger-btn">Remove from Cart</button>
 						</a>
 					</div>
 				</div>
@@ -139,6 +145,9 @@
 						}
 					}
 ?>
+				<button class="login-btn checkout-btn">
+					Checkout Cart
+				</button>
 			</div>
 		</main>
 <?php 
