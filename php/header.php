@@ -36,7 +36,7 @@
 		$current_user = strtoupper($_SESSION["current_user"]);
 ?>
 				<li class="navbar-li">
-				<a class="navbar-link logout" href="<?php if($current_user == "ADMIN") { echo 'admin-insert.php'; } else { echo 'cart.php'; } ?>">
+				<a class="navbar-link logout" href="<?=($current_user == "ADMIN")? 'admin-insert.php' : 'cart.php' ?>">
 						<?=htmlspecialchars($current_user);?>
 					</a>
 <?php 
