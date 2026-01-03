@@ -80,7 +80,7 @@
 		// }
 
 	} else {
-		$_SESSION['redirect_location'] = $_POST['redirect_location'];
+		$_SESSION['redirect_location'] = $_REQUEST['redirect_location'];
 		header("Location: login.php");
 		echo '<meta http-equiv="refresh" content="0; url=/login.php">';
 	}
@@ -129,6 +129,9 @@
 						<div class="cart-product-qauntity"><strong>Cart Quantity:</strong> <?=$row["incart_quantity"]?></div>
 						<a class="cart-product-btn-link" href="product-page.php?product_id=<?=$row["product_id"]?>">
 							<button class="cart-product-btn">Update Cart</button>
+						</a>
+						<a class="cart-product-btn-link" href="product-page.php?product_id=<?=$row["product_id"]?>">
+							<button class="cart-product-btn danger-btn">Update Cart</button>
 						</a>
 					</div>
 				</div>
