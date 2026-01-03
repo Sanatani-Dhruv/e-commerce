@@ -143,11 +143,13 @@
 				</div>
 <?php
 						}
-					}
 ?>
 				<button class="login-btn checkout-btn">
 					Checkout Cart
 				</button>
+<?php
+					}
+?>
 			</div>
 		</main>
 <?php 
