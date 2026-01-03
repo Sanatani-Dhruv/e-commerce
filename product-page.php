@@ -144,7 +144,7 @@
 								<button name="product-id" value="<?=htmlspecialchars($product_id)?>" class="product-showcase-addcart-btn login-btn submit <?=htmlspecialchars($stock_available)?>">Add To Cart</button>
 								<br>
 								<a class="cart-product-btn-link" href="/cart.php">
-									<div class="cart-product-btn">
+									<div class="cart-product-btn login-btn submit product-page-cart-btn">
 										View Cart
 									</div>
 								</a>
