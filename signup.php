@@ -38,7 +38,7 @@
 					<div class="login-container">
 						<div class="login-input-container">
 							<label class="login-label" for="login-name">User Name: </label>
-							<input class="login-input" pattern="[a-z0-9 ]*" id="login-name" type="text" placeholder="Enter User Name" name="login-name" required>
+							<input class="login-input" pattern="[a-z0-9@ ]*" id="login-name" type="text" placeholder="Enter User Name" name="login-name" required>
 						</div>
 						<div class="login-input-container">
 							<label class="login-label" for="login-email">Email: </label>
@@ -127,6 +127,8 @@ if (isset($_POST["submit"]) && $_POST["login-name"] != $_SESSION['slogin_name'])
 				unset ($_POST["login_name"]);
 				echo "<div class='php-status-message'>";
 				echo "New Account created successfully with user id ". $_SESSION["lastinsert_id"];
+				$_SESSION["current_user"] = $_SESSION['slogin_name'];
+				$_SESSION["current_user_id"] = $_SESSION['lastinsert_id'];
 				echo "</div>";
 			} catch (Exception $err) {
 				echo "Error: " . $sql . "<br>" . $conn->error;
@@ -140,11 +142,11 @@ if (isset($_POST["submit"]) && $_POST["login-name"] != $_SESSION['slogin_name'])
 	}
 } else {
 	// header("Location: ". $_SERVER['PHP_SELF']);
-	header("Location: index.php");
+	// header("Location: index.php");
 	// echo '<meta http-equiv="refresh" content="0; url= '. $_SERVER['PHP_SELF'] . '">';
-	echo '<meta http-equiv="refresh" content="0; url=/index.php">';
+	// echo '<meta http-equiv="refresh" content="0; url=/index.php">';
 	// header("Location:". $_SERVER['PHP_SELF']);
-	exit();
+	// exit();
 }
 ?>
 						<div class="login-input-container">

@@ -30,7 +30,7 @@
 				<div class="login-container">
 					<div class="login-input-container">
 						<label class="login-label" for="login-name">User Name: </label>
-						<input class="login-input" pattern="[a-z0-9 ]*" id="login-name" type="text" placeholder="Enter User Name" name="login-name" required>
+						<input class="login-input" pattern="[a-z0-9@ ]*" id="login-name" type="text" placeholder="Enter User Name" name="login-name" required>
 					</div>
 					<div class="login-input-container">
 						<label class="login-label" for="login-password">Password: </label>
