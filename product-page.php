@@ -83,6 +83,7 @@
 		<link rel="stylesheet" href="styles/header.css" media="all">
 		<link rel="stylesheet" href="styles/general.css" media="all">
 		<link rel="stylesheet" href="styles/login.css" media="all">
+		<link rel="stylesheet" href="styles/cart-page.css" media="all">
 		<link rel="stylesheet" href="styles/footer-part.css" media="all">
 		<link rel="stylesheet" href="styles/store-page-general.css" media="all">
 		<link rel="stylesheet" href="styles/store-page-single.css" media="all">
@@ -134,13 +135,19 @@
 ?>
 					<form action="/cart.php" method="post">
 						<input type="hidden" id="type" name="type" value="hardware">
-						<input type="hidden" id="redirect_location" name="redirect_location" value="<?=htmlspecialchars($_SERVER["PHP_SELF"])?>">
+						<input type="hidden" id="redirect_location" name="redirect_location" value="<?=htmlspecialchars($_SERVER["PHP_SELF"] . "?product_id=" . $product_id)?>">
 						<div class="product-showcase-btns-container">
 							<div class="product-showcase-how-much-addcart">
 								Quantity: <input name="quantity" class="product-showcase-how-much-addcart-input" value="<?=htmlspecialchars($quantity_from_db)?>" min="1" max="<?=htmlspecialchars($product_stock)?>" type="number">
 							</div>
 							<div class="product-showcase-addcart-btn-container">
 								<button name="product-id" value="<?=htmlspecialchars($product_id)?>" class="product-showcase-addcart-btn login-btn submit <?=htmlspecialchars($stock_available)?>">Add To Cart</button>
+								<br>
+								<a class="cart-product-btn-link" href="/cart.php">
+									<div class="cart-product-btn">
+										View Cart
+									</div>
+								</a>
 							</div>
 						</div>
 					</form>

@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 					  <h2 class="login-title">Logout out of account</h2>
 					  <div class="login-container">
 						  <div class="login-input-container">
-							  <h3 class="logout-confirm-msg">Are Sure You want to Logout?</h3>
+							  <h3 class="logout-confirm-msg">Are you sure, you want to Logout?</h3>
 						  </div>
 						  <div class="login-input-container">
 							  <input class="login-btn reset" name="submit" type="submit" value="Confirm">

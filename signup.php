@@ -139,9 +139,12 @@ if (isset($_POST["submit"]) && $_POST["login-name"] != $_SESSION['slogin_name'])
 		// exit();
 	}
 } else {
+	// header("Location: ". $_SERVER['PHP_SELF']);
+	header("Location: index.php");
+	// echo '<meta http-equiv="refresh" content="0; url= '. $_SERVER['PHP_SELF'] . '">';
+	echo '<meta http-equiv="refresh" content="0; url=/index.php">';
 	// header("Location:". $_SERVER['PHP_SELF']);
-	// header("Location:". $_SERVER['PHP_SELF']);
-	// exit();
+	exit();
 }
 ?>
 						<div class="login-input-container">
