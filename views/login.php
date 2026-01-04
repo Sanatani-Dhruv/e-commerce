@@ -14,14 +14,15 @@
 	</head>
 	<body class="body <?= htmlspecialchars($_SESSION['colorscheme']) ?>">
 <?php
-	include_once(__DIR__ . "/../views/php/header.php");
+	// include_once(__DIR__ . "/../views/php/header.php");
+	include_once("php/header.php");
 ?>
 	<main class="main-container">
 		<div class="login-container-box">
 			<h2 class="login-title">
 				Sign Into your Account
 			</h2>
-			<form method="post" action='<?=htmlspecialchars($_SERVER["PHP_SELF"])?>'>
+			<form method="post" action='/checkup'>
 				<div class="login-container">
 					<div class="login-input-container">
 						<label class="login-label" for="login-name">User Name: </label>

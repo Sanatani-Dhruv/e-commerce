@@ -1,7 +1,3 @@
-<?php
-	include_once('php/general-session-variable.php');
-	include_once('php/config.php');
-?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -17,7 +13,7 @@
 	</head>
 	<body class="body <?= htmlspecialchars($_SESSION['colorscheme']) ?>">
 <?php
-	include_once("php/header.php");
+	include_once(__DIR__ . "/../views/php/header.php");
 ?>
 		  <div class="pathline-container">
 			  <div class="pathline">
@@ -36,6 +32,12 @@
 				  <div class="product-listing">
 <?php 
 	$sql = "select * from products";
+	$databaseHost = $_ENV['DB_HOST'];
+	$databaseUsername = $_ENV['DB_USERNAME'];
+	$databasePassword = $_ENV['DB_PW'];
+	$databaseName = $_ENV['DB_NAME'];
+	$conn = new mysqli($databaseHost, $databaseUsername, $databasePassword, $databaseName);
+	echo (isset($conn))?"Yes":"No";
 	$result = mysqli_query($conn, $sql);
 
 	if (mysqli_num_rows($result) > 0) {
@@ -74,7 +76,7 @@
 ?>
 		</main>
 <?php
-	include_once("php/footer.php");
+	include_once(__DIR__ . "/../views/php/footer.php");
 ?>
 		<script src="scripts/base.js"></script>
 	</body>

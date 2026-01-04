@@ -3,11 +3,9 @@
 	// requested operation fails, a warning is generated. If, in addition, the mode
 	// is set to MYSQLI_REPORT_STRICT, a mysqli_sql_exception is thrown instead.
 
-	require __DIR__ . '/../../vendor/autoload.php';
-
 	use Dotenv\Dotenv;
 
-	$dotenv = Dotenv::createImmutable(__DIR__ . '/../../');
+	$dotenv = Dotenv::createImmutable(__DIR__ . '/../');
 	$dotenv->load();
 
 	mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
@@ -25,6 +23,9 @@
 
 		// For Object Oriented Method
 		$conn = new mysqli($databaseHost, $databaseUsername, $databasePassword, $databaseName);
+		// echo "<pre>";
+		// print_r($conn);
+		// echo "</pre>";
 
 		// if ($conn->connect_error) {
 		// 	die("Connection failed: " . $dbc->connect_error);

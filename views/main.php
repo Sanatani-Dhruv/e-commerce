@@ -1,6 +1,3 @@
-<?php
-	include_once("php/general-session-variable.php");
-?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -25,7 +22,7 @@
 					<h1 class="view-page-title">
 						Complete IT Support & Managed Services - Convenient and Affordable
 					</h1>
-					<a class="view-page-btn-link" href="product.php">
+					<a class="view-page-btn-link" href="/product">
 						<button class="view-page-btn">See More</button>
 					</a>
 				</div>

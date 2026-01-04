@@ -1,16 +1,3 @@
-<?php
-	include_once("php/general-session-variable.php");
-	include_once("php/config.php");
-	include_once("php/general-functions.php");
-?>
-<?php
-// if (isset($_POST['login_name']) && isset($_SERVER['REQUEST_URI']))
-// {
-//     // [process the post data in 'mypostvar']
-//     header ('Location: ' . $_SERVER['REQUEST_URI']);
-//     exit();
-// }
-?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -34,7 +21,7 @@
 				<h2 class="login-title">
 					Sign Up your Account
 				</h2>
-				<form method="post" action='<?=htmlspecialchars($_SERVER["PHP_SELF"])?>'>
+				<form method="post" action='/signup'>
 					<div class="login-container">
 						<div class="login-input-container">
 							<label class="login-label" for="login-name">User Name: </label>

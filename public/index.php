@@ -1,28 +1,36 @@
 <?php
-require("../views/php/general-session-variable.php");
-
+require(__DIR__ . "/../views/php/general-session-variable.php");
 require __DIR__ . '/../vendor/autoload.php';
+
+include(__DIR__ . "/../config/config.php");
 const VIEW_DIR = '../views';
 require(VIEW_DIR . '/php/general-functions.php');
 
-use Pierre\Router\Router;
+use Pecee\SimpleRouter\SimpleRouter;
 
-$router = new Router();
-
-$router->get('/', function () {
+SimpleRouter::get('/', function() {
 	require(VIEW_DIR . '/main.php');
 });
 
-$router->get('/user', function () {
+SimpleRouter::get('/user', function () {
 	require(VIEW_DIR . '/user.php');
 });
 
-$router->get('/login', function () {
+SimpleRouter::post('/checkup', function () {
+	// require(VIEW_DIR . '/login.php');
+	return "Hello World";
+});
+
+SimpleRouter::get('/login', function () {
 	require(VIEW_DIR . '/login.php');
 });
 
-$router->get('/signup', function () {
-	require(VIEW_DIR . '/signup.php');
+SimpleRouter::get('/signup', function () {
+	require(VIEW_DIR . '/register.php');
 });
 
-$router->run();
+SimpleRouter::get('/product', function () {
+	require(VIEW_DIR . '/product.php');
+});
+
+SimpleRouter::start();
