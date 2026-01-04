@@ -18,44 +18,52 @@ $databaseName = $_ENV['DB_NAME'];
 
 // Connect to the database
 try {
+    $consoleHelper->print(message: "\nCreating Connection to SQL Server...\n------------------------------------", textColor: "blue", bold: true);
     // For Object Oriented Method
     $mysqli = new mysqli($databaseHost, $databaseUsername, $databasePassword);
+    $consoleHelper->print(message: "\nConnection Successful", textColor: "green", bold: true);
+    $mysqli->set_charset("utf8");
 } catch (Exception $e) {
-    echo "<pre style='padding: 6px 3%;white-space: pre-wrap;font-size: 15px;'>";
-    echo "<h2 style='margin: 10px 0 0k'>Error Caught!</h2>\n";
-    echo "<b>Connection Error:</b> $e";
-    echo "</pre>";
+    $consoleHelper->print(message: "\nError Connecting to SQL server\n------------------------------", textColor: "red", bold: true);
+    $consoleHelper->print(message: "\nCheck if database server is running, and variables in .env are correct.", textColor: "red", bold: false);
+    $consoleHelper->print(message: "\nConnection Error: ", textColor: "red", bold: true);
+    echo "$e";
 }
 
-$mysqli->set_charset("utf8");
-
 try {
-    $sql = "CREATE DATABASE ". $_ENV['DB_NAME'];
+    if ($mysqli) {
+        $sql = "CREATE DATABASE ". $_ENV['DB_NAME'];
 
-    $consoleHelper->print(message: "\nCreating DB...", textColor: "blue", bold: true);
-    $mysqli->query($sql);
-    $consoleHelper->print(message: "\nCreated Database `". $_ENV['DB_NAME'] ."`", textColor: "green", bold: true);
+        $consoleHelper->print(message: "\nCreating DB...", textColor: "blue", bold: true);
+        $mysqli->query($sql);
+        $consoleHelper->print(message: "\nCreated Database `". $_ENV['DB_NAME'] ."`", textColor: "green", bold: true);
 
-    $mysqli = new mysqli($databaseHost, $databaseUsername, $databasePassword, $databaseName);
-    $consoleHelper->print(message: "Filling Database `". $_ENV['DB_NAME'] ."` with tables...", textColor: "blue", bold: true);
-    sqlImport('sql.sql');
-    $consoleHelper->print(message: "\nSuccessfully completed database `". $_ENV['DB_NAME'] ."`", textColor: "green", bold: true);
-    exit();
+        $mysqli = new mysqli($databaseHost, $databaseUsername, $databasePassword, $databaseName);
+        $consoleHelper->print(message: "Filling Database `". $_ENV['DB_NAME'] ."` with tables...", textColor: "blue", bold: true);
+        sqlImport('sql.sql');
+        $consoleHelper->print(message: "\nSuccessfully completed database `". $_ENV['DB_NAME'] ."`", textColor: "green", bold: true);
+        exit();
+    }
 } catch (Exception $err) {
-    $drop_sql = "DROP DATABASE ". $_ENV['DB_NAME'];
-    $mysqli = new mysqli($databaseHost, $databaseUsername, $databasePassword);
-    $consoleHelper->print(message: "Removing existing database...", textColor: "red", bold: true);
-    $mysqli->query($drop_sql);
+    try {
+        $drop_sql = "DROP DATABASE ". $_ENV['DB_NAME'];
+        $mysqli = new mysqli($databaseHost, $databaseUsername, $databasePassword);
+        $consoleHelper->print(message: "Removing existing database...", textColor: "red", bold: true);
+        $mysqli->query($drop_sql);
 
-    $consoleHelper->print(message: "Trying to create DB...", textColor: "blue", bold: true);
-    $mysqli->query($sql);
-    $consoleHelper->print(message: "\nCreated Database `". $_ENV['DB_NAME'] ."`", textColor: "green", bold: true);
-    $mysqli = new mysqli($databaseHost, $databaseUsername, $databasePassword, $databaseName);
-    $consoleHelper->print(message: "Filling Database `". $_ENV['DB_NAME'] ."` with tables...", textColor: "blue", bold: true);
-    sqlImport('sql.sql');
+        $consoleHelper->print(message: "Trying to create DB...", textColor: "blue", bold: true);
+        $mysqli->query($sql);
+        $consoleHelper->print(message: "\nCreated Database `". $_ENV['DB_NAME'] ."`", textColor: "green", bold: true);
+        $mysqli = new mysqli($databaseHost, $databaseUsername, $databasePassword, $databaseName);
+        $consoleHelper->print(message: "Filling Database `". $_ENV['DB_NAME'] ."` with tables...", textColor: "blue", bold: true);
+        sqlImport('sql.sql');
 
-    $consoleHelper->print(message: "\nSuccessfully completed database `". $_ENV['DB_NAME'] ."`", textColor: "green", bold: true);
-    exit();
+        $consoleHelper->print(message: "\nSuccessfully completed database `". $_ENV['DB_NAME'] ."`", textColor: "green", bold: true);
+        exit();
+    } catch (Exception $err) {
+        $consoleHelper->print(message: "\nError Creating Database`". $_ENV['DB_NAME'] ."`", textColor: "red", bold: true);
+        $consoleHelper->print(message: "\nCheck if database server is running, and variables in .env are correct", textColor: "red", bold: true);
+    }
 }
 
 /**

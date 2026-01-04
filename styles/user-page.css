@@ -60,6 +60,7 @@
 .cart-product-btn {
 	font-family:  'Poppins', sans-serif;
 	background-color: rgb(255, 216, 20);
+	border: 3px solid rgb(255, 216, 20) !important;
 	color: black;
 	border: none;
 	border-radius: 18px;
@@ -74,7 +75,9 @@
 .danger-btn {
 	background-color: transparent;
 	color: black;
-	border: 3px solid red;
+	padding: 5px 25px;
+	margin-left: 0.75rem;
+	border: 3px solid red !important;
 }
 
 body.dark .danger-btn {
@@ -88,7 +91,7 @@ body.dark .danger-btn {
 }
 
 .cart-product-btn:hover {
-	background-color: rgb(255, 180, 00);
+	/* background-color: rgb(255, 180, 00); */
 	opacity: 0.8;
 }
 
@@ -98,6 +101,16 @@ body.dark .danger-btn {
 }
 
 @media (max-width: 900px) {
+	.cart-container-1:hover {
+		transition: transform 0.5s;
+		transform: initial;
+		transform-origin: left top;
+		img {
+			transition: all 1s;
+			box-shadow: 0px 0px 15px rgba(255,255,255,0.33);
+		}
+	}
+
 	.cart-info-container {
 		flex-direction: column;
 	}
@@ -106,14 +119,14 @@ body.dark .danger-btn {
 .profile-section {
 	display: flex;
 	flex-direction: column;
-	height: 50vh;
+	height: 700px;
 } 
 
 .username-section {
 	display: flex;
 	align-items: center;
 	gap: 0.25rem;
-	margin-bottom: 1rem;
+	padding-bottom: 1rem;
 	font-weight: 500;
 
 	.name {
@@ -128,11 +141,12 @@ body.dark .danger-btn {
 	justify-content: space-around;
 	gap: 1rem;
 	padding: 1.5rem;
-	margin-bottom: 3rem;
+	padding-bottom: 3rem;
 
 	.key-value {
-		width: 18rem;
+		max-width: 18rem;
 		padding: 1rem;
+		margin: auto;
 
 		.key {
 			text-align: center;
@@ -144,35 +158,23 @@ body.dark .danger-btn {
 			text-align: center;
 			font-weight: 600;
 			font-size: 1.1rem;
-			margin-bottom: 0.2rem;
+			padding-bottom: 0.2rem;
 		}
 	}
 }
 
-body.light {
+body:not(.dark) {
 	.key-value-section {
-		display: flex;
-		justify-content: space-around;
-		gap: 1rem;
-		padding: 1.5rem;
-		margin-bottom: 3rem;
-
 		.key-value {
-			width: 18rem;
-			padding: 1rem;
-
 			.key {
-				text-align: center;
-				font-weight: 500;
 				color: rgba(45,45,45,1);
 			}
-
-			.value {
-				text-align: center;
-				font-weight: 600;
-				font-size: 1.1rem;
-				margin-bottom: 0.2rem;
-			}
 		}
+	}
+}
+
+@media (max-width: 800px) {
+	.key-value-section {
+		flex-direction: column;
 	}
 }

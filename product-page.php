@@ -133,7 +133,7 @@
 <?php 
 					if ($stock_available == "true") {
 ?>
-					<form action="/user.php" method="post">
+					<form action="/user.php#cart" method="post">
 						<input type="hidden" id="type" name="type" value="hardware">
 						<input type="hidden" id="redirect_location" name="redirect_location" value="<?=htmlspecialchars($_SERVER["PHP_SELF"] . "?product_id=" . $product_id)?>">
 						<div class="product-showcase-btns-container">
