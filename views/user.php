@@ -1,7 +1,5 @@
 <?php
-	include_once("php/general-session-variable.php");
-	include_once('php/general-functions.php');
-	include_once('php/config.php');
+	include_once(__DIR__ . "/config/config.php");
 
 	if (isset($_SESSION["current_user"])) {
 		// echo "<pre>";
@@ -98,8 +96,8 @@
 
 	} else {
 		$_SESSION['redirect_location'] = $_REQUEST['redirect_location'];
-		header("Location: login.php");
-		echo '<meta http-equiv="refresh" content="0; url=/login.php">';
+		header("Location: /login");
+		echo '<meta http-equiv="refresh" content="0; url=/login">';
 	}
 
 

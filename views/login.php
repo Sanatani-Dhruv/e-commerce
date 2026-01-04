@@ -1,8 +1,3 @@
-<?php
-	include_once("php/general-session-variable.php");
-	include_once("php/config.php");
-	include_once("php/general-functions.php");
-?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -19,7 +14,7 @@
 	</head>
 	<body class="body <?= htmlspecialchars($_SESSION['colorscheme']) ?>">
 <?php
-	include_once("php/header.php");
+	include_once(__DIR__ . "/../views/php/header.php");
 ?>
 	<main class="main-container">
 		<div class="login-container-box">
@@ -87,8 +82,8 @@
 						echo '<meta http-equiv="refresh" content="0; url=' . $redirect_location . '">';
 						exit();
 					} else {
-						header("Location: index.php");
-						echo '<meta http-equiv="refresh" content="0; url=/index.php">';
+						header("Location: /");
+						echo '<meta http-equiv="refresh" content="0; url=/">';
 						exit();
 					}
 				}
@@ -103,14 +98,14 @@
 	// }
 ?>
 						<div class="login-input-container">
-							<a class="no-exist-acc-link" href="signup.php">No Account! Sign Up</a>
+							<a class="no-exist-acc-link" href="/signup">No Account! Sign Up</a>
 						</div>
 					</div>
 				</form>
 			</div>
 		</main>
 <?php
-	include_once("php/footer.php");
+	include_once(__DIR__ . "/../views/php/footer.php");
 ?>
 		<script src="scripts/base.js"></script>
 	</body>

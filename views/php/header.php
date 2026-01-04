@@ -1,5 +1,5 @@
 <header class="header-container">
-	<a href="index.php" class="home-link">
+	<a href="/" class="home-link">
 		<div class="logo-container">
 			<div class="logo-container-box rotate">
 				<img class="logo-main" src="images/logo-color.png" alt="">
@@ -19,16 +19,16 @@
 			</div>
 			<ul class="navbar-ul">
 				<li class="navbar-li">
-					<a class="navbar-link" href="product.php">Our Products</a>
+					<a class="navbar-link" href="/product">Our Products</a>
 				</li>
 				<li class="navbar-li">
-					<a class="navbar-link" href="services.php">Our Services</a>
+					<a class="navbar-link" href="/service">Our Services</a>
 				</li>
 				<li class="navbar-li">
-					<a class="navbar-link" href="#Contact_Us">Contact Us</a>
+					<a class="navbar-link" href="#contact">Contact Us</a>
 				</li>
 				<li class="navbar-li">
-					<a class="navbar-link" href="#About_Us">About Us</a>
+					<a class="navbar-link" href="#about">About Us</a>
 				</li>
 <?php 
 	$current_filename = $_SERVER['PHP_SELF'];
@@ -36,13 +36,13 @@
 		$current_user = strtoupper($_SESSION["current_user"]);
 ?>
 				<li class="navbar-li">
-				<a class="navbar-link logout" href="<?=($current_user == "ADMIN")? 'admin-insert.php' : 'user.php' ?>">
+				<a class="navbar-link logout" href="<?=($current_user == "ADMIN")? '/admin' : '/user' ?>">
 						<?=htmlspecialchars($current_user);?>
 					</a>
 <?php 
-		if ($current_filename != "/logout.php") {
+		if ($current_filename != "/logout") {
 ?>
-					<a class="navbar-link logout logout-img-container" href="logout.php">
+					<a class="navbar-link logout logout-img-container" href="logout">
 						 <img src="images/logout.svg" class="logout-img" alt="Logout">
 					</a>
 				</li>
@@ -58,15 +58,14 @@
 		// 	echo "<div class='admin-panel-btn'>Admin-Panel</div>";
 		// }
 	} else {
-			if ($current_filename == "/logout.php") {
-				header("Location: login.php");
+			if ($current_filename == "/logout") {
+				header("Location: /login");
 				exit();
-				echo '<meta http-equiv="refresh" content="0; url=/login.html">';
-				echo '<meta http-equiv="refresh" content="0; url=/login.php">';
+				echo '<meta http-equiv="refresh" content="0; url=/login">';
 			}
 ?>
 	<li class="navbar-li">
-		<a class="navbar-link" href="login.php">Sign In</a>
+		<a class="navbar-link" href="login">Sign In</a>
 		</li>
 <?php
 	}
