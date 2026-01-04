@@ -61,7 +61,7 @@ try {
         $consoleHelper->print(message: "\nSuccessfully completed database `". $_ENV['DB_NAME'] ."`", textColor: "green", bold: true);
         exit();
     } catch (Exception $err) {
-        $consoleHelper->print(message: "\nError Creating Database`". $_ENV['DB_NAME'] ."`", textColor: "red", bold: true);
+        $consoleHelper->print(message: "\nError Creating Database `". $_ENV['DB_NAME'] ."`", textColor: "red", bold: true);
         $consoleHelper->print(message: "\nCheck if database server is running, and variables in .env are correct", textColor: "red", bold: true);
     }
 }

@@ -81,6 +81,7 @@
 		}
 
 		// Get user detail
+		// $get_user_detail_sql = "SELECT user_id AS id, user_name AS name, user_email AS email, user_number AS number FROM users WHERE `user_id` = $user_id;";
 		$get_user_detail_sql = "SELECT * FROM users WHERE `user_id` = $user_id;";
 		$get_user_detail_result = $conn->query($get_user_detail_sql);
 

@@ -31,7 +31,7 @@ create table users (
 	user_number varchar(20) not null,
 	user_pass varchar(64) not null
 );
-desc users ;
+desc users;
 
 create table cart_items (
 	cart_items_id int primary key auto_increment,
@@ -85,3 +85,7 @@ INSERT INTO `products` VALUES
 create view user_cart as 
 SELECT u.user_id, c.cart_items_id, p.product_id, p.product_name, p.product_imagepath, p.product_shortdesc, p.product_price, p.product_stock, (item_quantity) as incart_quantity 
 FROM users AS u INNER JOIN cart_items AS c ON c.user_id = u.user_id INNER JOIN products AS p ON p.product_id = c.product_id;
+
+-- Create View for Easy Access of user related Details
+create view user_detail AS
+SELECT u.user_id AS ID, u.user_name AS NAME, u.user_email AS EMAIL, u.user_number AS NUMBER, c.item_quantity AS ITEMS FROM users AS u LEFT JOIN cart_items AS c ON u.user_id = c.user_id;

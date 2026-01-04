@@ -176,5 +176,21 @@ body:not(.dark) {
 @media (max-width: 800px) {
 	.key-value-section {
 		flex-direction: column;
+		gap: 0.25rem;
+		padding: 1.25rem;
+		padding-bottom: 2rem;
+
+		.key-value {
+			margin: 0;
+			padding: 0.75rem;
+
+			.key {
+				text-align: start;
+			}
+
+			.value {
+				text-align: start;
+			}
+		}
 	}
 }
