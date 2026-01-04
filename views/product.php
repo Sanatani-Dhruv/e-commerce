@@ -1,3 +1,11 @@
+<?php
+
+use Config\Config;
+
+$config = new Config();
+print_r($config->conn);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -37,7 +45,7 @@
 	$databasePassword = $_ENV['DB_PW'];
 	$databaseName = $_ENV['DB_NAME'];
 	$conn = new mysqli($databaseHost, $databaseUsername, $databasePassword, $databaseName);
-	echo (isset($conn))?"Yes":"No";
+	// echo (isset($conn))?"Yes":"No";
 	$result = mysqli_query($conn, $sql);
 
 	if (mysqli_num_rows($result) > 0) {

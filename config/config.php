@@ -10,46 +10,27 @@
 
 	mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-	// Basic connection settings
-	$databaseHost = $_ENV['DB_HOST'];
-	$databaseUsername = $_ENV['DB_USERNAME'];
-	$databasePassword = $_ENV['DB_PW'];
-	$databaseName = $_ENV['DB_NAME'];
+	class Config {
+		public function __construct () {
 
-	// Connect to the database
-	try {
-		// For Procedure Oriented Method
-		// $mysqli_connection = mysqli_connect($databaseHost, $databaseUsername, $databasePassword, $databaseName); 
+			// Basic connection settings
+			// Connect to the database
+			$databaseHost = $_ENV['DB_HOST'];
+			$databaseUsername = $_ENV['DB_USERNAME'];
+			$databasePassword = $_ENV['DB_PW'];
+			$databaseName = $_ENV['DB_NAME'];
 
-		// For Object Oriented Method
-		$conn = new mysqli($databaseHost, $databaseUsername, $databasePassword, $databaseName);
-		// echo "<pre>";
-		// print_r($conn);
-		// echo "</pre>";
+			try {
+				$conn = new mysqli($databaseHost, $databaseUsername, $databasePassword, $databaseName);
 
-		// if ($conn->connect_error) {
-		// 	die("Connection failed: " . $dbc->connect_error);
-		// }
-
-		// Success Comment
-		echo "<!-- Connection to DB Successful! -->\n";
-	} catch (Exception $e) {
-		echo "<pre style='padding: 6px 3%;white-space: pre-wrap;font-size: 15px;'>";
-		echo "<h2 style='margin: 10px 0 0k'>Error Caught!</h2>\n";
-		echo "<b>Connection Error:</b> $e";
-		echo "</pre>";
+				// Success Comment
+				echo "<!-- Connection to DB Successful! -->\n";
+			} catch (Exception $e) {
+				echo "<pre style='padding: 6px 3%;white-space: pre-wrap;font-size: 15px;'>";
+				echo "<h2 style='margin: 10px 0 0k'>Error Caught!</h2>\n";
+				echo "<b>Connection Error:</b> $e";
+				echo "</pre>";
+			}
+		}
 	}
-
-	// PDO Method to Connect
-
-	// try {
-	// 	$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-	// 	// set the PDO error mode to exception
-	// 	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	// 	// echo "Connected successfully";
-	// 	// $sql = "";
-	// 	// $conn->exec($sql);
-	// } catch(PDOException $e) {
-	// 	echo "Connection Failed: $e->getMessage()";
-	// }
 ?>

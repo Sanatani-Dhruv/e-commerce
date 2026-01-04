@@ -9,7 +9,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Dhruv125\\EcommerceSite\\": "src/"
+            "Dhruv125\\EcommerceSite\\": "src/",
+            "Config\\": "config/"
         }
     },
     "authors": [
