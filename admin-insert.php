@@ -17,7 +17,7 @@
 		<link rel="stylesheet" href="styles/admin-panel.css" media="all">
 		<link rel="stylesheet" href="styles/login.css" media="all">
 	</head>
-	<body class="body <?= htmlspecialchars($_SESSION['colorscheme']) ?>">
+	<body id="body" class="body <?= htmlspecialchars($_SESSION['colorscheme']) ?>">
 <?php
 if (isset($_SESSION["current_user"]) && $_SESSION["current_user"] === "admin") {
 	include_once("php/header.php");
@@ -221,12 +221,12 @@ if (isset($_SESSION["current_user"]) && $_SESSION["current_user"] === "admin") {
 			// echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
 ?>
 							<tr class="product-list-tr">
-								<td class="product-list-item"><?=htmlspecialchars($row["product_id"])?></td>
-								<td class="product-list-item"><?=htmlspecialchars($row["product_name"])?></td>
-								<td class="product-list-item"><?=htmlspecialchars($row["product_shortdesc"])?></td>
-								<td class="product-list-item"><?=htmlspecialchars($row["product_longdesc"])?></td>
-								<td class="product-list-item"><?=htmlspecialchars($row["product_stock"])?></td>
-								<td class="product-list-item">₹<?=htmlspecialchars($row["product_price"])?></td>
+								<td class="product-list-item"><?=($row["product_id"])?></td>
+								<td class="product-list-item"><?=($row["product_name"])?></td>
+								<td class="product-list-item"><?=($row["product_shortdesc"])?></td>
+								<td class="product-list-item"><?=($row["product_longdesc"])?></td>
+								<td class="product-list-item"><?=($row["product_stock"])?></td>
+								<td class="product-list-item">₹<?=($row["product_price"])?></td>
 								<td class="product-list-item">
 									<a class="product-list-item-imagelink" target="_blank" title="View Image" href="<?=htmlspecialchars($row['product_imagepath'])?>">
 										<?=htmlspecialchars($row["product_imagepath"])?>

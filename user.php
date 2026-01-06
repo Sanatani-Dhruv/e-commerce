@@ -125,7 +125,7 @@
 		<link rel="stylesheet" href="styles/store-page-single.css" media="all">
 		<link rel="stylesheet" href="styles/user-page.css" media="all">
 	</head>
-	<body class="body <?= htmlspecialchars($_SESSION['colorscheme']) ?>">
+	<body id="body" class="body <?= htmlspecialchars($_SESSION['colorscheme']) ?>">
 <?php 
 	include_once("php/header.php");
 ?>

@@ -1,3 +1,21 @@
+var change_theme_btn = document.getElementById('ctb');
+
+change_theme_btn.addEventListener('click', () => {
+	// document.cookie = "theme=dark; expires=Fri, 31 Dec 2024 12:00:00 UTC; path=/";
+	// alert('Cookie updated to dark theme!');
+	console.log('hi')
+	body_tag = document.querySelector("#body");
+	if (body_tag.classList.contains('light')) {
+		document.getElementById('body').classList.remove('light')
+		document.getElementById('body').classList.add('dark')
+		change_img('ctb-img', 'images/dark-mode.svg')
+	} else {
+		document.getElementById('body').classList.add('light')
+		document.getElementById('body').classList.remove('dark')
+		change_img('ctb-img', 'images/light-mode.svg')
+	}
+});
+
 var hamburger = document.querySelector(".hamburger");
 var navbar_ul = document.querySelector(".navbar-ul");
 var navbar_link_container = document.querySelector(".navbar-link-container");
@@ -51,3 +69,33 @@ function change_img(prev_id, next_img_url) {
 		prev_img.src = next_img_url;
 	}
 }
+
+// Check for System Theme
+var getSystemTheme = () => {
+	// Check if the preferred scheme is dark
+	const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches; // Be careful! Not just parantheses and quotes, like ("()") this
+	const mode = isDarkmode ? "dark" : "light";
+	return mode;
+}
+
+// Set Theme
+function setTheme(theme) {
+	const rootElement = document.querySelector("html");
+	// Set <html daa-theme="theme"> to change children styles
+	rootElement.setQuery("data-theme", theme);
+}
+
+// change_theme_btn.addEventListener('click', () => {
+// 	body_tag = document.querySelector("#body");
+// 	if (getSystemTheme == 'dark') {
+// 		setTheme('light');
+// 		body_tag.classList.add('light')
+// 		body_tag.classList.remove('dark')
+// 	} else if (getSystemTheme == 'light') {
+// 		setTheme('dark');
+// 		body_tag.classList.remove('light')
+// 		body_tag.classList.add('dark')
+// 	}
+// });
+	//
+	//

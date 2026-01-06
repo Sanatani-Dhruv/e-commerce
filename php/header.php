@@ -71,6 +71,9 @@
 <?php
 	}
 ?>
+				<span id="ctb" style="cursor: pointer;">
+					<img id="ctb-img" src="images/dark-mode.svg" alt="">
+				</span>
 			</ul>
 		</div>
 	</nav>

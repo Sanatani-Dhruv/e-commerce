@@ -17,7 +17,7 @@
 		<link rel="stylesheet" href="styles/footer-part.css" media="all">
 		<link rel="stylesheet" href="styles/login.css" media="all">
 	</head>
-	<body class="body <?= htmlspecialchars($_SESSION['colorscheme']) ?>">
+	<body id="body" class="body <?= htmlspecialchars($_SESSION['colorscheme']) ?>">
 <?php
 	include_once("php/header.php");
 ?>

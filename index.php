@@ -14,7 +14,7 @@
 		<link rel="stylesheet" href="styles/info-page.css" media="all">
 		<link rel="stylesheet" href="styles/footer-part.css" media="all">
 	</head>
-	<body class="body <?= htmlspecialchars($_SESSION['colorscheme']) ?> ignore-overlap">
+	<body id="body" class="body <?= htmlspecialchars($_SESSION['colorscheme']) ?> ignore-overlap">
 	<?php 
 		include_once("php/header.php");
 	?>
@@ -116,6 +116,7 @@
 <?php
 	include_once("php/footer.php");
 ?>
+<button id="ctb">Change Theme</button>
 		<script src="scripts/base.js"></script>
 	</body>
 </html>
