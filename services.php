@@ -40,20 +40,23 @@
 
 	if (mysqli_num_rows($result) > 0) {
 					  while ($row = mysqli_fetch_assoc($result)) {
+						  if ($row["service_status"] == "available") {
+							  $row["service_status"] = true;
+						  }
 ?>
 						  <div class='hardware-element-container hardware-element-'>
 							  <div class='hardware-element-1 hardware-img-container'>
-								  <img class="hardware-img" src="<?=htmlspecialchars($row["product_imagepath"])?>" alt="Hardware-image">
+								  <img class="hardware-img" src="<?=htmlspecialchars($row["service_imagepath"])?>" alt="Hardware-image">
 							  </div>
 							  <div class="hardware-element-2-container">
 								  <div class="hardware-element-2 hardware-text-container">
 									  <div class='hardware-element-title hardware-element-1'><?=htmlspecialchars($row["service_name"])?></div>
 									  <div class='hardware-element-1 hardware-element-price'>₹<?=htmlspecialchars($row["service_price"])?></div>
-									  <div class='hardware-element-1 hardware-element-price'>Status: <?=htmlspecialchars($row["service_status"])?></div>
+									  <div class='hardware-element-1 hardware-element-price'>Status: <?=($row["service_status"])? 'Available' : 'Not Available'?></div>
 								  </div>
 								  <div class="hardware-element-2 hardware-element-addtocart-btn-container">
-								  <a class="hardware-element-addtocart-link" href="product-page.php?product_id=<?=htmlspecialchars($row['product_id'])?>">
-										  <button class="hardware-element-addtocart-btn">View Product</button>
+								  <a class="hardware-element-addtocart-link" href="product-page.php?service_id=<?=htmlspecialchars($row['service_id'])?>">
+										  <button class="hardware-element-addtocart-btn">View Service</button>
 									  </a>
 								  </div>
 							  </div>

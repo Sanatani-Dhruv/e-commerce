@@ -15,11 +15,12 @@ desc products;
 
 create table services (
 	service_id int primary key auto_increment,
-	service_name varchar(50) unique not null,
-	service_shortdesc varchar(100) not null,
-	service_longdesc varchar(500) not null,
+	service_name varchar(150) unique not null,
+	service_shortdesc varchar(400) not null,
+	service_longdesc varchar(2000) not null,
+	service_status enum('available', 'not_available'),
 	service_price varchar(11) not null,
-	service_status enum('available', 'not_available')
+	service_imagepath varchar(200) not null
 );
 desc services;
 
