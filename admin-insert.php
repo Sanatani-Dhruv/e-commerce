@@ -28,7 +28,7 @@
 				<legend class="admin-legend">
 					<h3 class="products-category-title admin-legend-head">
 						Add New Product
-					</h3>			
+					</h3>
 				</legend>
 				<form action="<?=htmlspecialchars($_SERVER['PHP_SELF']);?>" class="product-form admin-form" method="POST" enctype="multipart/form-data">
 					<input name="item-type" type="hidden" value="product">
@@ -58,7 +58,7 @@
 						<!-- <input type="hidden" name="MAX_FILE_SIZE" value="3000" />	 -->
 						<input id="product-image" class="product-insert-input" type="file" name="product-image">
 					</div>
-<?php 
+<?php
 		echo "Before POST and session, product check";
 		if ($_SERVER["REQUEST_METHOD"] === "POST" && $_POST["item-type"] === "product" /* && $_POST["product-name"] != $_SESSION['sproduct_name'] */) {
 			echo "<br>In Post and no already same product";
@@ -194,15 +194,15 @@
 			<div class="admin-table-view-container">
 				<h3 class="products-category-title">
 					Product List
-				</h3>			
+				</h3>
 
-<?php 
+<?php
 		$sql = "select * from products";
 		$result = mysqli_query($conn, $sql);
 
 		if (mysqli_num_rows($result) > 0) {
 			echo "<div class='table-overflow-wrapper'>";
-			echo "<table class='item-list-table'"; 
+			echo "<table class='item-list-table'";
 ?>
 					<thead>
 						<tr class="product-list-tr">
@@ -248,7 +248,7 @@
 						<legend class="admin-legend">
 							<h3 class="products-category-title admin-legend-head">
 								Add New Service
-							</h3>			
+							</h3>
 						</legend>
 						<form action="<?=htmlspecialchars($_SERVER['PHP_SELF']);?>" class="product-form admin-form" method="POST" enctype="multipart/form-data">
 							<input name="item-type" type="hidden" value="service">
@@ -284,7 +284,7 @@
 								<!-- <input type="hidden" name="MAX_FILE_SIZE" value="3000" />	 -->
 								<input id="service-image" class="product-insert-input" type="file" name="service-image">
 							</div>
-<?php 
+<?php
 		echo "Before POST and session, service check";
 		if ($_SERVER["REQUEST_METHOD"] === "POST" && $_POST["item-type"] === "service" /* && $_POST["service-name"] != $_SESSION['sservice_name'] */) {
 			// echo "<br>In Post and no already same service";
@@ -423,6 +423,57 @@
 							</div>
 						</form>
 					</fieldset>
+				<h3 class="products-category-title">
+					Product List
+				</h3>
+
+<?php
+		$sql = "select * from services";
+		$result = mysqli_query($conn, $sql);
+
+		if (mysqli_num_rows($result) > 0) {
+			echo "<div class='table-overflow-wrapper'>";
+			echo "<table class='item-list-table'";
+?>
+					<thead>
+						<tr class="product-list-tr">
+							<th class="product-list-item">Service ID</th>
+							<th class="product-list-item">Service Name</th>
+							<th class="product-list-item">Service Short Desc</th>
+							<th class="product-list-item">Service Long Desc</th>
+							<th class="product-list-item">Service Status</th>
+							<th class="product-list-item">Service Price</th>
+							<th class="product-list-item">Service Image Path</th>
+						</tr>
+					</thead>
+<?php
+			echo "<tbody>";
+			// output data of each row
+			while($row = mysqli_fetch_assoc($result)) {
+				// echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+?>
+							<tr class="product-list-tr">
+								<td class="product-list-item"><?=($row["service_id"])?></td>
+								<td class="product-list-item"><?=($row["service_name"])?></td>
+								<td class="product-list-item"><?=($row["service_shortdesc"])?></td>
+								<td class="product-list-item"><?=($row["service_longdesc"])?></td>
+								<td class="product-list-item"><?=($row["service_status"])?></td>
+								<td class="product-list-item">₹<?=($row["service_price"])?></td>
+								<td class="product-list-item">
+									<a class="product-list-item-imagelink" target="_blank" title="View Image" href="<?=htmlspecialchars($row['service_imagepath'])?>">
+										<?=htmlspecialchars($row["service_imagepath"])?>
+									</a>
+								</td>
+							</tr>
+<?php
+			}
+			echo "</tbody>";
+			echo "</table>";
+			echo "</div>";
+		} else {
+			echo "<strong>Empty set</strong>";
+		}
+?>
 			</div>
 		</main>
 <?php
