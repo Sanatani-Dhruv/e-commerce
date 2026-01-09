@@ -11,10 +11,8 @@
 		<link rel="stylesheet" href="styles/info-page.css" media="all">
 		<link rel="stylesheet" href="styles/footer-part.css" media="all">
 	</head>
-	<body id="body" class="body <?= htmlspecialchars($_SESSION['colorscheme']) ?> ignore-overlap">
-	<?php 
-		include_once("php/header.php");
-	?>
+	<body id="body" class="body dark ignore-overlap">
+		{{ view("parts.header") }}
 		<main class="main-container-no-padding main-container">
 			<div class="view-page-container" style="background-image: url('https://raw.githubusercontent.com/Sanatani-Dhruv/W3-clone/refs/heads/main/images/mini-IMG_20250919_123136.avif')">
 				<div class="view-page">
@@ -110,9 +108,7 @@
 				</div>
 			</div>
 		</main>
-<?php
-	include_once("php/footer.php");
-?>
+		{{ view("parts.header") }}
 <button id="ctb">Change Theme</button>
 		<script src="scripts/base.js"></script>
 	</body>
