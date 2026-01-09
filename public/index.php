@@ -1,39 +1,20 @@
 <?php
-require(__DIR__ . "/../views/php/general-session-variable.php");
-require __DIR__ . '/../vendor/autoload.php';
 
-const VIEW_DIR = '../views';
-require(VIEW_DIR . '/php/general-functions.php');
+use Illuminate\Foundation\Application;
+use Illuminate\Http\Request;
 
-use Pecee\SimpleRouter\SimpleRouter;
+define('LARAVEL_START', microtime(true));
 
-SimpleRouter::get('/', function() {
-	require(VIEW_DIR . '/main.php');
-});
+// Determine if the application is in maintenance mode...
+if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
+    require $maintenance;
+}
 
-SimpleRouter::get('/user', function () {
-	require(VIEW_DIR . '/user.php');
-});
+// Register the Composer autoloader...
+require __DIR__.'/../vendor/autoload.php';
 
-SimpleRouter::post('/checkup', function () {
-	require(VIEW_DIR . '/login.php');
-	// return "Hello World";
-});
+// Bootstrap Laravel and handle the request...
+/** @var Application $app */
+$app = require_once __DIR__.'/../bootstrap/app.php';
 
-SimpleRouter::get('/login', function () {
-	require(VIEW_DIR . '/login.php');
-});
-
-SimpleRouter::get('/signup', function () {
-	require(VIEW_DIR . '/register.php');
-});
-
-SimpleRouter::get('/product', function () {
-	require(VIEW_DIR . '/product.php');
-});
-
-SimpleRouter::get('/service', function () {
-	require(VIEW_DIR . '/services.php');
-});
-
-SimpleRouter::start();
+$app->handleRequest(Request::capture());
