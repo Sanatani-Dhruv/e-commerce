@@ -14,8 +14,11 @@ class ProductListController extends Controller {
     public function return_listing() {
         $sql = "select * from products";
         $products_sql_result = DB::select("select * from products");
-        return view('product', [
-            'product_sql_result' => $products_sql_result
-        ]);
+        echo "<pre>";
+        print_r($products_sql_result);
+        echo "</pre>";
+        // return view('product', [
+        //     'product_sql_result' => $products_sql_result
+        // ]);
     }
 }
