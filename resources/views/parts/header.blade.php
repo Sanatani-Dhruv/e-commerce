@@ -1,5 +1,5 @@
 <header class="header-container">
-	<a href="index.php" class="home-link">
+	<a href="/" class="home-link">
 		<div class="logo-container">
 			<div class="logo-container-box rotate">
 				<img class="logo-main" src="images/logo-color.png" alt="">
