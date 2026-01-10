@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="css/info-page.css" media="all">
 	<link rel="stylesheet" href="css/footer-part.css" media="all">
 </head>
-<body class="body dark">
+<body id="body" class="body dark">
 	{{ view('parts.header') }}
 	<h1>About Page</h1>
 	{{ view('parts.footer') }}
