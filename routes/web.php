@@ -24,3 +24,8 @@ Route::get('/about', function () {
 Route::get('/login', function () {
     return view('login');
 });
+
+Route::get('/view-page', function () {
+    echo "Hi";
+    return view('view-page');
+});

@@ -8,17 +8,15 @@ use Illuminate\Http\Request;
 class ProductListController extends Controller {
 
     function __construct() {
-        // echo "Hi";
+        //
     }
 
     public function return_listing() {
-        $sql = "select * from products";
-        $products_sql_result = DB::select("select * from products");
-        echo "<pre>";
-        print_r($products_sql_result);
-        echo "</pre>";
-        // return view('product', [
-        //     'product_sql_result' => $products_sql_result
-        // ]);
+        $products_sql = "select * from products";
+        $products_sql_result = DB::select($products_sql);
+
+        return view("product", [
+            'product_object' => $products_sql_result
+        ]);
     }
 }
