@@ -29,7 +29,7 @@
 				</h2>
 				<div class="product-listing">
 					@foreach ($product_object as $object)
-						<div class='hardware-element-container hardware-element-'>
+						<div class='hardware-element-container' id="pid{{ $object->product_id }}">
 							<div class='hardware-element-1 hardware-img-container'>
 								<img class="hardware-img" src="{{ $object->product_imagepath }}" alt="Hardware-image">
 							</div>
@@ -40,7 +40,7 @@
 									<div class='hardware-element-1 hardware-element-price'>Stock: {{ $object->product_stock }}</div>
 								</div>
 								<div class="hardware-element-2 hardware-element-addtocart-btn-container">
-									<a class="hardware-element-addtocart-link" href="/view-page?product_id={{ $object->product_id }}">
+									<a class="hardware-element-addtocart-link" href="/products/{{ $object->product_id }}">
 										<button class="hardware-element-addtocart-btn">View Product</button>
 									</a>
 								</div>
@@ -51,6 +51,6 @@
 			</div>
 		</main>
 		{{ view('parts.footer') }}
-		<script src="scripts/base.js"></script>
+		<script src="js/base.js"></script>
 	</body>
 </html>

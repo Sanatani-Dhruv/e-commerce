@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ProductListController;
+use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -11,7 +11,7 @@ Route::get('/', function () {
 //     return view('product');
 // });
 
-Route::get('/products', [ProductListController::class, 'return_listing']);
+Route::get('/products', [ProductsController::class, 'return_listing']);
 
 Route::get('/contact', function () {
     return view('contact');
@@ -25,7 +25,4 @@ Route::get('/login', function () {
     return view('login');
 });
 
-Route::get('/view-page', function () {
-    echo "Hi";
-    return view('view-page');
-});
+Route::get('products/{id}', [ProductsController::class, 'return_viewpage']);

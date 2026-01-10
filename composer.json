@@ -68,6 +68,9 @@
         ],
         "pre-package-uninstall": [
             "Illuminate\\Foundation\\ComposerScripts::prePackageUninstall"
+        ],
+        "migrate-seed": [
+            "@php artisan migrate:fresh --seed --seeder=ProductSeeder"
         ]
     },
     "extra": {

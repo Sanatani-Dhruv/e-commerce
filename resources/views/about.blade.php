@@ -14,5 +14,6 @@
 	{{ view('parts.header') }}
 	<h1>About Page</h1>
 	{{ view('parts.footer') }}
+	<script src="/js/base.js"></script>
 </body>
 </html>
