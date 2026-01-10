@@ -11,7 +11,7 @@ Route::get('/', function () {
 //     return view('product');
 // });
 
-Route::get('/products', [ProductListController::class, 'return_listing' ]);
+Route::get('/products', [ProductListController::class, 'return_listing']);
 
 Route::get('/contact', function () {
     return view('contact');
