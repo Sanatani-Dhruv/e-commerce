@@ -22,8 +22,10 @@ class ProductsController extends Controller {
     }
 
     public function return_viewpage($id) {
-        echo "<h2>Product Id: $id<br></h2>";
-        echo "<a href='/products#pid$id'>Product Page</a>";
+        // echo "<h2>Product Id: $id<br></h2>";
+        // echo "<a href='/products#pid$id'>Product Page</a>";
+        $getmaxid_sql = "select max(product_id) as total_products from products";
+        $getmaxid_sql_result = DB::select($getmaxid_sql_result);
         return view('view-page', [
             'product_id' => $id
         ]);
