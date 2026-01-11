@@ -2,7 +2,7 @@
 	<a href="/" class="home-link">
 		<div class="logo-container">
 			<div class="logo-container-box rotate">
-				<img class="logo-main" src="images/logo-color.png" alt="">
+				<img class="logo-main" src="/images/logo-color.png" alt="">
 			</div>
 			<div class="logo-txt">
 				IT Sales and Services
@@ -11,11 +11,11 @@
 	</a>
 	<nav class="navbar">
 		<div class="hamburger">
-			<img class="hamburger-img" src="images/hamburger.svg" alt="#">
+			<img class="hamburger-img" src="/images/hamburger.svg" alt="#">
 		</div>
 		<div class="navbar-link-container">
 			<div class="close-icon-show close-icon">
-				<img class="close-icon-img" src="images/close-x.svg" alt="X">
+				<img class="close-icon-img" src="/images/close-x.svg" alt="X">
 			</div>
 			<ul class="navbar-ul">
 				<li class="navbar-li">
@@ -43,7 +43,7 @@
 		if ($current_filename != "/logout") {
 ?>
 					<a class="navbar-link logout logout-img-container" href="\logout">
-						 <img src="images/logout.svg" class="logout-img" alt="Logout">
+						 <img src="/images/logout.svg" class="logout-img" alt="Logout">
 					</a>
 				</li>
 <?php
@@ -72,7 +72,7 @@
 	}
 ?>
 				<span id="ctb" style="cursor: pointer;">
-					<img id="ctb-img" src="images/dark-mode.svg" alt="">
+					<img id="ctb-img" src="/images/dark-mode.svg" alt="">
 				</span>
 			</ul>
 		</div>

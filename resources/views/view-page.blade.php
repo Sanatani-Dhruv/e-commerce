@@ -1,38 +1,10 @@
-<!-- 					try { -->
-<!-- 						if (isset($_SESSION["current_user"])) { -->
-<!-- 							$current_user_id = $_SESSION["current_user_id"]; -->
-<!--  -->
-<!-- 							$get_cart_detail_sql = "SELECT sum(item_quantity) from cart_items where product_id = $product_id and user_id = $current_user_id;"; -->
-<!-- 							$get_cart_detail_result = mysqli_query($conn, $get_cart_detail_sql); -->
-<!--  -->
-<!-- 							if (mysqli_num_rows($get_cart_detail_result) === 1) { -->
-<!-- 								while ($get_cart_detail_row = mysqli_fetch_assoc($get_cart_detail_result)) { -->
-<!-- 									$quantity_from_db = $get_cart_detail_row["sum(item_quantity)"]; -->
-<!-- 									if ($quantity_from_db == NULL) { -->
-<!-- 										$quantity_from_db = 1;  -->
-<!-- 									} -->
-<!-- 								} -->
-<!-- 							} else { -->
-<!-- 								$quantity_from_db = 1; -->
-<!-- 							} -->
-<!-- 						} else { -->
-<!-- 							$quantity_from_db = 1; -->
-<!-- 						} -->
-<!-- 					} catch (Exception $err) { -->
-<!-- 						echo "DB Error: "; -->
-<!-- 						echo "<pre>"; -->
-<!-- 						echo "$err"; -->
-<!-- 						echo "</pre>"; -->
-<!-- 					} -->
-<!-- ?> -->
-
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Product Page - IT Sales and Services Website</title>
-		<link rel="icon" href="images/logo-monodark.png">
+		<link rel="icon" href="/images/logo-monodark.png">
 		<link rel="stylesheet" href="/css/header.css" media="all">
 		<link rel="stylesheet" href="/css/general.css" media="all">
 		<link rel="stylesheet" href="/css/login.css" media="all">
@@ -40,12 +12,13 @@
 		<link rel="stylesheet" href="/css/footer-part.css" media="all">
 		<link rel="stylesheet" href="/css/store-page-general.css" media="all">
 		<link rel="stylesheet" href="/css/store-page-single.css" media="all">
+		<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 	</head>
 	<body id="body" class="body dark">
 		{{ view('parts.header') }}
 		  <div class="pathline-container">
 			  <div class="pathline">
-				  <a class="home-link" href="index.php">
+				  <a class="home-link" href="/">
 					  <span class="home">Home</span>
 				  </a>
 				  <span class="path-arrow">&#x3E;</span>
@@ -81,8 +54,7 @@
 							<strong>Stock:</strong> {{ $detail_object->product_stock }}
 							<div class="product-showcase-post-stock-message {{ ($stock_status)? 'true' : 'false' }}">{{ $stock_message }}</div>
 						</div>
-					<!-- if ($stock_available == "true") { -->
-					<form action="<!-- /user.php#cart -->" method="post">
+					<form action="/user.php#cart" method="post">
 						<input type="hidden" id="type" name="type" value="hardware">
 						<div class="product-showcase-btns-container">
 							<div class="product-showcase-how-much-addcart">
@@ -91,7 +63,7 @@
 							<div class="product-showcase-addcart-btn-container">
 								<button name="product-id" value="{{ $detail_object->product_id }}" class="product-showcase-addcart-btn login-btn submit {{ ($stock_status)? 'true' : 'false' }}">Add To Cart</button>
 								<br>
-								<a class="cart-product-btn-link" href="/user.php#cart">
+								<a class="cart-product-btn-link" href="/products">
 									<div class="cart-product-btn login-btn submit product-page-cart-btn">
 										View Cart
 									</div>
@@ -99,10 +71,6 @@
 							</div>
 						</div>
 					</form>
-						<!-- if (isset($_REQUEST['error'])) { -->
-	<!-- <div class="php-status-error-message" id="error" style="font-size: 1.5rem;"></div> -->
-						<!-- } -->
-					<!-- } -->
 					</div>
 				</div>
 			  </div>
@@ -114,6 +82,6 @@
 			  </div>
 		  </main>
 		  {{ view('parts.footer') }}
-				<script src="scripts/base.js"></script>
+		  <script src="/js/base.js"></script>
 	</body>
 </html>

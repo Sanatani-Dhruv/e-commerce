@@ -4,12 +4,13 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>IT Sales and Services Website</title>
-		<link rel="icon" href="images/logo-monodark.png">
-		<link rel="stylesheet" href="css/header.css" media="all">
-		<link rel="stylesheet" href="css/general.css" media="all">
-		<link rel="stylesheet" href="css/view-page.css" media="all">
-		<link rel="stylesheet" href="css/info-page.css" media="all">
-		<link rel="stylesheet" href="css/footer-part.css" media="all">
+		<link rel="icon" href="/images/logo-monodark.png">
+		<link rel="stylesheet" href="/css/header.css" media="all">
+		<link rel="stylesheet" href="/css/general.css" media="all">
+		<link rel="stylesheet" href="/css/view-page.css" media="all">
+		<link rel="stylesheet" href="/css/info-page.css" media="all">
+		<link rel="stylesheet" href="/css/footer-part.css" media="all">
+		<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 	</head>
 	<body id="body" class="body dark ignore-overlap">
 		{{ view("parts.header") }}
@@ -109,6 +110,6 @@
 			</div>
 		</main>
 		{{ view("parts.footer") }}
-		<script src="js/base.js"></script>
+		<script src="/js/base.js"></script>
 	</body>
 </html>

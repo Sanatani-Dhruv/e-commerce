@@ -15,9 +15,9 @@ class ProductSeeder extends Seeder {
         for ($i = 0; $i < 10; $i++){
             DB::table('products')->insert([
                 [
-                    'product_name' => Str::random(6) . " " . Str::random(7),
-                    'product_shortdesc' => Str::random(100),
-                    'product_longdesc' => Str::random(1500),
+                    'product_name' => fake()->sentence(3),
+                    'product_shortdesc' => fake('en_IN')->sentence(30),
+                    'product_longdesc' => fake('en_IN')->sentence(205),
                     'product_stock' => rand(0, 250),
                     'product_price' => rand(0, 10050),
                     'product_imagepath' => '/images/products/13th-Gen-Intel-Core-2-740x416.jpg'
@@ -25,4 +25,17 @@ class ProductSeeder extends Seeder {
             ]);
         }
     }
+
+    // public function genSentence(int $num_of_word, int $min_length = 3, int $max_length = 10) {
+    //     $string = "";
+    //     for ($i = 0; $i < $num_of_word; $i++) {
+    //         if ($i == $num_of_word - 1) {
+    //             $string .= Str::random(rand($min_length, $max_length)) . ".";
+    //         } else {
+    //             $string .= Str::random(rand($min_length, $max_length)) . " ";
+    //         }
+    //     }
+    //     return $string;
+    // }
+
 }

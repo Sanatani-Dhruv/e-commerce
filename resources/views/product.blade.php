@@ -4,18 +4,18 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Products - IT Sales and Services Website</title>
-		<link rel="icon" href="images/logo-monodark.png">
-		<link rel="stylesheet" href="css/header.css" media="all">
-		<link rel="stylesheet" href="css/general.css" media="all">
-		<link rel="stylesheet" href="css/footer-part.css" media="all">
-		<link rel="stylesheet" href="css/store-page-general.css" media="all">
-		<link rel="stylesheet" href="css/store-page-items.css" media="all">
+		<link rel="icon" href="/images/logo-monodark.png">
+		<link rel="stylesheet" href="/css/header.css" media="all">
+		<link rel="stylesheet" href="/css/general.css" media="all">
+		<link rel="stylesheet" href="/css/footer-part.css" media="all">
+		<link rel="stylesheet" href="/css/store-page-general.css" media="all">
+		<link rel="stylesheet" href="/css/store-page-items.css" media="all">
 	</head>
 	<body id="body" class="body dark">
 		{{ view('parts.header') }}
 		<div class="pathline-container">
 			<div class="pathline">
-				<a class="home-link" href="\">
+				<a class="home-link" href="/">
 					<span class="home">Home</span>
 				</a>
 				<span class="path-arrow">&#x3E;</span>
@@ -51,6 +51,6 @@
 			</div>
 		</main>
 		{{ view('parts.footer') }}
-		<script src="js/base.js"></script>
+		<script src="/js/base.js"></script>
 	</body>
 </html>
