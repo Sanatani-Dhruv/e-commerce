@@ -24,6 +24,9 @@ class ProductController extends Controller {
     public function return_viewpage(string $id) {
         // echo "<h2>Product Id: $id<br></h2>";
         // echo "<a href='/products#pid$id'>Product Page</a>";
+
+        $error_array = [];
+
         if (ctype_digit($id)) {
 
             // Fetch maximum value from products table to check if given id is less than available ids
@@ -39,28 +42,23 @@ class ProductController extends Controller {
 
             // Check if Product Exists by using product id recieved from url and db value
             if (count($getmaxid_result) == 1 && $max_product_id >= $id) {
-                if ($product_exist_status) {
-                    // echo "<h2>Product Exists</h2><br>";
-                    // echo "Total Products in DB: " . $getmaxid_result[0]->total_products;
-                } else {
-                    // echo "<h2>Product Removed from DB</h2>";
+                if (!$product_exist_status) {
+                    $error_array[]= "<h2>Product Removed from DB</h2>";
                 }
             } else {
-                // echo "Not Existing Product ID";
+                $error_array[]= "Non-Existing Product ID";
             }
         } else {
-            // echo "Numbers Expected instead of String";
+            $error_array[]= "Numbers Expected instead of String in ` /products/<here> `";
         }
 
         // Making data which will be passed to view
         if (isset($product_exist_status) && $product_exist_status) {
-            // echo "<br><a href='/products#pid$id'>Product-Page</a>";
 
             $get_detail_sql = "select * from products where product_id = $id";
             $get_detail_result = DB::select($get_detail_sql);
             $product_stock = $get_detail_result[0]->product_stock;
             $post_stock_text;
-            // echo $product_stock;
             if ($product_stock > 0) {
                 $stock_available = true;
                 if ($product_stock <=50) {
@@ -75,21 +73,27 @@ class ProductController extends Controller {
                 $stock_available = 0;
             }
 
-            // echo $post_stock_text;
-            // echo "<pre>";
-            // print_r($get_detail_result);
-            // echo "</pre>";
-
+            // Returning view with data
             return view('view-page', [
                 'detail_object' => $get_detail_result[0],
                 'stock_status' => $stock_available,
-                'stock_message' => $post_stock_text
+                'stock_message' => $post_stock_text,
+                'error_array' => $error_array,
+                'status' => true
             ]);
         } else {
-            // echo "<br><a href='/products'>Product-Page</a>";
+            return view('view-page', [
+                'status' => false,
+                'error_array' => $error_array
+            ]);
         }
+    }
 
-
-
+    public function getObject($id) {
+        $get_detail_sql = "select * from products where product_id = $id";
+        $get_detail_result = DB::select($get_detail_sql);
+        $product_stock = $get_detail_result[0]->product_stock;
+        $get_detail_result = $get_detail_result[0];
+        return $get_detail_result;
     }
 }

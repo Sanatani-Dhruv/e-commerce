@@ -30,3 +30,5 @@ Route::get('/register', function () {
 });
 
 Route::get('products/{id}', [ProductController::class, 'return_viewpage']);
+
+Route::get('products/{id}/get', [ProductController::class, 'getObject']);
