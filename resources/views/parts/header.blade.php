@@ -5,7 +5,7 @@
 				<img class="logo-main" src="/images/logo-color.png" alt="">
 			</div>
 			<div class="logo-txt">
-				IT Sales and Services
+				{{ config('app.name') }}
 			</div>
 		</div>
 	</a>
@@ -66,7 +66,8 @@
 			}
 ?>
 	<li class="navbar-li">
-		<a class="navbar-link" href="\login">Sign In</a>
+		<!-- <a class="navbar-link" href="\login">Sign In</a> -->
+		<a class="navbar-link" href="\register">Sign Up</a>
 		</li>
 <?php
 	}

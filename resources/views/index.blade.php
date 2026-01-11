@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>IT Sales and Services Website</title>
+		<title>{{ config('app.name') }}</title>
 		<link rel="icon" href="/images/logo-monodark.png">
 		<link rel="stylesheet" href="/css/header.css" media="all">
 		<link rel="stylesheet" href="/css/general.css" media="all">
