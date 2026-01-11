@@ -10,6 +10,7 @@
 		<link rel="stylesheet" href="/css/footer-part.css" media="all">
 		<link rel="stylesheet" href="/css/store-page-general.css" media="all">
 		<link rel="stylesheet" href="/css/store-page-items.css" media="all">
+		<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 	</head>
 	<body id="body" class="body dark">
 		{{ view('parts.header') }}

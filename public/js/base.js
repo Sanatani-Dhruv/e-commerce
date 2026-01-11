@@ -8,11 +8,11 @@ change_theme_btn.addEventListener('click', () => {
 	if (body_tag.classList.contains('light')) {
 		document.getElementById('body').classList.remove('light')
 		document.getElementById('body').classList.add('dark')
-		change_img('ctb-img', 'images/dark-mode.svg')
+		change_img('ctb-img', '/images/dark-mode.svg')
 	} else {
 		document.getElementById('body').classList.add('light')
 		document.getElementById('body').classList.remove('dark')
-		change_img('ctb-img', 'images/light-mode.svg')
+		change_img('ctb-img', '/images/light-mode.svg')
 	}
 });
 
@@ -54,10 +54,10 @@ pass_change_btn = document.querySelector('#pass_change_btn');
 pass_change_btn.addEventListener('click', () => {
 	if (pass_field.type == 'password') {
 		pass_field.type = 'text';
-		change_img('passwd_hide_img', 'images/passwd-show.svg');
+		change_img('passwd_hide_img', '/images/passwd-show.svg');
 	} else if (pass_field.type == 'text') {
 		pass_field.type = 'password';
-		change_img('passwd_hide_img', 'images/passwd-hide.svg');
+		change_img('passwd_hide_img', '/images/passwd-hide.svg');
 	}
 });
 
