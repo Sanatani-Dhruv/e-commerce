@@ -17,7 +17,7 @@ class ProductSeeder extends Seeder {
                 [
                     'product_name' => Str::random(6) . " " . Str::random(7),
                     'product_shortdesc' => Str::random(100),
-                    'product_longdesc' => Str::random(10) . '@example.com',
+                    'product_longdesc' => Str::random(1500),
                     'product_stock' => rand(0, 250),
                     'product_price' => rand(0, 10050),
                     'product_imagepath' => '/images/products/13th-Gen-Intel-Core-2-740x416.jpg'
