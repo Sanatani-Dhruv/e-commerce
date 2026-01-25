@@ -23,3 +23,15 @@ Homestead.json
 Homestead.yaml
 Thumbs.db
 *.swp
+.not-my-folder/
+PHPMYADMIN/
+*.vim
+images/*/*
+/*.swp
+*port*
+*.zip
+.env
+/vendor
+*larave*
+*src*
+json.json
