@@ -10,3 +10,5 @@ images/*/*
 *larave*
 *src*
 json.json
+bootstrap/
+storage/
