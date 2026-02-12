@@ -88,7 +88,7 @@
 		<link rel="stylesheet" href="styles/store-page-general.css" media="all">
 		<link rel="stylesheet" href="styles/store-page-single.css" media="all">
 	</head>
-	<body id="body" class="body <?= htmlspecialchars($_SESSION['colorscheme']) ?>">
+	<body id="body" class="body">
 <?php 
 	include_once("php/header.php");
 ?>

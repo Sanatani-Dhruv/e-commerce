@@ -14,7 +14,7 @@
 		<link rel="stylesheet" href="styles/info-page.css" media="all">
 		<link rel="stylesheet" href="styles/footer-part.css" media="all">
 	</head>
-	<body id="body" class="body <?= htmlspecialchars($_SESSION['colorscheme']) ?> ignore-overlap">
+	<body id="body" class="body ignore-overlap">
 	<?php 
 		include_once("php/header.php");
 	?>

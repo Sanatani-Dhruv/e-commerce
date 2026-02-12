@@ -17,7 +17,7 @@
 		<link rel="stylesheet" href="styles/admin-panel.css" media="all">
 		<link rel="stylesheet" href="styles/login.css" media="all">
 	</head>
-	<body id="body" class="body <?= htmlspecialchars($_SESSION['colorscheme']) ?>">
+	<body id="body" class="body">
 <?php
 	if (isset($_SESSION["current_user"]) && $_SESSION["current_user"] === "admin") {
 		include_once("php/header.php");
