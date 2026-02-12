@@ -77,6 +77,9 @@
 		if (mysqli_num_rows($get_total_no_of_products_result) == 1) {
 			$get_total_no_of_products_row = mysqli_fetch_assoc($get_total_no_of_products_result);
 			$total_products_in_user_cart = $get_total_no_of_products_row['product_in_cart'];
+			if ($total_products_in_user_cart == ' ') {
+				$total_products_in_user_cart = 0;
+			}
 			// echo "Total products in user cart: " . $total_products_in_user_cart;
 		}
 

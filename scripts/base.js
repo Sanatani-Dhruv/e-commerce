@@ -4,20 +4,19 @@ let navbar_link_container = document.querySelector(".navbar-link-container");
 let navbar_links = document.querySelectorAll(".navbar-link");
 let close_icon = document.querySelector(".close-icon");
 let header_container = document.querySelector(".header-container");
-let body_element = document.querySelector(".body");
-let body_tag = document.querySelector("#body");
+let body_tag = document.getElementById("body");
 let change_theme_btn = document.getElementById('ctb');
-let theme = localStorage.getItem('theme');
+let theme = localStorage.getItem('theme') || 'dark';
 
-body_element.classList.add(theme);
+body_tag.classList.add(theme);
 
 change_theme_btn.addEventListener('click', () => {
 	if (body_tag.classList.contains('light')) {
-		document.getElementById('body').classList.replace('light', 'dark')
+		body_tag.classList.replace('light', 'dark')
 		window.localStorage.setItem('theme', 'dark');
 		change_img('ctb-img', 'images/dark-mode.svg')
 	} else {
-		document.getElementById('body').classList.replace('dark', 'light')
+		body_tag.classList.replace('dark', 'light')
 		window.localStorage.setItem('theme', 'light');
 		change_img('ctb-img', 'images/light-mode.svg')
 	}
@@ -27,14 +26,14 @@ hamburger.addEventListener("click", () => {
 	navbar_ul.classList.add("navbar-ul-show");
 	navbar_link_container.classList.add("navbar-link-container-show");
 	header_container.classList.add("header-container-show");
-	body_element.classList.add("stop-scroll");
+	body_tag.classList.add("stop-scroll");
 	hamburger.style.display = "none";
 })
 
 close_icon.addEventListener("click", () => {
 	navbar_ul.classList.remove("navbar-ul-show");
 	navbar_link_container.classList.remove("navbar-link-container-show");
-	body_element.classList.remove("stop-scroll");
+	body_tag.classList.remove("stop-scroll");
 	header_container.classList.remove("header-container-show");
 	hamburger.style.display = "block";
 })
@@ -43,7 +42,7 @@ navbar_links.forEach(
 	element => element.addEventListener("click", function () {
 		navbar_ul.classList.remove("navbar-ul-show");
 		navbar_link_container.classList.remove("navbar-link-container-show");
-		body_element.classList.remove("stop-scroll");
+		body_tag.classList.remove("stop-scroll");
 		header_container.classList.remove("header-container-show");
 		hamburger.style.display = "block";
 	})
