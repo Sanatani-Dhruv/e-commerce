@@ -92,11 +92,3 @@ php -S localhost:8000
 ```
 
 3. Now open your preferred Browser and go to URL `http://localhost:8000/`.
-
-> Or
-
-Just Run Command
-
-```bash
-composer run start --timeout=0
-```

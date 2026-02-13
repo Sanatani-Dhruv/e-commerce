@@ -17,7 +17,14 @@ $route->get("/", "main.php");
 
 $route->get("/welcome", "welcome.php");
 
-$route->get("/game/Alone/game", [
+$route->get("/game/{name}/game", [
+	UserController::class, "showDetail", [
+		"name" => "Hi",
+		"id" => 11
+	]
+]);
+
+$route->post("/game/{name}/game", [
 	UserController::class, "showDetail", [
 		"name" => "Hi",
 		"id" => 11

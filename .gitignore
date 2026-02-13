@@ -1,14 +1,2 @@
-.not-my-folder/
-PHPMYADMIN/
-*.vim
-images/*/*
-/*.swp
-*port*
-*.zip
+vendor
 .env
-/vendor
-*larave*
-*src*
-json.json
-bootstrap/
-storage/

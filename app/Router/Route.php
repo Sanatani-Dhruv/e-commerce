@@ -39,7 +39,35 @@ class Route {
 
 		foreach(self::$requests as $request_uri => $action) {
 			// echo $request_uri . "<br>";
-			$forThisRequest = ($request_uri == $_SERVER['PATH_INFO']) ? true : false;
+
+			$routeRegex = preg_replace_callback('/{\w+(:([^}]+))?}/', function ($matches) {
+				return isset($matches[1]) ? '(' . $matches[2] . ')' : '([a-zA-Z0-9_-]+)';
+			}, $request_uri);
+			$routeRegex = '@^' . $routeRegex . '$@';
+			// echo "\n\"$request_uri\" => \"$routeRegex\"\n\n";
+
+			$forThisRequest = false;
+
+			if (preg_match($routeRegex, $_SERVER['PATH_INFO'], $matches)) {
+				// echo "<pre>";
+				// print_r($matches);
+				// echo "True for $matches[0]";
+
+				array_shift($matches);
+				$routeParamsValues = $matches;
+				$routeParamsNames = [];
+				if (preg_match_all('/{(\w+)(:[^}]+)?}/', $request_uri, $matches)) {
+					$routeParamsNames = $matches[1];
+					print_r($routeParamsNames);
+					$routeParams = array_combine($routeParamsNames, $routeParamsValues);
+				}
+
+				$forThisRequest = true;
+				self::$hasMatch = true;
+				// echo "</pre>";
+			}
+
+			// $forThisRequest = ($request_uri == $_SERVER['PATH_INFO']) ? true : false;
 			if ($forThisRequest) {
 				if (is_array($action)) {
 					// print_r($action);
@@ -51,7 +79,7 @@ class Route {
 					// print_r($actionObject);
 					// echo "</pre>";
 
-					// Handle $action array's second element - Method Name
+					// Handle $action array's second & third element - Method Name & Method Args
 					$actionMethod = $action[1];
 					$actionArgsArray = $action[2];
 					// extract($actionArgsArray);
@@ -73,12 +101,6 @@ class Route {
 			}
 			// echo "<br>";
 
-		}
-
-		foreach (self::$requests as $request_uri => $action) {
-			if ($request_uri == $_SERVER['PATH_INFO']) {
-				self::$hasMatch = true;
-			}
 		}
 	}
 

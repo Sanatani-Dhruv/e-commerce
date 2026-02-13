@@ -6,6 +6,11 @@ function out($data) {
   return htmlspecialchars($data);
 }
 
+function env($data, bool $get = true, $specialChars = true) {
+  $data = ($specialChars) ? htmlspecialchars($data) : $data;
+  return ($get) ? getenv($data) : putenv($data);
+}
+
 function view($string) {
   require __DIR__ . "/../resources/views/$string";
 }
