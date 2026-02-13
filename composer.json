@@ -1,34 +1,27 @@
 {
-    "name": "dhruv125/ecommerce.site",
-    "description": "This is my Project to Create a working E-Commerce site with login system, admin-page, and working carts page",
+    "name": "dhruv125/ownwork",
+    "description": "Creating own php framework to understand composer",
     "type": "project",
-    "license": "MIT",
-    "require": {
-        "vlucas/phpdotenv": "^5.6"
-    },
     "autoload": {
         "psr-4": {
-            "Dhruv125\\EcommerceSite\\": "src/"
+            "Bundle\\": "bundle/",
+            "App\\": "app/"
         }
     },
-    "authors": [
-        {
-            "name": "Sanatani-Dhruv",
-            "email": "dhruvdds125@gmail.com"
-        }
-    ],
     "scripts": {
         "setup": [
             "composer install",
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
-        "setup-db": [
-            "@php sql-setup.php"
+        "start": [
+            "@php --server=localhost:8000 --docroot=public"
         ]
-    }
-    ,
-    "config": {
-        "optimize-autoloader": false
     },
-    "minimum-stability": "stable"
+    "authors": [
+        {
+            "name": "Sanatani-Dhruv"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
 }
