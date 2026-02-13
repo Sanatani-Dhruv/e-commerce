@@ -5,7 +5,7 @@
 				<img class="logo-main" src="/images/logo-color.png" alt="">
 			</div>
 			<div class="logo-txt">
-				IT Sales and Services
+<?= out(getenv("APP_NAME"))?>
 			</div>
 		</div>
 	</a>
