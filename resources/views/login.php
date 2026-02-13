@@ -1,0 +1,117 @@
+<?php
+	include_once("php/general-session-variable.php");
+	include_once("php/config.php");
+	include_once("php/general-functions.php");
+?>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Login - IT Sales and Services Website</title>
+		<link rel="icon" href="images/logo-monodark.png">
+		<link rel="stylesheet" href="styles/header.css" media="all">
+		<link rel="stylesheet" href="styles/general.css" media="all">
+		<link rel="stylesheet" href="styles/view-page.css" media="all">
+		<link rel="stylesheet" href="styles/info-page.css" media="all">
+		<link rel="stylesheet" href="styles/footer-part.css" media="all">
+		<link rel="stylesheet" href="styles/login.css" media="all">
+	</head>
+	<body id="body" class="body">
+<?php
+	include_once("php/header.php");
+?>
+	<main class="main-container">
+		<div class="login-container-box">
+			<h2 class="login-title">
+				Sign Into your Account
+			</h2>
+			<form method="post" action='<?=htmlspecialchars($_SERVER["PHP_SELF"])?>'>
+				<div class="login-container">
+					<div class="login-input-container">
+						<label class="login-label" for="login-name">User Name: </label>
+						<input class="login-input" pattern="[a-z0-9@ ]*" id="login-name" type="text" placeholder="Enter User Name" name="login-name" required>
+					</div>
+					<div class="login-input-container">
+						<label class="login-label" for="login-password">Password: </label>
+						<input class="login-input" id="login-password" pattern="[a-zA-Z0-9 ]*" type="password" placeholder="Enter Your Password" name="login-password" required>
+					<div class="login-btn success show-pass" id="pass_change_btn">
+						<img src="images/passwd-hide.svg" class="passwd-hide-img" id="passwd_hide_img" width="18px" alt="">
+					</div>
+					</div>
+					<div class="login-input-container">
+						<input class="login-btn submit" name="submit" type="submit" value="Login">
+						<input class="login-btn reset" name="reset" type="reset" value="Reset">
+					</div>
+	<?php
+	// if (isset($_POST["submit"])) {
+	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+		$login_name = clean_input($_POST["login-name"]);
+		$login_passwd = clean_input($_POST["login-password"]);
+		// echo " --Cleaned Input--";
+
+		try {
+			$sql_get_username = "select user_pass, user_id from users where user_name = \"$login_name\";";
+			$dehashing_query = $conn->query($sql_get_username);
+			// echo "<br>--Query Run--<br>";
+
+			// echo "--Before passwd Verify: ";
+			$passwd_hash_match = "false";
+			// echo "$passwd_hash_match--";
+			if ($dehashing_query->num_rows > 0) {
+				// echo "<br><i><b>Matching Username Found</b></i>";
+				// output data of each row
+				while($row = $dehashing_query->fetch_assoc()) {
+					$user_id = $row["user_id"];
+					$db_login_passwd_hash = $row["user_pass"];
+					// echo "<br>--Pass from DB: $db_login_passwd_hash--<br>";
+					// echo $db_login_passwd_hash;
+					if (password_verify($login_passwd, $db_login_passwd_hash)) {
+						$passwd_hash_match = "true";
+					} else {
+						// echo "<br>No Match for Passwd<br>";
+						nodetailfound();
+					}
+				}
+				// echo "<b><i>--After passwd Verify: $passwd_hash_match--</i></b>";
+				if ($passwd_hash_match == "true"){
+					detailfound();
+					$_SESSION["current_user"] = $login_name;
+					$_SESSION["current_user_id"] = $user_id;
+					$log_current_user_db_sql = "insert into loginfo (user_id) value ($user_id);";
+					$log_current_user_db_result = $conn->query($log_current_user_db_sql);
+					if (isset($_SESSION['redirect_location'])) {
+						$redirect_location = $_SESSION['redirect_location'];
+						unset($_SESSION['redirect_location']);
+						header("Location: ". $redirect_location);
+						echo '<meta http-equiv="refresh" content="0; url=' . $redirect_location . '">';
+						exit();
+					} else {
+						header("Location: index.php");
+						echo '<meta http-equiv="refresh" content="0; url=/index.php">';
+						exit();
+					}
+				}
+			} else {
+				nodetailfound();
+			}
+		} catch(Exception $err) {
+			echo "Connection Error:\n" . $err;
+		}
+		echo "<!-- NAME: $login_name & PASSWD: $login_passwd -->";
+	}
+	// }
+?>
+						<div class="login-input-container">
+							<a class="no-exist-acc-link" href="signup.php">No Account! Sign Up</a>
+						</div>
+					</div>
+				</form>
+			</div>
+		</main>
+<?php
+	include_once("php/footer.php");
+?>
+		<script src="scripts/base.js"></script>
+	</body>
+</html>

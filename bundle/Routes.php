@@ -13,7 +13,7 @@ $route = new Route();
 // 	]
 // ]);
 
-$route->get("/", "main.php");
+$route->get("/", "index.php");
 
 $route->get("/welcome", "welcome.php");
 

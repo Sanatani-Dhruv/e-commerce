@@ -1,0 +1,84 @@
+<?php
+	include_once('php/general-session-variable.php');
+	include_once('php/config.php');
+?>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Services - IT Sales and Services Website</title>
+		<link rel="icon" href="images/logo-monodark.png">
+		<link rel="stylesheet" href="styles/header.css" media="all">
+		<link rel="stylesheet" href="styles/general.css" media="all">
+		<link rel="stylesheet" href="styles/footer-part.css" media="all">
+		<link rel="stylesheet" href="styles/store-page-general.css" media="all">
+		<link rel="stylesheet" href="styles/store-page-items.css" media="all">
+	</head>
+	<body id="body" class="body">
+<?php
+	include_once("php/header.php");
+?>
+		  <div class="pathline-container">
+			  <div class="pathline">
+				  <a class="home-link" href="index.php">
+					  <span class="home">Home</span>
+				  </a>
+				  <span class="path-arrow">&#x3E;</span>
+				  <span class="current-location">Services</span>
+			  </div>
+		  </div>
+		  <main class="main-container">
+			  <div class="products-container">
+				  <h2 class="products-category-title">
+					  Service
+				  </h2>
+				  <div class="product-listing">
+<?php 
+	$sql = "select * from services";
+	$result = mysqli_query($conn, $sql);
+
+	if (mysqli_num_rows($result) > 0) {
+					  while ($row = mysqli_fetch_assoc($result)) {
+						  if ($row["service_status"] == "available") {
+							  $row["service_status"] = true;
+						  }
+?>
+						  <div class='hardware-element-container hardware-element-'>
+							  <div class='hardware-element-1 hardware-img-container'>
+								  <img class="hardware-img" src="<?=htmlspecialchars($row["service_imagepath"])?>" alt="Hardware-image">
+							  </div>
+							  <div class="hardware-element-2-container">
+								  <div class="hardware-element-2 hardware-text-container">
+									  <div class='hardware-element-title hardware-element-1'><?=htmlspecialchars($row["service_name"])?></div>
+									  <div class='hardware-element-1 hardware-element-price'>₹<?=htmlspecialchars($row["service_price"])?></div>
+									  <div class='hardware-element-1 hardware-element-price'>Status: <?=($row["service_status"])? 'Available' : 'Not Available'?></div>
+								  </div>
+								  <div class="hardware-element-2 hardware-element-addtocart-btn-container">
+								  <a class="hardware-element-addtocart-link" href="product-page.php?service_id=<?=htmlspecialchars($row['service_id'])?>">
+										  <button class="hardware-element-addtocart-btn">View Service</button>
+									  </a>
+								  </div>
+							  </div>
+						  </div>
+
+<?php
+					  }
+	}
+?>
+				  </div>
+			  </div>
+<?php
+	try {
+		// Try Executing Commands
+	} catch (Exception $err) {
+		// If Any Exception Comes up, do This
+	}
+?>
+		</main>
+<?php
+	include_once("php/footer.php");
+?>
+		<script src="scripts/base.js"></script>
+	</body>
+</html>
