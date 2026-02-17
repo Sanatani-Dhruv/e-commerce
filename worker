@@ -1,0 +1,114 @@
+#!/usr/bin/env php
+<?php
+
+global $argv;
+
+require __DIR__ . "/app/Helper/ConsoleHelper.php";
+use App\Helper\ConsoleHelper;
+
+$printer = new ConsoleHelper();
+
+function help() {
+	global $printer;
+	$printer->print("Usage: ", 'red', '', true, false);
+	$printer->print("php ", 'green', '', true, false);
+	$printer->print('worker ', 'cyan', '', true, false);
+	$printer->print("[OPTION]...", 'green', '', true, true);
+	$printer->print("Executing Commands for easy components management - OwnWork\n", 'green', '', false);
+	$printer->print("OPTIONS:\n", 'red', '', true);
+	$printer->print("make", 'green', '', true, false);
+	echo " - Making Components, it's arguments:\n";
+	$printer->print("    > controller - Make Controller File", 'green', '', true);
+	$printer->print("    > model - Make Model File", 'green', '', true);
+	$printer->print("    > view - Make View File", 'green', '', true);
+}
+
+// print_r($argv);
+// echo "\n";
+$dirArray = [
+	'controller' => __DIR__ . "/app/Controller/",
+	'view' => __DIR__ . "/resources/views/",
+	'model' => __DIR__ . "/app/Model/"
+];
+
+$baseDirArray = [
+	'controller' => "app/Controller/",
+	'view' => "resources/views/",
+	'model' => "app/Model/"
+];
+
+$baseFileArray = [
+	'controller' => __DIR__ . "/resources/template/Controller.php",
+	'view' => __DIR__ . "/resources/template/View.php",
+	'model' => __DIR__ . "/resources/template/Model.php"
+];
+
+$array_list = [$dirArray, $baseDirArray, $baseFileArray];
+
+$firstArg = (isset($argv[1])) ? $argv[1] : false;
+$validFirstArg = false;
+
+foreach ($dirArray as $key => $value) {
+	if (!is_dir($value)) {
+		mkdir($value, 0664);
+	}
+}
+
+if ($firstArg && $firstArg == "make") {
+	$validFirstArg = true;
+	if (isset($argv[2])) {
+		$dirName = strtolower($argv[2]);
+		switch ($dirName) {
+		case 'controller':
+			compCreate($array_list, $dirName);
+			break;
+		case 'model':
+			compCreate($array_list, $dirName);
+			break;
+		case 'view':
+			compCreate($array_list, $dirName);
+			break;
+		default:
+			$printer->print("No Such Component Exists!\n", 'red', '', true);
+			help();
+			break;
+		}
+	} else {
+		$printer->print("Provide Name of Component to make!\n", 'red', '', true);
+		help();
+	}
+} else {
+	//
+}
+
+function compCreate($arrList, $component, $compName = null) {
+	global $argv;
+	global $printer;
+	$compName = (isset($argv[3])) ? $argv[3] : trim(readline("Enter " . $component ." name: "));
+	if (!file_exists($arrList[0][$component] . $compName . ".php")) {
+		touch($arrList[0][$component] . $compName . ".php");
+		$templateContent = str_replace('DEFAULT_NAME', $compName, file_get_contents($arrList[2][$component]));
+		file_put_contents($arrList[0][$component]. $compName . ".php", $templateContent);
+		$printer->print("\n" . ucfirst($component) . " with name `", 'blue', '', true, false);
+		$printer->print($compName, 'green', '', true, false);
+		$printer->print("` created at:\n", 'blue', '', true, false);
+		$printer->print("-> ", 'yellow', '', true, false);
+		$printer->print($arrList[1][$component] . $compName . ".php\n", 'blue', '', true, false);
+	} else {
+		$printer->print("Component with name ", 'blue', '', true, false);
+		$printer->print($compName, 'red', '', true, false);
+		$printer->print(" Already exists at:\n", 'blue', '', true);
+		// echo "-> ";
+		$printer->print("-> ", 'yellow', '', true, false);
+		$printer->print($arrList[1][$component] . $compName . ".php", 'red', '', true);
+	}
+}
+
+if (!$firstArg) {
+	help();
+}
+
+if ($firstArg && !$validFirstArg) {
+	$printer->print("No Registered Command as \"$argv[1]\"!\n", 'red', '', true);
+	help();
+}
