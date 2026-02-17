@@ -1,19 +1,22 @@
+<?php
+	include_once("php/general-session-variable.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>IT Sales and Services Website</title>
-		<link rel="icon" href="/images/logo-monodark.png">
-		<link rel="stylesheet" href="/styles/header.css" media="all">
-		<link rel="stylesheet" href="/styles/general.css" media="all">
-		<link rel="stylesheet" href="/styles/view-page.css" media="all">
-		<link rel="stylesheet" href="/styles/info-page.css" media="all">
-		<link rel="stylesheet" href="/styles/footer-part.css" media="all">
+		<link rel="icon" href="images/logo-monodark.png">
+		<link rel="stylesheet" href="styles/header.css" media="all">
+		<link rel="stylesheet" href="styles/general.css" media="all">
+		<link rel="stylesheet" href="styles/view-page.css" media="all">
+		<link rel="stylesheet" href="styles/info-page.css" media="all">
+		<link rel="stylesheet" href="styles/footer-part.css" media="all">
 	</head>
 	<body id="body" class="body ignore-overlap">
 	<?php 
-		include_once("component/header.php");
+		include_once("php/header.php");
 	?>
 		<main class="main-container-no-padding main-container">
 			<div class="view-page-container" style="background-image: url('https://raw.githubusercontent.com/Sanatani-Dhruv/W3-clone/refs/heads/main/images/mini-IMG_20250919_123136.avif')">
@@ -111,7 +114,7 @@
 			</div>
 		</main>
 <?php
-	include_once("component/footer.php");
+	include_once("php/footer.php");
 ?>
 		<script src="scripts/base.js"></script>
 	</body>

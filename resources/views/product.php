@@ -1,5 +1,4 @@
 <?php
-	include_once('php/general-session-variable.php');
 	include_once('php/config.php');
 ?>
 <!DOCTYPE html>
@@ -21,7 +20,7 @@
 ?>
 		  <div class="pathline-container">
 			  <div class="pathline">
-				  <a class="home-link" href="index.php">
+				  <a class="home-link" href="/">
 					  <span class="home">Home</span>
 				  </a>
 				  <span class="path-arrow">&#x3E;</span>

@@ -17,7 +17,7 @@ include(__DIR__ . "/styles/index.css");
   <body>
     <h1>
       <code>
-        View with name `<?=htmlspecialchars($action)?>` not Found.
+        View with name `<?=out($action)?>` not Found.
       </code>
     </h1>
     <h2>

@@ -1,38 +1,30 @@
 <?php
 namespace App\Controller;
 
-use App\Router\Route;
 use App\Viewer\View;
 
 class UserController {
 	private $view;
-	function __construct() {
+	private $args; // This will store Dynamic variables Extracted from url
+	function __construct($dv) {
+		$this->args = $dv;
 		$this->view = new View();
 	}
 
-	public function showDetail($name, $id) {
-?>
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<title>UserController::showDetail()</title>
-	</head>
-	<body>
-		<h1>
-Message from <?=UserController::class?> method showDetail()
-		</h1>
-	</body>
-</html>
-<?php
-		echo (isset($id)) ? "True" : "False";
+	public function showDetail() {
+		$name = $this->args['name'];
+		$id = $this->args['id'];
+		View::instantView('showDetail.php', [
+			'name' => $name,
+			'id' => $id
+		]);
+
 	}
 
 	public function welcome() {
-		$name = "Dhruv";
+		$name = "Shyam";
 		View::instantView('welcome.php', [
 			'name' => $name
 		]);
-		// $this->view->view('welcome.php');
 	}
 }

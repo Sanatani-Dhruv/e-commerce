@@ -11,8 +11,9 @@ function env($data, bool $get = true, $specialChars = true) {
   return ($get) ? getenv($data) : putenv($data);
 }
 
-function view($string) {
-  require __DIR__ . "/../resources/views/$string";
+function view($string, array $passArgs = []) {
+  $obj = new App\Viewer\View();
+  $obj->view($string, $passArgs);
 }
 
 function url(string $action) {
@@ -25,3 +26,23 @@ function url(string $action) {
     return $_SERVER['REQUEST_URI'];
   }
 }
+
+function clean_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}	
+
+function nodetailfound() {
+  echo "<div class='php-no-detail-found'>";
+  echo "No Account Found with Such Details!";
+  echo "</div>";
+}
+
+function detailfound() {
+  echo "<div class='php-status-success-message'>";
+  echo "Login Successful!";
+  echo "</div>";
+}
+?>

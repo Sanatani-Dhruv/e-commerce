@@ -1,7 +1,11 @@
 {
     "name": "dhruv125/ownwork",
-    "description": "Creating own php framework to understand composer",
+    "description": "OwnWork - Minimal PHP Framework for an MVC Project",
     "type": "project",
+    "require": {
+        "php": "^8.0"
+    },
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "Bundle\\": "bundle/",
@@ -13,7 +17,8 @@
             "composer install",
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
-        "start": [
+        "dev": [
+            "Composer\\Config::disableProcessTimeout",
             "@php --server=localhost:8000 --docroot=public"
         ]
     },
@@ -22,6 +27,5 @@
             "name": "Sanatani-Dhruv"
         }
     ],
-    "minimum-stability": "stable",
-    "require": {}
+    "minimum-stability": "stable"
 }
