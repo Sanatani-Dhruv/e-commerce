@@ -10,8 +10,17 @@ class ProductController {
 		// Default Controller
 	}
 
-	public function index() {
+	public function showProduct() {
 		$view = new View();
-		// Base Method
+		$id = intval($this->args['id']);
+
+		if ($id > 0 && $id < 9999) {
+			echo $id;
+			view('product-page.php', [
+				'id' => $id
+			]);
+		} else {
+			view('produ');
+		}
 	}
 }

@@ -51,7 +51,7 @@
 									  <div class='hardware-element-1 hardware-element-price'>Stock: <?=htmlspecialchars($row["product_stock"])?></div>
 								  </div>
 								  <div class="hardware-element-2 hardware-element-addtocart-btn-container">
-								  <a class="hardware-element-addtocart-link" href="product-page.php?product_id=<?=htmlspecialchars($row['product_id'])?>">
+								  <a class="hardware-element-addtocart-link" href="products/<?=htmlspecialchars($row['product_id'])?>">
 										  <button class="hardware-element-addtocart-btn">View Product</button>
 									  </a>
 								  </div>

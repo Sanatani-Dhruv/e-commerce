@@ -1,6 +1,3 @@
-<?php
-	include_once("php/general-session-variable.php");
-?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
