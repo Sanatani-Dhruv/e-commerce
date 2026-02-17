@@ -10,6 +10,8 @@ $route->get("/", "index.php");
 
 $route->get('/products', 'product.php');
 
+$route->get('/services', 'service.php');
+
 $route->get('/contact', 'contact.php');
 
 $route->get('/about', 'about.php');
