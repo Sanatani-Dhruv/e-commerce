@@ -21,6 +21,9 @@ function help() {
 	$printer->print("    > controller - Make Controller File", 'green', '', true);
 	$printer->print("    > model - Make Model File", 'green', '', true);
 	$printer->print("    > view - Make View File", 'green', '', true);
+	$printer->print("\nserve", 'green', '', true, false);
+	echo " - Serve OwnWork Application, it's optional arguments:\n";
+	$printer->print("    > NUMBER - Provide a Port Number else, Server Will Start at default port: 8000", 'green', '', true);
 }
 
 // print_r($argv);
@@ -79,6 +82,17 @@ if ($firstArg && $firstArg == "make") {
 	}
 } else {
 	//
+}
+
+if ($firstArg && strtolower($firstArg) == "serve") {
+	$validFirstArg = true;
+	$port = 8000;
+	if (isset($argv[2]) && is_numeric($argv[2])) {
+		$port = $argv[2];
+	}
+	$printer->print("Starting OwnWork server at port:$port...", "blue", true, true);
+	$execServer = shell_exec("php --server=localhost:$port --docroot=public");
+	$printer->print("Shutting Server", "red", true, true);
 }
 
 function compCreate($arrList, $component, $compName = null) {
