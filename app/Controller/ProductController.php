@@ -20,7 +20,9 @@ class ProductController {
 				'id' => $id
 			]);
 		} else {
-			view('produ');
+			view('product-page.php', [
+				'invalidId' => true
+			]);
 		}
 	}
 }
