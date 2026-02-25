@@ -116,7 +116,6 @@
 <?php
 	include_once("php/footer.php");
 ?>
-<button id="ctb">Change Theme</button>
 		<script src="scripts/base.js"></script>
 	</body>
 </html>
