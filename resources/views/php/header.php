@@ -66,7 +66,7 @@
 			}
 ?>
 	<li class="navbar-li">
-		<a class="navbar-link" href="login">Sign In</a>
+		<a class="navbar-link" href="/login">Sign In</a>
 		</li>
 <?php
 	}
