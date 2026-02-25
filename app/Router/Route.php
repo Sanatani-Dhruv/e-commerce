@@ -11,6 +11,7 @@ class Route {
 	static $viewDirectory = __DIR__ . "/../../resources/views/";
 	private $viewName_methodCall;
 	private $displayedView;
+	private $routeParams;
 
 	function __construct() {
 		global $requests;
@@ -85,7 +86,12 @@ class Route {
 
 						// Handle $action array's first element - Class Name
 						$actionClass = $action[0];
-						$actionObject = new $action[0]($routeParams);
+						if (isset($routeParams)) {
+							$actionObject = new $action[0]($routeParams);
+						} else {
+							$routeParams = [];
+							$actionObject = new $action[0]($routeParams);
+						}
 						// echo "<pre>";
 						// print_r($actionObject);
 						// echo "</pre>";

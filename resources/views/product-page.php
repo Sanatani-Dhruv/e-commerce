@@ -4,7 +4,7 @@
 <?php 
 	$_SESSION["product-page"] = "true";
 	$getmaxid_sql = "select max(product_id) as total_products from products";
-	$getmaxid_result = mysqli_query($conn, $getmaxid_sql);
+	$getmaxid_result = mysqli_query($DB, $getmaxid_sql);
 
 	if (isset($id)) {
 		if (mysqli_num_rows($getmaxid_result) == 1) {
@@ -15,7 +15,7 @@
 					echo "<!-- Valid Product -->";
 
 					$getdetail_sql = "select * from products where product_id = $current_product_id";
-					$getdetail_result = mysqli_query($conn, $getdetail_sql);
+					$getdetail_result = mysqli_query($DB, $getdetail_sql);
 
 					if(mysqli_num_rows($getdetail_result) == 1) {
 						while ($getdetail_row = mysqli_fetch_assoc($getdetail_result)) {
@@ -48,7 +48,7 @@
 							$current_user_id = $_SESSION["current_user_id"];
 
 							$get_cart_detail_sql = "SELECT sum(item_quantity) from cart_items where product_id = $product_id and user_id = $current_user_id;";
-							$get_cart_detail_result = mysqli_query($conn, $get_cart_detail_sql);
+							$get_cart_detail_result = mysqli_query($DB, $get_cart_detail_sql);
 
 							if (mysqli_num_rows($get_cart_detail_result) === 1) {
 								while ($get_cart_detail_row = mysqli_fetch_assoc($get_cart_detail_result)) {

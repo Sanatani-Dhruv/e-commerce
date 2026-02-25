@@ -1,6 +1,3 @@
-<?php
-	include_once('php/config.php');
-?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -16,7 +13,7 @@
 	</head>
 	<body id="body" class="body">
 <?php
-	include_once("php/header.php");
+include_once("php/header.php");
 ?>
 		  <div class="pathline-container">
 			  <div class="pathline">
@@ -34,24 +31,21 @@
 				  </h2>
 				  <div class="product-listing">
 <?php 
-	$sql = "select * from products";
-	$result = mysqli_query($conn, $sql);
-
-	if (mysqli_num_rows($result) > 0) {
-					  while ($row = mysqli_fetch_assoc($result)) {
+if (count($result) > 0) {
+	foreach($result as $product):
 ?>
 						  <div class='hardware-element-container hardware-element-'>
 							  <div class='hardware-element-1 hardware-img-container'>
-								  <img class="hardware-img" src="<?=htmlspecialchars($row["product_imagepath"])?>" alt="Hardware-image">
+								  <img class="hardware-img" src="<?=out($product["product_imagepath"])?>" alt="Hardware-image">
 							  </div>
 							  <div class="hardware-element-2-container">
 								  <div class="hardware-element-2 hardware-text-container">
-									  <div class='hardware-element-title hardware-element-1'><?=htmlspecialchars($row["product_name"])?></div>
-									  <div class='hardware-element-1 hardware-element-price'>₹<?=htmlspecialchars($row["product_price"])?></div>
-									  <div class='hardware-element-1 hardware-element-price'>Stock: <?=htmlspecialchars($row["product_stock"])?></div>
+									  <div class='hardware-element-title hardware-element-1'><?=out($product["product_name"])?></div>
+									  <div class='hardware-element-1 hardware-element-price'>₹<?=out($product["product_price"])?></div>
+									  <div class='hardware-element-1 hardware-element-price'>Stock: <?=out($product["product_stock"])?></div>
 								  </div>
 								  <div class="hardware-element-2 hardware-element-addtocart-btn-container">
-								  <a class="hardware-element-addtocart-link" href="products/<?=htmlspecialchars($row['product_id'])?>">
+								  <a class="hardware-element-addtocart-link" href="products/<?=out($product['product_id'])?>">
 										  <button class="hardware-element-addtocart-btn">View Product</button>
 									  </a>
 								  </div>
@@ -59,21 +53,14 @@
 						  </div>
 
 <?php
-					  }
-	}
+		endforeach;
+}
 ?>
 				  </div>
 			  </div>
-<?php
-	try {
-		// Try Executing Commands
-	} catch (Exception $err) {
-		// If Any Exception Comes up, do This
-	}
-?>
 		</main>
 <?php
-	include_once("php/footer.php");
+include_once("php/footer.php");
 ?>
 		<script src="scripts/base.js"></script>
 	</body>

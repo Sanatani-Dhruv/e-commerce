@@ -9,7 +9,9 @@ $route = new Route();
 
 $route->get("/", "index.php");
 
-$route->get('/products', 'product.php');
+$route->get('/products', [
+	ProductController::class, 'showProductPage'
+]);
 
 $route->get('/products/{id}', [
 	ProductController::class, 'showProduct'

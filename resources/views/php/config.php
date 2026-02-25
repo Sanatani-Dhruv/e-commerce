@@ -18,7 +18,7 @@
 		// $mysqli_connection = mysqli_connect($databaseHost, $databaseUsername, $databasePassword, $databaseName); 
 
 		// For Object Oriented Method
-		$conn = new mysqli($databaseHost, $databaseUsername, $databasePassword, $databaseName);
+		$DB = new mysqli($databaseHost, $databaseUsername, $databasePassword, $databaseName);
 
 		// if ($conn->connect_error) {
 		// 	die("Connection failed: " . $dbc->connect_error);
