@@ -64,7 +64,7 @@ if ($stock_enum) :
 						<input type="hidden" id="redirect_location" name="redirect_location" value="<?=url('get') . "?product_id=" . $response["product_id"]?>">
 						<div class="product-showcase-btns-container">
 							<div class="product-showcase-how-much-addcart">
-								Quantity: <input name="quantity" class="product-showcase-how-much-addcart-input" value="<?=out($quantity_from_db)?>" min="1" max="<?=out($product_stock)?>" type="number">
+								Quantity: <input name="quantity" class="product-showcase-how-much-addcart-input" value="<?=out($quantity_from_db)?>" min="1" max="<?=$response["product_stock"]?>" type="number">
 							</div>
 							<div class="product-showcase-addcart-btn-container">
 								<button name="product-id" value="<?=out($product_id)?>" class="product-showcase-addcart-btn login-btn submit <?=out($stock_enum) ? 'true' : 'false';?>">Add To Cart</button>
