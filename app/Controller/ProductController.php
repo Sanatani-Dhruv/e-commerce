@@ -97,14 +97,15 @@ class ProductController {
 					'id' => $id,
 					'invalidId' => true
 				]);
+				http_response_code(404);
 			}
 		} else {
 			view('product-page.php', [
 				'id' => $id,
 				'invalidId' => true
 			]);
+			http_response_code(404);
 		}
-		// echo $getmaxid_result;
 	}
 
 	public function showProductPage() {
