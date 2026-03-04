@@ -9,14 +9,12 @@ Route::get('/', function () {
 
 Route::get('/products', [ProductController::class, 'index']);
 
-Route::get('/services', function () {
-    return view('index');
-});
+Route::get('/services', [ProductController::class, 'index']);
 
 Route::get('/contact', function () {
-    return view('index');
+    return view('contact');
 });
 
 Route::get('/about', function () {
-    return view('index');
+    return view('about');
 });

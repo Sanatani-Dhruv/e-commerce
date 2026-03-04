@@ -20,7 +20,7 @@
 					<h1 class="view-page-title">
 						Complete IT Support & Managed Services - Convenient and Affordable
 					</h1>
-					<a class="view-page-btn-link" href="/product">
+					<a class="view-page-btn-link" href="/products">
 						<button class="view-page-btn">See More</button>
 					</a>
 				</div>
@@ -33,36 +33,36 @@
 					<div class="info-page-para-container">
 						<h2 class="info-page-para-title">Lorem ipsum</h2>
 						<p class="info-page-para">
-						Adipisicing quam saepe inventore animi quis Cumque iusto pariatur excepturi fuga cupiditate? Quos
-						aspernatur omnis aperiam excepturi doloribus! Culpa nesciunt optio dicta temporibus nemo Quaerat fugiat
-						ratione accusantium accusamus eaque, temporibus.  Quisquam cum debitis molestias fugiat natus beatae.
-						Esse vero placeat ea doloremque ullam Dolorem dolor hic tenetur ab dolore. Voluptates excepturi
-						suscipit corporis aliquid ipsum modi atque, rerum libero. Maiores aperiam maiores tempore quas animi
-						Fugiat accusamus dignissimos nesciunt dicta ex?  Dolorum iure culpa nisi alias sunt tenetur!
-						Adipisci ipsa ad ipsam earum dolorem Ea eos ipsum architecto quos porro Consequatur a omnis
-						voluptatem necessitatibus dolor Aliquid eveniet saepe
+							Adipisicing quam saepe inventore animi quis Cumque iusto pariatur excepturi fuga cupiditate? Quos
+							aspernatur omnis aperiam excepturi doloribus! Culpa nesciunt optio dicta temporibus nemo Quaerat fugiat
+							ratione accusantium accusamus eaque, temporibus.  Quisquam cum debitis molestias fugiat natus beatae.
+							Esse vero placeat ea doloremque ullam Dolorem dolor hic tenetur ab dolore. Voluptates excepturi
+							suscipit corporis aliquid ipsum modi atque, rerum libero. Maiores aperiam maiores tempore quas animi
+							Fugiat accusamus dignissimos nesciunt dicta ex?  Dolorum iure culpa nisi alias sunt tenetur!
+							Adipisci ipsa ad ipsam earum dolorem Ea eos ipsum architecto quos porro Consequatur a omnis
+							voluptatem necessitatibus dolor Aliquid eveniet saepe
 						</p>
 						<h2 class="info-page-para-title">Lorem ipsum</h2>
 						<p class="info-page-para">
-						Adipisicing quam saepe inventore animi quis Cumque iusto pariatur excepturi fuga cupiditate? Quos
-						aspernatur omnis aperiam excepturi doloribus! Culpa nesciunt optio dicta temporibus nemo Quaerat fugiat
-						ratione accusantium accusamus eaque, temporibus.  Quisquam cum debitis molestias fugiat natus beatae.
-						Esse vero placeat ea doloremque ullam Dolorem dolor hic tenetur ab dolore. Voluptates excepturi
-						suscipit corporis aliquid ipsum modi atque, rerum libero. Maiores aperiam maiores tempore quas animi
-						Fugiat accusamus dignissimos nesciunt dicta ex?  Dolorum iure culpa nisi alias sunt tenetur!
-						Adipisci ipsa ad ipsam earum dolorem Ea eos ipsum architecto quos porro Consequatur a omnis
-						voluptatem necessitatibus dolor Aliquid eveniet saepe
+							Adipisicing quam saepe inventore animi quis Cumque iusto pariatur excepturi fuga cupiditate? Quos
+							aspernatur omnis aperiam excepturi doloribus! Culpa nesciunt optio dicta temporibus nemo Quaerat fugiat
+							ratione accusantium accusamus eaque, temporibus.  Quisquam cum debitis molestias fugiat natus beatae.
+							Esse vero placeat ea doloremque ullam Dolorem dolor hic tenetur ab dolore. Voluptates excepturi
+							suscipit corporis aliquid ipsum modi atque, rerum libero. Maiores aperiam maiores tempore quas animi
+							Fugiat accusamus dignissimos nesciunt dicta ex?  Dolorum iure culpa nisi alias sunt tenetur!
+							Adipisci ipsa ad ipsam earum dolorem Ea eos ipsum architecto quos porro Consequatur a omnis
+							voluptatem necessitatibus dolor Aliquid eveniet saepe
 						</p>
 						<h2 class="info-page-para-title">Lorem ipsum</h2>
 						<p class="info-page-para">
-						Adipisicing quam saepe inventore animi quis Cumque iusto pariatur excepturi fuga cupiditate? Quos
-						aspernatur omnis aperiam excepturi doloribus! Culpa nesciunt optio dicta temporibus nemo Quaerat fugiat
-						ratione accusantium accusamus eaque, temporibus.  Quisquam cum debitis molestias fugiat natus beatae.
-						Esse vero placeat ea doloremque ullam Dolorem dolor hic tenetur ab dolore. Voluptates excepturi
-						suscipit corporis aliquid ipsum modi atque, rerum libero. Maiores aperiam maiores tempore quas animi
-						Fugiat accusamus dignissimos nesciunt dicta ex?  Dolorum iure culpa nisi alias sunt tenetur!
-						Adipisci ipsa ad ipsam earum dolorem Ea eos ipsum architecto quos porro Consequatur a omnis
-						voluptatem necessitatibus dolor Aliquid eveniet saepe
+							Adipisicing quam saepe inventore animi quis Cumque iusto pariatur excepturi fuga cupiditate? Quos
+							aspernatur omnis aperiam excepturi doloribus! Culpa nesciunt optio dicta temporibus nemo Quaerat fugiat
+							ratione accusantium accusamus eaque, temporibus.  Quisquam cum debitis molestias fugiat natus beatae.
+							Esse vero placeat ea doloremque ullam Dolorem dolor hic tenetur ab dolore. Voluptates excepturi
+							suscipit corporis aliquid ipsum modi atque, rerum libero. Maiores aperiam maiores tempore quas animi
+							Fugiat accusamus dignissimos nesciunt dicta ex?  Dolorum iure culpa nisi alias sunt tenetur!
+							Adipisci ipsa ad ipsam earum dolorem Ea eos ipsum architecto quos porro Consequatur a omnis
+							voluptatem necessitatibus dolor Aliquid eveniet saepe
 						</p>
 					</div>
 				</div>
@@ -73,36 +73,36 @@
 					<div class="info-page-para-container info-page-para-container-alt">
 						<h2 class="info-page-para-title">Lorem ipsum</h2>
 						<p class="info-page-para">
-						Adipisicing quam saepe inventore animi quis Cumque iusto pariatur excepturi fuga cupiditate? Quos
-						aspernatur omnis aperiam excepturi doloribus! Culpa nesciunt optio dicta temporibus nemo Quaerat fugiat
-						ratione accusantium accusamus eaque, temporibus.  Quisquam cum debitis molestias fugiat natus beatae.
-						Esse vero placeat ea doloremque ullam Dolorem dolor hic tenetur ab dolore. Voluptates excepturi
-						suscipit corporis aliquid ipsum modi atque, rerum libero. Maiores aperiam maiores tempore quas animi
-						Fugiat accusamus dignissimos nesciunt dicta ex?  Dolorum iure culpa nisi alias sunt tenetur!
-						Adipisci ipsa ad ipsam earum dolorem Ea eos ipsum architecto quos porro Consequatur a omnis
-						voluptatem necessitatibus dolor Aliquid eveniet saepe
+							Adipisicing quam saepe inventore animi quis Cumque iusto pariatur excepturi fuga cupiditate? Quos
+							aspernatur omnis aperiam excepturi doloribus! Culpa nesciunt optio dicta temporibus nemo Quaerat fugiat
+							ratione accusantium accusamus eaque, temporibus.  Quisquam cum debitis molestias fugiat natus beatae.
+							Esse vero placeat ea doloremque ullam Dolorem dolor hic tenetur ab dolore. Voluptates excepturi
+							suscipit corporis aliquid ipsum modi atque, rerum libero. Maiores aperiam maiores tempore quas animi
+							Fugiat accusamus dignissimos nesciunt dicta ex?  Dolorum iure culpa nisi alias sunt tenetur!
+							Adipisci ipsa ad ipsam earum dolorem Ea eos ipsum architecto quos porro Consequatur a omnis
+							voluptatem necessitatibus dolor Aliquid eveniet saepe
 						</p>
 						<h2 class="info-page-para-title">Lorem ipsum</h2>
 						<p class="info-page-para">
-						Adipisicing quam saepe inventore animi quis Cumque iusto pariatur excepturi fuga cupiditate? Quos
-						aspernatur omnis aperiam excepturi doloribus! Culpa nesciunt optio dicta temporibus nemo Quaerat fugiat
-						ratione accusantium accusamus eaque, temporibus.  Quisquam cum debitis molestias fugiat natus beatae.
-						Esse vero placeat ea doloremque ullam Dolorem dolor hic tenetur ab dolore. Voluptates excepturi
-						suscipit corporis aliquid ipsum modi atque, rerum libero. Maiores aperiam maiores tempore quas animi
-						Fugiat accusamus dignissimos nesciunt dicta ex?  Dolorum iure culpa nisi alias sunt tenetur!
-						Adipisci ipsa ad ipsam earum dolorem Ea eos ipsum architecto quos porro Consequatur a omnis
-						voluptatem necessitatibus dolor Aliquid eveniet saepe
+							Adipisicing quam saepe inventore animi quis Cumque iusto pariatur excepturi fuga cupiditate? Quos
+							aspernatur omnis aperiam excepturi doloribus! Culpa nesciunt optio dicta temporibus nemo Quaerat fugiat
+							ratione accusantium accusamus eaque, temporibus.  Quisquam cum debitis molestias fugiat natus beatae.
+							Esse vero placeat ea doloremque ullam Dolorem dolor hic tenetur ab dolore. Voluptates excepturi
+							suscipit corporis aliquid ipsum modi atque, rerum libero. Maiores aperiam maiores tempore quas animi
+							Fugiat accusamus dignissimos nesciunt dicta ex?  Dolorum iure culpa nisi alias sunt tenetur!
+							Adipisci ipsa ad ipsam earum dolorem Ea eos ipsum architecto quos porro Consequatur a omnis
+							voluptatem necessitatibus dolor Aliquid eveniet saepe
 						</p>
 						<h2 class="info-page-para-title">Lorem ipsum</h2>
 						<p class="info-page-para">
-						Adipisicing quam saepe inventore animi quis Cumque iusto pariatur excepturi fuga cupiditate? Quos
-						aspernatur omnis aperiam excepturi doloribus! Culpa nesciunt optio dicta temporibus nemo Quaerat fugiat
-						ratione accusantium accusamus eaque, temporibus.  Quisquam cum debitis molestias fugiat natus beatae.
-						Esse vero placeat ea doloremque ullam Dolorem dolor hic tenetur ab dolore. Voluptates excepturi
-						suscipit corporis aliquid ipsum modi atque, rerum libero. Maiores aperiam maiores tempore quas animi
-						Fugiat accusamus dignissimos nesciunt dicta ex?  Dolorum iure culpa nisi alias sunt tenetur!
-						Adipisci ipsa ad ipsam earum dolorem Ea eos ipsum architecto quos porro Consequatur a omnis
-						voluptatem necessitatibus dolor Aliquid eveniet saepe
+							Adipisicing quam saepe inventore animi quis Cumque iusto pariatur excepturi fuga cupiditate? Quos
+							aspernatur omnis aperiam excepturi doloribus! Culpa nesciunt optio dicta temporibus nemo Quaerat fugiat
+							ratione accusantium accusamus eaque, temporibus.  Quisquam cum debitis molestias fugiat natus beatae.
+							Esse vero placeat ea doloremque ullam Dolorem dolor hic tenetur ab dolore. Voluptates excepturi
+							suscipit corporis aliquid ipsum modi atque, rerum libero. Maiores aperiam maiores tempore quas animi
+							Fugiat accusamus dignissimos nesciunt dicta ex?  Dolorum iure culpa nisi alias sunt tenetur!
+							Adipisci ipsa ad ipsam earum dolorem Ea eos ipsum architecto quos porro Consequatur a omnis
+							voluptatem necessitatibus dolor Aliquid eveniet saepe
 						</p>
 					</div>
 				</div>
