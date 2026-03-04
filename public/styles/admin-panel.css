@@ -1,0 +1,123 @@
+.admin-welcome {
+	width: fit-content;
+	margin: auto;
+	text-align: center;
+	font-size: 36px;
+}
+
+.table-overflow-wrapper {
+	/* width: min(100%,1500px); */
+	/* width: 80%; */
+	margin: 10px 60px;
+	overflow-x: auto;
+	overflow-wrap: normal;
+	margin-bottom: 3%;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox, Safari 18.2+, Chromium 121+ */
+}
+
+.item-list-table {
+	table-layout: fixed;
+	border: 1px solid ;
+	padding: 10px 15px;
+
+	td,th {
+		min-width: 250px;
+		padding: 10px 15px;
+		border: 1px solid;
+	}
+}
+
+@media (max-width: 900px) {
+	.table-overflow-wrapper {
+		margin: auto;
+		margin-bottom: 3%;
+	}
+
+	.item-list-table {
+		td,th {
+			min-width: 100px;
+			padding: 8px 12px;
+		}
+	}
+}
+
+.admin-fieldset {
+	margin: 10px;
+	padding: 40px;
+	border-radius: 15px;
+	font-family: "Poppins", sans-serif;
+}
+
+.admin-legend {
+	padding: 0 5px;
+}
+
+.admin-form {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.input-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 700px;
+	margin-bottom: 15px;
+}
+
+.input-container:has(.admin-btn) {
+	flex-direction: row;
+}
+
+.product-insert-input {
+	font-family: "Poppins", sans-serif;
+	padding: 1px 10px;
+	font-size: 16px;
+	color: black;
+}
+
+#product-image {
+	color: white;
+}
+
+#product-image {
+	width: fit-content;
+}
+
+.product-insert {
+	color: black;
+	padding: 0 5px;
+	font-family: "Poppins", sans-serif;
+}
+
+@media (max-width: 900px) {
+	.admin-fieldset {
+		padding: 3%;
+		border-radius: 5px;
+	}
+
+	.product-insert-input {
+		font-size: 12px;
+	}
+
+	.input-container {
+		width: 100%;
+	}
+
+	.admin-btn-container {
+		flex-direction: column !important;
+		gap: 10px;
+	}
+
+	.product-insert-input {
+		padding: 1px 3px;
+	}
+}
+
+@media (max-width: 400px) {
+	.login-btn {
+		white-space: pre-wrap;
+	}
+}

@@ -1,0 +1,27 @@
+.footer-part-container {
+	background-color: grey;
+	vertical-align: middle;
+	padding: 30px;
+	margin-top: 1rem;
+	color: white;
+}
+
+.footer-part {
+	width: fit-content;
+	margin: auto;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.github-icon {
+	width: 16px;
+	padding: 2px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.dark {
+	.footer-part-container {
+		background-color: rgba(42,42,42,1);
+	}
+}
