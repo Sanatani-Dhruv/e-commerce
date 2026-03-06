@@ -1,5 +1,5 @@
 <?php
-namespace App\Router;
+namespace App\Helper\Router;
 
 class Route {
 	public $request_uri;
@@ -8,10 +8,9 @@ class Route {
 	static $requests;
 	static $arguments;
 	static $hasMatch = false;
-	static $viewDirectory = __DIR__ . "/../../resources/views/";
+	static $viewDirectory = __DIR__ . "/../../../resources/views/";
 	private $viewName_methodCall;
 	private $displayedView;
-	private $routeParams;
 
 	function __construct() {
 		global $requests;
@@ -85,12 +84,13 @@ class Route {
 						// print_r($action);
 
 						// Handle $action array's first element - Class Name
-						$actionClass = $action[0];
-						if (isset($routeParams)) {
-							$actionObject = new $action[0]($routeParams);
-						} else {
-							$routeParams = [];
-							$actionObject = new $action[0]($routeParams);
+						if (isset($action[0])) {
+							$actionClass = $action[0];
+							if (isset($routeParams)) {
+								$actionObject = new $action[0]($routeParams);
+							} else {
+								$actionObject = new $action[0]($routeParams = []);
+							}
 						}
 						// echo "<pre>";
 						// print_r($actionObject);
@@ -115,8 +115,8 @@ class Route {
 							}
 							include(self::$viewDirectory . $action);
 						} else {
-							if (file_exists(__DIR__ . "/../Helper/AppViews/view-notfound-error.php")) {
-								include(__DIR__ . "/../Helper/AppViews/view-notfound-error.php");
+							if (file_exists(__DIR__ . "/../AppViews/view-notfound-error.php")) {
+								include(__DIR__ . "/../AppViews/view-notfound-error.php");
 							} else {
 								echo "View Not Found";
 							}
@@ -132,8 +132,8 @@ class Route {
 	public function __destruct() {
 		if (!self::$hasMatch) {
 			// echo "No Match Found";
-			if (file_exists(__DIR__ . "/../Helper/AppViews/general-notfound-error.php")) {
-				include(__DIR__ . "/../Helper/AppViews/general-notfound-error.php");
+			if (file_exists(__DIR__ . "/../AppViews/general-notfound-error.php")) {
+				include(__DIR__ . "/../AppViews/general-notfound-error.php");
 			} else {
 				echo "404 Not Found";
 			}

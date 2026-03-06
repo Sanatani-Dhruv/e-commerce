@@ -10,20 +10,11 @@ class ProductController {
 	public $DB;
 	function __construct($dv) {
 		$this->args = $dv;
-		$dataSource = new PdoDataSource('mysql'); // see "Available drivers for database systems" below
-		$dataSource->setHostname(env('DB_HOST'));
-		$dataSource->setPort(3306);
-		$dataSource->setDatabaseName(env('DB_NAME'));
-		$dataSource->setCharset('utf8mb4');
-		$dataSource->setUsername(env('DB_USER'));
-		$dataSource->setPassword(env('DB_PASS'));
-
-		$this->DB = PdoDatabase::fromDataSource($dataSource);
+		$this->DB = \get_db_instance();
 		// Default Controller
 	}
 
 	public function showProduct() {
-		$view = new View();
 		$id = trim(intval($this->args['id']));
 
 		if (isset($_SESSION["current_user"])) {

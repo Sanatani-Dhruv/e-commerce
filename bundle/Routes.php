@@ -1,7 +1,7 @@
 <?php
 namespace Bundle;
 
-use App\Router\Route;
+use App\Helper\Router\Route;
 use App\Controller\UserController;
 use App\Controller\ProductController;
 

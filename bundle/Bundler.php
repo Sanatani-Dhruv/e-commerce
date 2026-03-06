@@ -1,25 +1,35 @@
 <?php
 namespace Bundle;
 
-use App\Helper\Environment;
+use Bundle\Environment\Environment;
 
 class Bundler {
 	function __construct() {
 		// require(__DIR__ . "/Routes.php");
-		try {
+		if (file_exists(__DIR__ . "/../.env") && file_exists(__DIR__ . "/../vendor/autoload.php")) {
 			require __DIR__ . '/../vendor/autoload.php';
-		} catch (Exception $err) {
-			echo "It looks like you didn't ran Startup Command; run <code>composer run setup</code> in ownwork directory!!";
+		} else {
+			if (file_exists(__DIR__ . "/../app/Helper/AppViews/no-setup-done-error.php"))
+				require __DIR__ . "/../app/Helper/AppViews/no-setup-done-error.php";
+			else
+				echo "No Setup Command Ran!! Run <code>composer run setup</code>";
+			die();
 		}
+
+		// Loading .env file from Root Directory
+		require __DIR__ .'/Environment/Environment.php';
+		$environment = new Environment();
+		$environment->setenv();
+
+		// Global Helper Functions exist in below file
 		require __DIR__ . '/HelperFunction.php';
-		Environment::setenv();
 	}
 
 	public function bundle() {
 		try {
 			require(__DIR__ . "/Routes.php");
-		} catch (Exception $err) {
-			echo $err;
+		} catch (\Exception $err) {
+			print_r($err);
 		}
 	}
 }
